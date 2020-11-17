@@ -10,6 +10,8 @@ type
    TfrmPrincipal = class(TForm)
       mmPrincipal: TMainMenu;
       Cadastro1: TMenuItem;
+      Login1: TMenuItem;
+      procedure Login1Click (Sender: TObject);
    private
     { Private declarations }
    public
@@ -21,6 +23,15 @@ var
 
 implementation
 
+uses
+   Sistema.Utils.Forms;
+
 {$R *.dfm}
+
+
+procedure TfrmPrincipal.Login1Click (Sender: TObject);
+begin
+   AbrirForm ('');
+end;
 
 end.
