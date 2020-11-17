@@ -3,6 +3,7 @@ inherited frmCadLogin: TfrmCadLogin
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
+    ActivePage = tsCadastro
     inherited tsListagem: TTabSheet
       inherited pnlGrid: TPanel
         Height = 231
