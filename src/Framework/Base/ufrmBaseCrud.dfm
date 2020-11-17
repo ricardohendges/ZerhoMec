@@ -21,14 +21,11 @@ object frmBaseCrud: TfrmBaseCrud
     Top = 50
     Width = 566
     Height = 331
-    ActivePage = tsCadastro
+    ActivePage = tsListagem
     Align = alClient
     TabOrder = 0
-    ExplicitTop = 128
-    ExplicitHeight = 253
     object tsCadastro: TTabSheet
       Caption = 'Cadastro'
-      ExplicitHeight = 353
       object pnlPrincipal: TPanel
         Left = 0
         Top = 0
@@ -37,16 +34,11 @@ object frmBaseCrud: TfrmBaseCrud
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitLeft = 184
-        ExplicitTop = 104
-        ExplicitWidth = 185
-        ExplicitHeight = 41
       end
     end
     object tsListagem: TTabSheet
       Caption = 'Listagem'
       ImageIndex = 1
-      ExplicitHeight = 353
       object pnlFiltros: TPanel
         Left = 0
         Top = 0
@@ -106,10 +98,6 @@ object frmBaseCrud: TfrmBaseCrud
         Height = 229
         Align = alClient
         TabOrder = 1
-        ExplicitLeft = 192
-        ExplicitTop = 176
-        ExplicitWidth = 185
-        ExplicitHeight = 41
         object dbgrdPrincipal: TDBGrid
           Left = 1
           Top = 1
@@ -123,6 +111,8 @@ object frmBaseCrud: TfrmBaseCrud
           TitleFont.Height = -11
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
+          OnCellClick = dbgrdPrincipalCellClick
+          OnMouseWheel = dbgrdPrincipalMouseWheel
           OnTitleClick = dbgrdPrincipalTitleClick
         end
       end
@@ -133,15 +123,31 @@ object frmBaseCrud: TfrmBaseCrud
         Height = 25
         Align = alBottom
         TabOrder = 2
-        ExplicitTop = 312
+        object lblRolagem: TLabel
+          Left = 186
+          Top = 1
+          Width = 371
+          Height = 23
+          Align = alClient
+          Alignment = taCenter
+          Caption = 'lblRolagem'
+          Layout = tlCenter
+          ExplicitLeft = 1
+          ExplicitWidth = 51
+          ExplicitHeight = 13
+        end
         object dbnvgrPrincipal: TDBNavigator
-          Left = 0
-          Top = -1
+          Left = 1
+          Top = 1
           Width = 185
-          Height = 25
+          Height = 23
           DataSource = dsPadrao
           VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbRefresh]
+          Align = alLeft
           TabOrder = 0
+          ExplicitLeft = 0
+          ExplicitTop = -1
+          ExplicitHeight = 25
         end
       end
     end

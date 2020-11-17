@@ -46,8 +46,14 @@ type
       dsPadrao: TDataSource;
       frxrprtPrincipal: TfrxReport;
       frxDBDatasetPrincipal: TfrxDBDataset;
+      lblRolagem: TLabel;
       procedure dbgrdPrincipalTitleClick (Column: TColumn);
       procedure FormClose (Sender: TObject; var Action: TCloseAction);
+      procedure dbgrdPrincipalCellClick (Column: TColumn);
+      procedure dbgrdPrincipalMouseWheel (Sender: TObject; Shift: TShiftState;
+        WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
+   private
+      procedure AtualizaInfos;
    protected
          { Functions de validações e etc. }
       function GetDataSetAtivo: TFDquery; virtual;
@@ -83,11 +89,32 @@ uses
 
 { TfrmBaseCrud }
 
+procedure TfrmBaseCrud.AtualizaInfos;
+begin
+   if dsPadrao.DataSet.IsEmpty then
+      lblRolagem.Caption := 'Nenhum registro encontrado!'
+   else
+      lblRolagem.Caption := dsPadrao.DataSet.RecNo.ToString + ' de ' +
+        dsPadrao.DataSet.RecordCount.ToString + ' registros';
+end;
+
 procedure TfrmBaseCrud.CancelarRegistro;
 begin
    if DataSetAtivo.State in [dsEdit, dsInsert] then
       DataSetAtivo.Cancel;
    ManterEstadoBotoes;
+end;
+
+procedure TfrmBaseCrud.dbgrdPrincipalCellClick (Column: TColumn);
+begin
+   AtualizaInfos;
+end;
+
+procedure TfrmBaseCrud.dbgrdPrincipalMouseWheel (Sender: TObject;
+  Shift: TShiftState; WheelDelta: Integer; MousePos: TPoint;
+  var Handled: Boolean);
+begin
+   AtualizaInfos;
 end;
 
 procedure TfrmBaseCrud.dbgrdPrincipalTitleClick (Column: TColumn);
@@ -135,7 +162,7 @@ end;
 
 procedure TfrmBaseCrud.InitializeForm;
 begin
-   //
+   lblRolagem.Caption := 'Nenhum registro encontrado!';
 end;
 
 procedure TfrmBaseCrud.InserirRegistro;

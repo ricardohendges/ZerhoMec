@@ -20,6 +20,10 @@ object frmPrincipal: TfrmPrincipal
     Top = 184
     object Cadastro1: TMenuItem
       Caption = 'Cadastro'
+      object Login1: TMenuItem
+        Caption = 'Login'
+        OnClick = Login1Click
+      end
     end
   end
 end
