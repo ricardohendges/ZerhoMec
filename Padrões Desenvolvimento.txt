@@ -1,0 +1,13 @@
+[Posicionamento de campos:]
+*1º Edit top 20 left 20
+*Os Labels sempre top - 15 dos edits
+
+-> Responsividade
+-> Tamanho mínimo do formulário
+
+
+
+-----------------
+Ajustes FrameWork
+-> Captions dos forms com estados dos DataSet's
+-> Lookup (Dictionary)

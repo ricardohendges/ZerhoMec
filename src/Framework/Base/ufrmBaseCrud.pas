@@ -5,7 +5,7 @@ interface
 uses
    Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
    Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Data.DB, Vcl.Grids,
-   Vcl.DBGrids, Vcl.ExtCtrls, Vcl.DBCtrls, Vcl.StdCtrls, Vcl.Buttons,
+   Vcl.DBGrids, Vcl.ExtCtrls, Vcl.DBCtrls, Vcl.StdCtrls, Vcl.Buttons, System.Generics.Collections,
    System.Actions, Vcl.ActnList, frxClass, frxDBSet, FireDAC.Stan.Intf,
    FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
    FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
@@ -47,19 +47,25 @@ type
       frxrprtPrincipal: TfrxReport;
       frxDBDatasetPrincipal: TfrxDBDataset;
       lblRolagem: TLabel;
+      btnFiltrar: TButton;
       procedure dbgrdPrincipalTitleClick (Column: TColumn);
       procedure FormClose (Sender: TObject; var Action: TCloseAction);
       procedure dbgrdPrincipalCellClick (Column: TColumn);
       procedure dbgrdPrincipalMouseWheel (Sender: TObject; Shift: TShiftState;
         WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
+      procedure btnFiltrarClick (Sender: TObject);
    private
+      FLista: TDictionary< string, string >;
       procedure AtualizaInfos;
+      procedure AlimentaComboFields;
    protected
          { Functions de validações e etc. }
       function GetDataSetAtivo: TFDquery; virtual;
       function GetGridAtiva: TDBGrid; virtual;
       function GetPanelCad: TPanel; virtual;
       function ValidouCampos: Boolean; virtual;
+      function GetSQLPrincipal: string; virtual;
+      procedure AfterOpen (DataSet: TDataSet); virtual;
 
       procedure InitializeForm; virtual;
          { Parte dos Botões }
@@ -89,6 +95,27 @@ uses
 
 { TfrmBaseCrud }
 
+procedure TfrmBaseCrud.AfterOpen (DataSet: TDataSet);
+begin
+   //
+end;
+
+procedure TfrmBaseCrud.AlimentaComboFields;
+var
+   I: Integer;
+begin
+   cbbCampos.Clear;
+   if dsPadrao.DataSet.FieldCount > 0 then
+   begin
+      for I := 0 to Pred(dsPadrao.DataSet.FieldCount) do
+      begin
+         cbbCampos.AddItem (dsPadrao.DataSet.Fields[I].DisplayName, cbbCampos);
+         FLista.Add (dsPadrao.DataSet.Fields[I].DisplayName,
+           dsPadrao.DataSet.Fields[I].FieldName);
+      end;
+   end;
+end;
+
 procedure TfrmBaseCrud.AtualizaInfos;
 begin
    if dsPadrao.DataSet.IsEmpty then
@@ -96,6 +123,17 @@ begin
    else
       lblRolagem.Caption := dsPadrao.DataSet.RecNo.ToString + ' de ' +
         dsPadrao.DataSet.RecordCount.ToString + ' registros';
+end;
+
+procedure TfrmBaseCrud.btnFiltrarClick (Sender: TObject);
+begin
+   // Filtra os dados no client
+   dsPadrao.DataSet.Filtered := False;
+   if (cbbCampos.ItemIndex <> -1) and edtFiltro.IsEmpty then
+   begin
+      dsPadrao.DataSet.Filter :=
+        FLista.Items[cbbCampos.ValorSelecionado];
+   end;
 end;
 
 procedure TfrmBaseCrud.CancelarRegistro;
@@ -155,6 +193,11 @@ begin
    Result := pnlGrid;
 end;
 
+function TfrmBaseCrud.GetSQLPrincipal: string;
+begin
+   Result := '';
+end;
+
 procedure TfrmBaseCrud.Imprimir;
 begin
    //
@@ -163,6 +206,10 @@ end;
 procedure TfrmBaseCrud.InitializeForm;
 begin
    lblRolagem.Caption := 'Nenhum registro encontrado!';
+   frmBaseDM.FDPrincipal.LoadSQL (GetSQLPrincipal);
+   frmBaseDM.FDPrincipal.AfterOpen := AfterOpen;
+   FLista := TDictionary< string, string >.Create;
+   AlimentaComboFields;
 end;
 
 procedure TfrmBaseCrud.InserirRegistro;

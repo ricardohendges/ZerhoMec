@@ -1,43 +1,56 @@
 inherited frmCadLogin: TfrmCadLogin
-  Caption = 'frmCadLogin'
+  Caption = 'Formul'#225'rio de cadastro de Login/Usu'#225'rios'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
-    ActivePage = tsCadastro
-    inherited tsListagem: TTabSheet
-      inherited pnlGrid: TPanel
-        Height = 231
-        inherited dbgrdPrincipal: TDBGrid
-          Height = 229
-          OnCellClick = dbgrdPrincipalCellClick
+    inherited tsCadastro: TTabSheet
+      inherited pnlPrincipal: TPanel
+        ExplicitLeft = -88
+        ExplicitTop = -32
+        object Label1: TLabel
+          Left = 25
+          Top = 12
+          Width = 31
+          Height = 13
+          Caption = 'Label1'
+        end
+        object Label2: TLabel
+          Left = 25
+          Top = 53
+          Width = 31
+          Height = 36
+          Caption = 'Label1'
+        end
+        object dbedtCodigo: TDBEdit
+          Left = 25
+          Top = 26
+          Width = 121
+          Height = 21
+          TabOrder = 0
         end
       end
+    end
+    inherited tsListagem: TTabSheet
       inherited pnlInfos: TPanel
-        Top = 280
-        Height = 23
-        ExplicitTop = 280
-        ExplicitHeight = 23
-        inherited lblRolagem: TLabel
-          Height = 21
-          ExplicitLeft = 186
-        end
         inherited dbnvgrPrincipal: TDBNavigator
-          Height = 21
           Hints.Strings = ()
-          ExplicitHeight = 18
         end
       end
     end
   end
+  inherited pnlBotoes: TPanel
+    inherited btnExcluir: TSpeedButton
+      Caption = 'Exclui'
+    end
+  end
+  inherited actlstPrincipal: TActionList
+    inherited actExcluir: TAction
+      Caption = 'Excluis'#227'o'
+    end
+  end
   inherited frxrprtPrincipal: TfrxReport
-    Left = 456
-    Top = 8
     Datasets = <>
     Variables = <>
     Style = <>
-  end
-  inherited frxDBDatasetPrincipal: TfrxDBDataset
-    Left = 488
-    Top = 8
   end
 end

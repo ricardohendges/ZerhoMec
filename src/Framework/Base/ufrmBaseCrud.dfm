@@ -5,6 +5,8 @@ object frmBaseCrud: TfrmBaseCrud
   ClientHeight = 381
   ClientWidth = 566
   Color = clBtnFace
+  Constraints.MinHeight = 420
+  Constraints.MinWidth = 582
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -68,27 +70,46 @@ object frmBaseCrud: TfrmBaseCrud
           Top = 20
           Width = 145
           Height = 21
+          Style = csDropDownList
           TabOrder = 0
-          Text = 'cbbCampos'
         end
         object cbbFiltros: TComboBox
           Left = 167
           Top = 20
           Width = 138
           Height = 21
+          Style = csDropDownList
+          ItemIndex = 0
           TabOrder = 1
-          Text = 'cbbFiltros'
+          Text = 'Igual a'
+          Items.Strings = (
+            'Igual a'
+            'Cont'#233'm'
+            'Maior que'
+            'Menor que'
+            'Diferente de'
+            'Come'#231'a com'
+            'Termina com')
         end
         object edtFiltro: TLabeledEdit
           Left = 311
           Top = 20
-          Width = 234
+          Width = 194
           Height = 21
           Anchors = [akLeft, akTop, akRight]
           EditLabel.Width = 24
           EditLabel.Height = 13
           EditLabel.Caption = 'Filtro'
           TabOrder = 2
+        end
+        object btnFiltrar: TButton
+          Left = 507
+          Top = 18
+          Width = 47
+          Height = 25
+          Caption = 'Filtrar'
+          TabOrder = 3
+          OnClick = btnFiltrarClick
         end
       end
       object pnlGrid: TPanel
@@ -132,7 +153,6 @@ object frmBaseCrud: TfrmBaseCrud
           Alignment = taCenter
           Caption = 'lblRolagem'
           Layout = tlCenter
-          ExplicitLeft = 1
           ExplicitWidth = 51
           ExplicitHeight = 13
         end
@@ -145,9 +165,6 @@ object frmBaseCrud: TfrmBaseCrud
           VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbRefresh]
           Align = alLeft
           TabOrder = 0
-          ExplicitLeft = 0
-          ExplicitTop = -1
-          ExplicitHeight = 25
         end
       end
     end

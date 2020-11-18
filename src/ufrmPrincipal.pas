@@ -31,7 +31,7 @@ uses
 
 procedure TfrmPrincipal.Login1Click (Sender: TObject);
 begin
-   AbrirForm ('');
+   AbrirForm ('TfrmCadLogin');
 end;
 
 end.
