@@ -9,7 +9,8 @@ uses
   Sistema.Utils.Grid in '..\src\Framework\Utils\Sistema.Utils.Grid.pas',
   Sistema.Utils.Helpers in '..\src\Framework\Utils\Sistema.Utils.Helpers.pas',
   Sistema.Utils.Types in '..\src\Framework\Utils\Sistema.Utils.Types.pas',
-  ufrmCadLogin in '..\src\frmCadLogin\ufrmCadLogin.pas' {frmCadLogin};
+  ufrmCadLogin in '..\src\frmCadLogin\ufrmCadLogin.pas' {frmCadLogin},
+  ufrmCadVeiculos in '..\src\frmCadVeiculos\ufrmCadVeiculos.pas' {frmBaseCrud2};
 
 {$R *.res}
 
@@ -18,5 +19,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TfrmBaseDM, frmBaseDM);
+  Application.CreateForm(TfrmBaseCrud2, frmBaseCrud2);
   Application.Run;
 end.
