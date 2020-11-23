@@ -62,14 +62,14 @@ type
   Private
     Procedure ControlaLabelStatusFrom;
   protected
-    { Functions de validações e etc. }
+    { Functions de validaï¿½ï¿½es e etc. }
     function GetDataSetAtivo: TFDquery; virtual;
     function GetGridAtiva: TDBGrid; virtual;
     function GetPanelCad: TPanel; virtual;
     function ValidouCampos: Boolean; virtual;
 
     procedure InitializeForm; virtual;
-    { Parte dos Botões }
+    { Parte dos Botï¿½es }
     procedure InserirRegistro; virtual;
     procedure EditarRegistro; virtual;
     procedure ExcluirRegistro; virtual;
@@ -78,7 +78,7 @@ type
     procedure Imprimir; virtual;
     procedure Sair; virtual;
 
-    { Controle de botões }
+    { Controle de botï¿½es }
     procedure ManterEstadoBotoes;
     { Propertys }
     property DataSetAtivo: TFDquery read GetDataSetAtivo;
@@ -149,6 +149,15 @@ begin
   SalvarRegistro;
 end;
 
+procedure TfrmBaseCrud.AtualizaInfos;
+begin
+   if dsPadrao.DataSet.IsEmpty then
+      lblRolagem.Caption := 'Nenhum registro encontrado!'
+   else
+      lblRolagem.Caption := dsPadrao.DataSet.RecNo.ToString + ' de ' +
+        dsPadrao.DataSet.RecordCount.ToString + ' registros';
+end;
+
 procedure TfrmBaseCrud.CancelarRegistro;
 begin
   if DataSetAtivo.State in [dsEdit, dsInsert] then
@@ -158,7 +167,7 @@ end;
 
 { ---------------------------------------------------
   ## Autor: Djonatan
-  ## Object: Atualizar descrição da label com status do DataSet.
+  ## Object: Atualizar descriï¿½ï¿½o da label com status do DataSet.
   ---------------------------------------------------- }
 procedure TfrmBaseCrud.ControlaLabelStatusFrom;
 begin
@@ -220,7 +229,7 @@ end;
 
 procedure TfrmBaseCrud.Imprimir;
 begin
-  // Realiza a visualização do relatório.
+  // Realiza a visualizaï¿½ï¿½o do relatï¿½rio.
   frxrprtPrincipal.ShowReport();
 end;
 
@@ -255,7 +264,7 @@ begin
   if Assigned(FControlFocus.CompFocusInsert) then
     FControlFocus.CompFocusInsert.Enabled := DataSetAtivo.State = dsInsert;
 
-  // Atualiza as informações na label de status.
+  // Atualiza as informaï¿½ï¿½es na label de status.
   ControlaLabelStatusFrom;
 end;
 

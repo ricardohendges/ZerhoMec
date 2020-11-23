@@ -32,11 +32,14 @@ var
 
 implementation
 
+uses
+   Sistema.Utils.Forms;
+
 {$R *.dfm}
 
 { ------------------------------------------
   @Autor    Djonatan
-  @Objetive Abrir form de gerenciamento de usuários.
+  @Objetive Abrir form de gerenciamento de usuï¿½rios.
   ---------------------------------------------
 }
 procedure TfrmPrincipal.ActCadUsuarioExecute(Sender: TObject);

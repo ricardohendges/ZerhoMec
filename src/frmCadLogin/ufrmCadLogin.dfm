@@ -11,7 +11,9 @@ inherited frmCadLogin: TfrmCadLogin
       end
       inherited pnlInfos: TPanel
         inherited dbnvgrPrincipal: TDBNavigator
+          Height = 21
           Hints.Strings = ()
+          ExplicitHeight = 18
         end
       end
     end
@@ -33,8 +35,14 @@ inherited frmCadLogin: TfrmCadLogin
     end
   end
   inherited frxrprtPrincipal: TfrxReport
+    Left = 456
+    Top = 8
     Datasets = <>
     Variables = <>
     Style = <>
+  end
+  inherited frxDBDatasetPrincipal: TfrxDBDataset
+    Left = 488
+    Top = 8
   end
 end

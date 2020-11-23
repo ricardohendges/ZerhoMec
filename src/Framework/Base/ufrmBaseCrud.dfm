@@ -121,6 +121,8 @@ object frmBaseCrud: TfrmBaseCrud
           TitleFont.Height = -11
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
+          OnCellClick = dbgrdPrincipalCellClick
+          OnMouseWheel = dbgrdPrincipalMouseWheel
           OnTitleClick = dbgrdPrincipalTitleClick
         end
       end
@@ -145,6 +147,9 @@ object frmBaseCrud: TfrmBaseCrud
           VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbRefresh]
           Align = alClient
           TabOrder = 0
+          ExplicitLeft = 0
+          ExplicitTop = -1
+          ExplicitHeight = 25
         end
       end
     end
