@@ -12,7 +12,6 @@ type
     mmPrincipal: TMainMenu;
     Cadastro1: TMenuItem;
     pnlBottonBar: TPanel;
-    pnlTelaPlanoFundo: TPanel;
     lblDataHora: TLabel;
     tmMenu: TTimer;
     lblUsuarioLogado: TLabel;
