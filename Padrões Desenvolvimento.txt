@@ -1,0 +1,10 @@
+[Posicionamento de campos]
+*1º Edit top 20 left 20 
+*Os Labels sempre top - 15 dos edits
+
+*Edits | [nome]-X-[cep]-X-[cod][desc] | (Prox Aula)
+
+[Detalhes dos forms] (Dionatan)
+-> Responsividade
+-> Tamanho mínimo do formulário
+-> Captios
