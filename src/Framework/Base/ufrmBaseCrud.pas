@@ -79,6 +79,7 @@ type
       procedure Sair; virtual;
 
       function GetSQLPadrao: string; virtual;
+      procedure AfterOpen (DataSet: TDataSet); virtual;
 
     { Controle de bot�es }
       procedure ManterEstadoBotoes;
@@ -150,6 +151,11 @@ end;
 procedure TfrmBaseCrud.actSalvarExecute (Sender: TObject);
 begin
    SalvarRegistro;
+end;
+
+procedure TfrmBaseCrud.AfterOpen (DataSet: TDataSet);
+begin
+   //
 end;
 
 procedure TfrmBaseCrud.CancelarRegistro;
@@ -238,6 +244,7 @@ end;
 procedure TfrmBaseCrud.InitializeForm;
 begin
    tsListagem.Show;
+   frmBaseDM.FDPrincipal.AfterOpen := AfterOpen;
    frmBaseDM.FDPrincipal.LoadSQL (GetSQLPadrao);
 end;
 
