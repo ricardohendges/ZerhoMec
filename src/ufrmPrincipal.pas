@@ -27,6 +27,9 @@ type
     { Public declarations }
   end;
 
+Var
+  frmPrincipal: TfrmPrincipal;
+
 implementation
 
 uses
