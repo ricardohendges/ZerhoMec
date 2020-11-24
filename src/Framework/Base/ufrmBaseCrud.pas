@@ -64,6 +64,7 @@ type
   Private
     Procedure ControlaLabelStatusFrom;
     Procedure AtualizaInfos;
+
   protected
     { Functions de valida��es e etc. }
     function GetDataSetAtivo: TFDquery; virtual;
@@ -72,6 +73,7 @@ type
     function ValidouCampos: Boolean; virtual;
 
     procedure InitializeForm; virtual;
+
     { Parte dos Bot�es }
     procedure InserirRegistro; virtual;
     procedure EditarRegistro; virtual;
@@ -83,12 +85,15 @@ type
 
     { Controle de bot�es }
     procedure ManterEstadoBotoes;
+
     { Propertys }
     property DataSetAtivo: TFDquery read GetDataSetAtivo;
     property PanelCad: TPanel read GetPanelCad;
     property GridAtiva: TDBGrid read GetGridAtiva;
+
   public
     FControlFocus: TFormActive;
+
   end;
 
 implementation

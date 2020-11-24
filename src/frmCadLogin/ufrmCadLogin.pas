@@ -10,15 +10,12 @@ uses
   Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls;
 
 type
-   TfrmCadLogin = class(TfrmBaseCrud)
-   private
+  TfrmCadLogin = class(TfrmBaseCrud)
+  private
     { Private declarations }
-   public
+  public
     { Public declarations }
-   end;
-
-var
-   frmCadLogin: TfrmCadLogin;
+  end;
 
 implementation
 

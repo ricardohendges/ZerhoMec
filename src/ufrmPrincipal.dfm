@@ -30,25 +30,27 @@ object frmPrincipal: TfrmPrincipal
       Left = 1088
       Top = 1
       Width = 56
-      Height = 13
+      Height = 14
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 10
       Margins.Bottom = 0
       Align = alRight
       Caption = '00/00/0000'
+      ExplicitHeight = 13
     end
     object lblUsuarioLogado: TLabel
       AlignWithMargins = True
       Left = 11
       Top = 1
       Width = 128
-      Height = 13
+      Height = 14
       Margins.Left = 10
       Margins.Top = 0
       Margins.Bottom = 0
       Align = alLeft
       Caption = '--------------------------------'
+      ExplicitHeight = 13
     end
   end
   object pnlTelaPlanoFundo: TPanel
