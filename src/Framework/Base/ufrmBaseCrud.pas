@@ -246,6 +246,7 @@ begin
    tsListagem.Show;
    frmBaseDM.FDPrincipal.AfterOpen := AfterOpen;
    frmBaseDM.FDPrincipal.LoadSQL (GetSQLPadrao);
+   ManterEstadoBotoes;
 end;
 
 procedure TfrmBaseCrud.InserirRegistro;
