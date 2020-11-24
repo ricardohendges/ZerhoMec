@@ -676,19 +676,6 @@ object frmBaseCrud: TfrmBaseCrud
       Caption = '--------------------------------'
       ExplicitHeight = 13
     end
-    object lblRolagem: TLabel
-      AlignWithMargins = True
-      Left = 448
-      Top = 4
-      Width = 45
-      Height = 12
-      Margins.Left = 1
-      Margins.Right = 100
-      Margins.Bottom = 1
-      Align = alRight
-      Alignment = taRightJustify
-      Caption = '0000'
-    end
   end
   object actlstPrincipal: TActionList
     Left = 160
@@ -720,7 +707,6 @@ object frmBaseCrud: TfrmBaseCrud
     end
     object actSair: TAction
       Caption = 'Sair'
-      OnExecute = actSairExecute
     end
   end
   object dsPadrao: TDataSource
