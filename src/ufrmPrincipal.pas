@@ -1,4 +1,4 @@
-unit ufrmPrincipal;
+﻿unit ufrmPrincipal;
 
 interface
 
@@ -33,13 +33,13 @@ var
 implementation
 
 uses
-   Sistema.Utils.Forms;
+  ufrmCadLogin;
 
 {$R *.dfm}
 
 { ------------------------------------------
   @Autor    Djonatan
-  @Objetive Abrir form de gerenciamento de usu�rios.
+  @Objetive Abrir form de gerenciamento de usuários.
   ---------------------------------------------
 }
 procedure TfrmPrincipal.ActCadUsuarioExecute(Sender: TObject);

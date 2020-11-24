@@ -1,4 +1,4 @@
-unit ufrmBaseCrud;
+﻿unit ufrmBaseCrud;
 
 interface
 
@@ -50,6 +50,7 @@ type
     EdtPesquisar: TEdit;
     pnlMenuBotton: TPanel;
     lblStatusForm: TLabel;
+    lblRolagem: TLabel;
     procedure dbgrdPrincipalTitleClick(Column: TColumn);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure actInserirExecute(Sender: TObject);
@@ -58,9 +59,11 @@ type
     procedure actSalvarExecute(Sender: TObject);
     procedure actCancelarExecute(Sender: TObject);
     procedure actImprimirExecute(Sender: TObject);
+    procedure actSairExecute(Sender: TObject);
 
   Private
     Procedure ControlaLabelStatusFrom;
+    Procedure AtualizaInfos;
   protected
     { Functions de valida��es e etc. }
     function GetDataSetAtivo: TFDquery; virtual;
@@ -142,6 +145,24 @@ end;
 
 { ---------------------------------------------------
   ## Autor: Djonatan
+  ## Object: Verifica estado do DataSet, caso esteja em edit e insert, exibe a Msg.
+  ---------------------------------------------------- }
+procedure TfrmBaseCrud.actSairExecute(Sender: TObject);
+begin
+
+  if dsPadrao.State in [dsInsert, dsEdit] then
+  Begin
+
+    if MessageDlg('Existem dados não salvos, Deseja sair sem salvar ?',
+      mtWarning, mbYesNo, 0, mbYes) = mrYes then
+      Abort;
+
+  End;
+
+end;
+
+{ ---------------------------------------------------
+  ## Autor: Djonatan
   ## Object: Salvar registro.
   ---------------------------------------------------- }
 procedure TfrmBaseCrud.actSalvarExecute(Sender: TObject);
@@ -151,11 +172,11 @@ end;
 
 procedure TfrmBaseCrud.AtualizaInfos;
 begin
-   if dsPadrao.DataSet.IsEmpty then
-      lblRolagem.Caption := 'Nenhum registro encontrado!'
-   else
-      lblRolagem.Caption := dsPadrao.DataSet.RecNo.ToString + ' de ' +
-        dsPadrao.DataSet.RecordCount.ToString + ' registros';
+  if dsPadrao.DataSet.IsEmpty then
+    lblRolagem.Caption := 'Nenhum registro encontrado!'
+  else
+    lblRolagem.Caption := dsPadrao.DataSet.RecNo.ToString + ' de ' +
+      dsPadrao.DataSet.RecordCount.ToString + ' registros';
 end;
 
 procedure TfrmBaseCrud.CancelarRegistro;
