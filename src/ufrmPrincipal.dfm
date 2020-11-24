@@ -53,16 +53,6 @@ object frmPrincipal: TfrmPrincipal
       ExplicitHeight = 13
     end
   end
-  object pnlTelaPlanoFundo: TPanel
-    Left = 0
-    Top = 0
-    Width = 1155
-    Height = 859
-    Align = alClient
-    Color = clHighlight
-    ParentBackground = False
-    TabOrder = 1
-  end
   object mmPrincipal: TMainMenu
     Left = 344
     Top = 376
