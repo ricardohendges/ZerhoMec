@@ -18,6 +18,7 @@ object frmBaseCrud: TfrmBaseCrud
   OldCreateOrder = False
   Visible = True
   OnClose = FormClose
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object pgcPrincipal: TPageControl
@@ -147,6 +148,10 @@ object frmBaseCrud: TfrmBaseCrud
     end
     object tsCadastro: TTabSheet
       Caption = 'Cadastro'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object pnlPrincipal: TPanel
         Left = 0
         Top = 0

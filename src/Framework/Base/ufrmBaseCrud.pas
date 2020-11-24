@@ -58,6 +58,7 @@ type
       procedure actSalvarExecute (Sender: TObject);
       procedure actCancelarExecute (Sender: TObject);
       procedure actImprimirExecute (Sender: TObject);
+      procedure FormShow (Sender: TObject);
 
    Private
       Procedure ControlaLabelStatusFrom;
@@ -200,6 +201,11 @@ end;
 procedure TfrmBaseCrud.FormClose (Sender: TObject; var Action: TCloseAction);
 begin
    Action := caFree;
+end;
+
+procedure TfrmBaseCrud.FormShow (Sender: TObject);
+begin
+   InitializeForm;
 end;
 
 function TfrmBaseCrud.GetDataSetAtivo: TFDquery;
