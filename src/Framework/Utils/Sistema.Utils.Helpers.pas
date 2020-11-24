@@ -4,7 +4,7 @@ interface
 
 uses
    FireDAC.Comp.Client, Vcl.Controls, Vcl.Forms, Data.DB, Vcl.ExtCtrls, Vcl.DBCtrls,
-   System.SysUtils, Vcl.Dialogs;
+   System.SysUtils, Vcl.Dialogs, Vcl.StdCtrls;
 
 type
    TFDHelper = class helper for TFDQuery
@@ -13,6 +13,18 @@ type
 
    TPanelHelper = class helper for TPanel
       function ValidouCampos: Boolean;
+   end;
+
+   TLabeledEditHelper = class helper for TLabeledEdit
+      function IsEmpty: Boolean;
+   end;
+
+   TComboBoxHelper = class helper for TComboBox
+      function ValorSelecionado: string;
+   end;
+
+   TEditHelper = class helper for TEdit
+      function IsEmpty: Boolean;
    end;
 
 implementation
@@ -54,6 +66,27 @@ begin
             Exit (False);
          end;
    end;
+end;
+
+{ TEditHelper }
+
+function TLabeledEditHelper.IsEmpty: Boolean;
+begin
+   Result := Self.Text = EmptyStr;
+end;
+
+{ TEditHelper }
+
+function TEditHelper.IsEmpty: Boolean;
+begin
+   Result := Self.Text = EmptyStr;
+end;
+
+{ TComboBoxHelper }
+
+function TComboBoxHelper.ValorSelecionado: string;
+begin
+   Result := Self.Items[Self.ItemIndex];
 end;
 
 end.

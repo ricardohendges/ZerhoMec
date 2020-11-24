@@ -150,7 +150,7 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="Win32\Debug\prjTrabalhoFinal.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="..\dcu\prjTrabalhoFinal.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>prjTrabalhoFinal.exe</RemoteName>
                         <Overwrite>true</Overwrite>
