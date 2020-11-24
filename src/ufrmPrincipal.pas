@@ -19,12 +19,14 @@ type
     actListMenu: TActionList;
     ActCadUsuario: TAction;
     miCadastroUsuario: TMenuItem;
+
     procedure tmMenuTimer(Sender: TObject);
     procedure ActCadUsuarioExecute(Sender: TObject);
+
   private
-    { Private declarations }
+
   public
-    { Public declarations }
+
   end;
 
 Var
