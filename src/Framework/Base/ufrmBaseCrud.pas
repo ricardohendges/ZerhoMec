@@ -59,7 +59,6 @@ type
       procedure actCancelarExecute (Sender: TObject);
       procedure actImprimirExecute (Sender: TObject);
       procedure FormShow (Sender: TObject);
-
    Private
       Procedure ControlaLabelStatusFrom;
    protected
@@ -78,6 +77,8 @@ type
       procedure CancelarRegistro; virtual;
       procedure Imprimir; virtual;
       procedure Sair; virtual;
+
+      function GetSQLPadrao: string; virtual;
 
     { Controle de bot�es }
       procedure ManterEstadoBotoes;
@@ -223,6 +224,11 @@ begin
    Result := pnlGrid;
 end;
 
+function TfrmBaseCrud.GetSQLPadrao: string;
+begin
+   Result := '';
+end;
+
 procedure TfrmBaseCrud.Imprimir;
 begin
   // Realiza a visualização do relatório.
@@ -232,6 +238,7 @@ end;
 procedure TfrmBaseCrud.InitializeForm;
 begin
    tsListagem.Show;
+   frmBaseDM.FDPrincipal.LoadSQL (GetSQLPadrao);
 end;
 
 procedure TfrmBaseCrud.InserirRegistro;
