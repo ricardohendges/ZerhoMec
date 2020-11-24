@@ -172,16 +172,12 @@ end;
 procedure TfrmBaseCrud.ControlaLabelStatusFrom;
 begin
    case dsPadrao.DataSet.State of
-
       dsInsert:
          lblStatusForm.Caption := 'Inserindo Registro  ';
-
       dsEdit:
          lblStatusForm.Caption := 'Editando Registro  ';
-
       dsBrowse:
          lblStatusForm.Caption := 'Navegando  ';
-
       dsFilter:
          lblStatusForm.Caption := 'Consultado Registro  ';
    end;
@@ -251,31 +247,31 @@ end;
 
 procedure TfrmBaseCrud.InserirRegistro;
 begin
+   if (DataSetAtivo = frmBaseDM.FDPrincipal) and
+     (pgcPrincipal.ActivePage <> tsCadastro) then
+      pgcPrincipal.ActivePage := tsCadastro;
    DataSetAtivo.Insert;
    ManterEstadoBotoes;
+   if FControlFocus.CompFocusInsert.CanFocus then
+      FControlFocus.CompFocusInsert.SetFocus;
 end;
 
 procedure TfrmBaseCrud.ManterEstadoBotoes;
 begin
-
    actSalvar.Enabled := DataSetAtivo.State in [dsEdit, dsInsert];
-
    actCancelar.Enabled := actSalvar.Enabled;
-
    actInserir.Enabled := (DataSetAtivo.State = dsBrowse) and
      not actSalvar.Enabled;
-
    actEditar.Enabled := actInserir.Enabled and not DataSetAtivo.IsEmpty;
    actExcluir.Enabled := actEditar.Enabled;
    actSair.Enabled := not actSalvar.Enabled;
-
    PanelCad.Enabled := DataSetAtivo.State in [dsEdit, dsInsert];
    GridAtiva.Enabled := not PanelCad.Enabled;
 
    if Assigned (FControlFocus.CompFocusInsert) then
       FControlFocus.CompFocusInsert.Enabled := DataSetAtivo.State = dsInsert;
 
-  // Atualiza as informações na label de status.
+   // Atualiza as informações na label de status.
    ControlaLabelStatusFrom;
 end;
 
