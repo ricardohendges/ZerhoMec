@@ -1,55 +1,54 @@
-unit ufrmPrincipal;
+﻿unit ufrmPrincipal;
 
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus,
-  Vcl.ExtCtrls, Vcl.StdCtrls, Sistema.Utils.Forms, System.Actions, Vcl.ActnList;
+   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus,
+   Vcl.ExtCtrls, Vcl.StdCtrls, Sistema.Utils.Forms, System.Actions, Vcl.ActnList;
 
 type
-  TfrmPrincipal = class(TForm)
-    mmPrincipal: TMainMenu;
-    Cadastro1: TMenuItem;
-    pnlBottonBar: TPanel;
-    pnlTelaPlanoFundo: TPanel;
-    lblDataHora: TLabel;
-    tmMenu: TTimer;
-    lblUsuarioLogado: TLabel;
-    actListMenu: TActionList;
-    ActCadUsuario: TAction;
-    miCadastroUsuario: TMenuItem;
-    procedure tmMenuTimer(Sender: TObject);
-    procedure ActCadUsuarioExecute(Sender: TObject);
-  private
+   TfrmPrincipal = class(TForm)
+      mmPrincipal: TMainMenu;
+      Cadastro1: TMenuItem;
+      pnlBottonBar: TPanel;
+      pnlTelaPlanoFundo: TPanel;
+      lblDataHora: TLabel;
+      tmMenu: TTimer;
+      lblUsuarioLogado: TLabel;
+      actListMenu: TActionList;
+      ActCadUsuario: TAction;
+      miCadastroUsuario: TMenuItem;
+      procedure tmMenuTimer (Sender: TObject);
+      procedure ActCadUsuarioExecute (Sender: TObject);
+   private
     { Private declarations }
-  public
+   public
     { Public declarations }
-  end;
+   end;
 
 var
-  frmPrincipal: TfrmPrincipal;
+   frmPrincipal: TfrmPrincipal;
 
 implementation
 
-uses
-   Sistema.Utils.Forms;
 
 {$R *.dfm}
+
 
 { ------------------------------------------
   @Autor    Djonatan
   @Objetive Abrir form de gerenciamento de usu�rios.
   ---------------------------------------------
 }
-procedure TfrmPrincipal.ActCadUsuarioExecute(Sender: TObject);
+procedure TfrmPrincipal.ActCadUsuarioExecute (Sender: TObject);
 begin
-  AbrirForm('TfrmCadLogin');
+   AbrirForm ('TfrmCadLogin');
 end;
 
-procedure TfrmPrincipal.tmMenuTimer(Sender: TObject);
+procedure TfrmPrincipal.tmMenuTimer (Sender: TObject);
 begin
-  lblDataHora.Caption := DateToStr(now());;
+   lblDataHora.Caption := DateToStr (now());;
 end;
 
 end.
