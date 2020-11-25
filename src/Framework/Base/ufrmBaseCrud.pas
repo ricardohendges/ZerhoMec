@@ -19,9 +19,7 @@ type
       tsListagem: TTabSheet;
       pnlFiltros: TPanel;
       pnlGrid: TPanel;
-      pnlInfos: TPanel;
       dbgrdPrincipal: TDBGrid;
-      dbnvgrPrincipal: TDBNavigator;
       cbbCampos: TComboBox;
       cbbFiltros: TComboBox;
       pnlPrincipal: TPanel;
@@ -50,6 +48,9 @@ type
       EdtPesquisar: TEdit;
       pnlMenuBotton: TPanel;
       lblStatusForm: TLabel;
+      pnlInfos: TPanel;
+      dbnvgrPrincipal: TDBNavigator;
+      Button1: TButton;
       procedure dbgrdPrincipalTitleClick (Column: TColumn);
       procedure FormClose (Sender: TObject; var Action: TCloseAction);
       procedure actInserirExecute (Sender: TObject);
@@ -59,6 +60,8 @@ type
       procedure actCancelarExecute (Sender: TObject);
       procedure actImprimirExecute (Sender: TObject);
       procedure FormShow (Sender: TObject);
+      procedure pgcPrincipalChanging (Sender: TObject; var AllowChange: Boolean);
+      procedure Button1Click (Sender: TObject);
    Private
       Procedure ControlaLabelStatusFrom;
    protected
@@ -94,7 +97,7 @@ type
 implementation
 
 uses
-   ufrmBaseDM, Sistema.Utils.Grid, Sistema.Utils.Helpers;
+   ufrmBaseDM, Sistema.Utils.Grid, Sistema.Utils.Helpers, Sistema.Utils.Busca;
 
 {$R *.dfm}
 
@@ -155,7 +158,21 @@ end;
 
 procedure TfrmBaseCrud.AfterOpen (DataSet: TDataSet);
 begin
-   //
+   inherited;
+   // cbbCampos.Items;
+end;
+
+procedure TfrmBaseCrud.Button1Click (Sender: TObject);
+var
+   vRes: TResBusca;
+begin
+   vRes := GSisBusca.Open (tbSQL);
+   try
+      if vRes.Ok then
+         dsPadrao.DataSet.FieldByName ('ID').AsString := vRes.Fields.Items['ID'];
+   finally
+      FreeAndNil (vRes.Fields);
+   end;
 end;
 
 procedure TfrmBaseCrud.CancelarRegistro;
@@ -192,6 +209,8 @@ procedure TfrmBaseCrud.EditarRegistro;
 begin
    DataSetAtivo.Edit;
    ManterEstadoBotoes;
+   if FControlFocus.CompFocusEdit.CanFocus then
+      FControlFocus.CompFocusEdit.SetFocus;
 end;
 
 procedure TfrmBaseCrud.ExcluirRegistro;
@@ -223,7 +242,7 @@ end;
 
 function TfrmBaseCrud.GetPanelCad: TPanel;
 begin
-   Result := pnlGrid;
+   Result := pnlPrincipal;
 end;
 
 function TfrmBaseCrud.GetSQLPadrao: string;
@@ -239,7 +258,7 @@ end;
 
 procedure TfrmBaseCrud.InitializeForm;
 begin
-   tsListagem.Show;
+   pgcPrincipal.ActivePage := tsListagem;
    frmBaseDM.FDPrincipal.AfterOpen := AfterOpen;
    frmBaseDM.FDPrincipal.LoadSQL (GetSQLPadrao);
    ManterEstadoBotoes;
@@ -265,6 +284,7 @@ begin
    actEditar.Enabled := actInserir.Enabled and not DataSetAtivo.IsEmpty;
    actExcluir.Enabled := actEditar.Enabled;
    actSair.Enabled := not actSalvar.Enabled;
+
    PanelCad.Enabled := DataSetAtivo.State in [dsEdit, dsInsert];
    GridAtiva.Enabled := not PanelCad.Enabled;
 
@@ -273,6 +293,12 @@ begin
 
    // Atualiza as informações na label de status.
    ControlaLabelStatusFrom;
+end;
+
+procedure TfrmBaseCrud.pgcPrincipalChanging (Sender: TObject;
+  var AllowChange: Boolean);
+begin
+   AllowChange := not (DataSetAtivo.State in [dsEdit, dsInsert]);
 end;
 
 procedure TfrmBaseCrud.Sair;

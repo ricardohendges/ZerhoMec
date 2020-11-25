@@ -29,6 +29,7 @@ object frmBaseCrud: TfrmBaseCrud
     ActivePage = tsListagem
     Align = alClient
     TabOrder = 0
+    OnChanging = pgcPrincipalChanging
     object tsListagem: TTabSheet
       Caption = 'Listagem'
       ImageIndex = 1
@@ -148,10 +149,6 @@ object frmBaseCrud: TfrmBaseCrud
     end
     object tsCadastro: TTabSheet
       Caption = 'Cadastro'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object pnlPrincipal: TPanel
         Left = 0
         Top = 0
@@ -160,6 +157,17 @@ object frmBaseCrud: TfrmBaseCrud
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitLeft = 56
+        ExplicitTop = 56
+        object Button1: TButton
+          Left = 136
+          Top = 72
+          Width = 75
+          Height = 25
+          Caption = 'Button1'
+          TabOrder = 0
+          OnClick = Button1Click
+        end
       end
     end
   end
@@ -683,8 +691,8 @@ object frmBaseCrud: TfrmBaseCrud
     end
   end
   object actlstPrincipal: TActionList
-    Left = 160
-    Top = 248
+    Left = 544
+    Top = 400
     object actInserir: TAction
       Caption = 'Inserir'
       ImageIndex = 1
@@ -716,8 +724,8 @@ object frmBaseCrud: TfrmBaseCrud
   end
   object dsPadrao: TDataSource
     DataSet = frmBaseDM.FDPrincipal
-    Left = 104
-    Top = 248
+    Left = 448
+    Top = 112
   end
   object frxrprtPrincipal: TfrxReport
     Version = '6.2.1'
@@ -734,8 +742,8 @@ object frmBaseCrud: TfrmBaseCrud
       'begin'
       ''
       'end.')
-    Left = 224
-    Top = 248
+    Left = 448
+    Top = 16
     Datasets = <>
     Variables = <>
     Style = <>
@@ -745,7 +753,7 @@ object frmBaseCrud: TfrmBaseCrud
     CloseDataSource = False
     DataSource = dsPadrao
     BCDToCurrency = False
-    Left = 280
-    Top = 251
+    Left = 448
+    Top = 67
   end
 end
