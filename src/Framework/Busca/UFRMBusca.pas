@@ -60,7 +60,7 @@ end;
 procedure TFRMBusca.btnBuscarClick (Sender: TObject);
 begin
    FDSelecao.Filtered := False;
-   FDSelecao.Filter := ' like ''%' + edtDescricao.Text + '%'' ';
+   FDSelecao.Filter := ' DESCRICAO LIKE ''%' + edtDescricao.Text + '%'' ';
    FDSelecao.Filtered := True;
 end;
 
@@ -75,12 +75,7 @@ var
 begin
    FDados.Ok := True;
    for I := 0 to Pred(FDSelecao.Fields.Count) do
-   begin
-      if I = 0 then
-         FDados.Codigo := FDSelecao.Fields[I].Text
-      else if Assigned (FDados.Descricao) then
-         FDados.Descricao.Add (FDSelecao.Fields[I].Text);
-   end;
+      FDados.Fields.Add (FDSelecao.Fields[I].FieldName, FDSelecao.Fields[I].Text);
 end;
 
 procedure TFRMBusca.dbgrdSelecaoTitleClick (Column: TColumn);
@@ -110,7 +105,6 @@ end;
 procedure TFRMBusca.FormShow (Sender: TObject);
 begin
    ReposicionaBotoes;
-   FDados.Descricao := TStringList.Create;
    AlimentaCampos;
 end;
 

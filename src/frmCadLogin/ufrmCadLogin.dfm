@@ -3,35 +3,34 @@ inherited frmCadLogin: TfrmCadLogin
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
-    ExplicitHeight = 453
+    ActivePage = tsCadastro
     inherited tsListagem: TTabSheet
-      ExplicitHeight = 425
-      inherited pnlGrid: TPanel
-        ExplicitHeight = 351
-      end
       inherited pnlInfos: TPanel
         inherited dbnvgrPrincipal: TDBNavigator
-          Height = 21
           Hints.Strings = ()
-          ExplicitHeight = 18
         end
       end
     end
     inherited tsCadastro: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 515
       ExplicitHeight = 425
       inherited pnlPrincipal: TPanel
-        ExplicitHeight = 425
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        inherited Button1: TButton
+          Left = 16
+          Top = 16
+          ExplicitLeft = 16
+          ExplicitTop = 16
+        end
       end
     end
   end
-  inherited pnlBotoes: TPanel
-    ExplicitHeight = 453
-  end
   inherited pnlMenuBotton: TPanel
-    ExplicitTop = 453
     inherited lblStatusForm: TLabel
-      ExplicitLeft = 11
-      ExplicitTop = 2
+      Height = 14
     end
   end
   inherited frxrprtPrincipal: TfrxReport

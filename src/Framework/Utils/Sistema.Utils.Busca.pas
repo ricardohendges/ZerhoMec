@@ -8,7 +8,7 @@ uses
 type
    TSisBusca = class
    public
-      function Open (ATpBusca: TTpBusca): TResBusca;
+      function BuscaDescricao (ATpBusca: TTpBusca): TResBusca;
    end;
 
 var
@@ -21,9 +21,9 @@ uses
 
 { TSisBusca }
 
-function TSisBusca.Open (ATpBusca: TTpBusca): TResBusca;
+function TSisBusca.BuscaDescricao (ATpBusca: TTpBusca): TResBusca;
 begin
-   Result := TFRMBusca.Exibir ();
+   Result := TFRMBusca.Exibir (ATpBusca);
 end;
 
 end.
