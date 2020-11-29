@@ -11,11 +11,14 @@ uses
 
 type
    TfrmCadLogin = class(TfrmBaseCrud)
-      procedure Button1Click (Sender: TObject);
-   private
-    { Private declarations }
-   public
-    { Public declarations }
+      lblCodigo: TLabel;
+      edtCodigo: TEdit;
+      edtDescCliente: TEdit;
+      lblBuscarCliente: TLabel;
+      btnBuscarCliente: TButton;
+      procedure btnBuscarClienteClick (Sender: TObject);
+   protected
+      function GetSQLPadrao: string; override;
    end;
 
 var
@@ -29,18 +32,29 @@ uses
 {$R *.dfm}
 
 
-procedure TfrmCadLogin.Button1Click (Sender: TObject);
+procedure TfrmCadLogin.btnBuscarClienteClick (Sender: TObject);
 var
    vResult: TResBusca;
 begin
    inherited;
-   vResult := GSisBusca.BuscaDescricao (tbSQL);
+   vResult := GSisBusca.BuscaDescricao (tbCLIENTE);
    try
-      dsPadrao.DataSet.FieldByName ('').AsString := vResult.Fields['DESCRICAO'];
+      if vResult.Ok then
+      begin
+         // dsPadrao.DataSet.FieldByName ('').AsString := vResult.Fields['DESCRICAO'];
+         edtDescCliente.Text := vResult.Fields['DESCRICAO'];
+      end;
    finally
       FreeAndNil (vResult.Fields);
-      FreeAndNil (vResult);
    end;
+end;
+
+function TfrmCadLogin.GetSQLPadrao: string;
+begin
+   Result :=
+     ' SELECT USUARIO.USU_ID, USUARIO.USU_LOGIN, USUARIO.USU_SENHA, ' +
+     '        USUARIO.USU_NOME, USUARIO.USU_TIPO ' +
+     '   FROM USUARIO ';
 end;
 
 initialization

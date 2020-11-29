@@ -51,8 +51,8 @@ var
    vSQL: string;
 begin
    case FBuscaPor of
-      tbSQL:
-         vSQL := cSQL;
+      tbCLIENTE:
+         vSQL := cSQL_CLIENTE;
    end;
    FDSelecao.Open (vSQL);
 end;
@@ -73,9 +73,15 @@ procedure TFRMBusca.btnConfirmarClick (Sender: TObject);
 var
    I: Integer;
 begin
-   FDados.Ok := True;
-   for I := 0 to Pred(FDSelecao.Fields.Count) do
-      FDados.Fields.Add (FDSelecao.Fields[I].FieldName, FDSelecao.Fields[I].Text);
+   if FDSelecao.IsEmpty then
+      FDados.Ok := False
+   else
+   begin
+      FDados.Ok := True;
+      for I := 0 to Pred(FDSelecao.Fields.Count) do
+         FDados.Fields.Add (
+           FDSelecao.Fields[I].FieldName, FDSelecao.Fields[I].Text);
+   end;
 end;
 
 procedure TFRMBusca.dbgrdSelecaoTitleClick (Column: TColumn);
