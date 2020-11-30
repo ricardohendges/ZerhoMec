@@ -2,7 +2,7 @@ object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
   Caption = 'Menu principal'
-  ClientHeight = 875
+  ClientHeight = 729
   ClientWidth = 1155
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,7 +17,7 @@ object frmPrincipal: TfrmPrincipal
   TextHeight = 13
   object pnlBottonBar: TPanel
     Left = 0
-    Top = 859
+    Top = 713
     Width = 1155
     Height = 16
     Margins.Top = 0
@@ -61,6 +61,9 @@ object frmPrincipal: TfrmPrincipal
       object miCadastroUsuario: TMenuItem
         Action = ActCadUsuario
       end
+      object miNotaVenda: TMenuItem
+        Action = actNotaVenda
+      end
     end
   end
   object tmMenu: TTimer
@@ -74,6 +77,10 @@ object frmPrincipal: TfrmPrincipal
     object ActCadUsuario: TAction
       Caption = 'Usu'#225'rio'
       OnExecute = ActCadUsuarioExecute
+    end
+    object actNotaVenda: TAction
+      Caption = 'Nota de Venda'
+      OnExecute = actNotaVendaExecute
     end
   end
 end

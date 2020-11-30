@@ -9,7 +9,8 @@ uses
   Sistema.Utils.Grid in '..\src\Framework\Utils\Sistema.Utils.Grid.pas',
   Sistema.Utils.Helpers in '..\src\Framework\Utils\Sistema.Utils.Helpers.pas',
   Sistema.Utils.Types in '..\src\Framework\Utils\Sistema.Utils.Types.pas',
-  ufrmCadLogin in '..\src\frmCadLogin\ufrmCadLogin.pas' {frmCadLogin};
+  ufrmCadLogin in '..\src\frmCadLogin\ufrmCadLogin.pas' {frmCadLogin},
+  ufrmNotaVenda in '..\src\frmNotaVenda\ufrmNotaVenda.pas' {frmNotaVenda};
 
 {$R *.res}
 
