@@ -22,6 +22,11 @@ type
     dbedtVEI_MODELO: TDBEdit;
     lblVEI_PLACA: TLabel;
     dbedtVEI_PLACA: TDBEdit;
+    btnPesquisaMarca: TButton;
+    dbedtNomeMarca: TDBEdit;
+    btnPesquisarCliente: TButton;
+    edtNomeCliente: TDBEdit;
+    procedure btnPesquisarClienteClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -33,6 +38,26 @@ var
 
 implementation
 
+uses
+  Sistema.Utils.Busca, Sistema.Utils.Types;
+
 {$R *.dfm}
+
+procedure TfrmBaseCrud2.btnPesquisarClienteClick(Sender: TObject);
+var
+   vResult: TResBusca;
+begin
+   inherited;
+   vResult := GSisBusca.BuscaDescricao (tbCLIENTE);
+   try
+      if vResult.Ok then
+      begin
+         //dsPadrao.DataSet.FieldByName ('').AsString := vResult.Fields['DESCRICAO'];
+         //.Text := vResult.Fields['DESCRICAO'];
+      end;
+   finally
+      FreeAndNil (vResult.Fields);
+   end;
+end;
 
 end.

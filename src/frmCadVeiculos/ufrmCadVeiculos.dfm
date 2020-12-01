@@ -1,28 +1,51 @@
 inherited frmBaseCrud2: TfrmBaseCrud2
-  Caption = 'frmBaseCrud2'
-  ClientHeight = 347
-  ClientWidth = 560
-  ExplicitWidth = 576
-  ExplicitHeight = 386
+  Caption = 'Cadastro de Veiculos'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
-    Width = 560
-    Height = 297
-    ExplicitTop = 50
-    ExplicitHeight = 331
+    Width = 531
+    ExplicitWidth = 34
+    inherited tsListagem: TTabSheet
+      ExplicitWidth = 521
+      inherited pnlFiltros: TPanel
+        Width = 523
+        ExplicitWidth = 521
+        inherited gbPesquisar: TGroupBox
+          Width = 208
+          ExplicitWidth = 206
+          inherited EdtPesquisar: TEdit
+            Width = 199
+            ExplicitWidth = 197
+          end
+        end
+      end
+      inherited pnlGrid: TPanel
+        Width = 523
+        ExplicitWidth = 521
+        inherited dbgrdPrincipal: TDBGrid
+          Width = 521
+        end
+      end
+      inherited pnlInfos: TPanel
+        Width = 523
+        ExplicitWidth = 521
+        inherited dbnvgrPrincipal: TDBNavigator
+          Width = 519
+          Hints.Strings = ()
+          ExplicitWidth = 517
+        end
+      end
+    end
     inherited tsCadastro: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
-      ExplicitWidth = 558
-      ExplicitHeight = 303
+      ExplicitWidth = 26
+      ExplicitHeight = 425
       inherited pnlPrincipal: TPanel
-        Width = 552
-        Height = 269
-        ExplicitLeft = 3
-        ExplicitTop = 0
-        ExplicitWidth = 558
-        ExplicitHeight = 303
+        Width = 523
+        ExplicitLeft = 1
+        ExplicitTop = 2
+        ExplicitWidth = 523
         object lblVEI_ID: TLabel
           Left = 20
           Top = 20
@@ -75,7 +98,7 @@ inherited frmBaseCrud2: TfrmBaseCrud2
         object edtCLI_COD: TEdit
           Left = 20
           Top = 223
-          Width = 205
+          Width = 33
           Height = 21
           TabOrder = 1
           Text = 'edtCLI_COD'
@@ -83,7 +106,7 @@ inherited frmBaseCrud2: TfrmBaseCrud2
         object dbedtMAR_ID: TDBEdit
           Left = 20
           Top = 85
-          Width = 205
+          Width = 33
           Height = 21
           TabOrder = 2
         end
@@ -97,7 +120,7 @@ inherited frmBaseCrud2: TfrmBaseCrud2
         object dbedtVEI_MODELO: TDBEdit
           Left = 20
           Top = 131
-          Width = 205
+          Width = 184
           Height = 21
           TabOrder = 4
         end
@@ -108,39 +131,71 @@ inherited frmBaseCrud2: TfrmBaseCrud2
           Height = 21
           TabOrder = 5
         end
-      end
-    end
-    inherited tsListagem: TTabSheet
-      inherited pnlFiltros: TPanel
-        Width = 552
-        inherited edtFiltro: TLabeledEdit
-          Width = 228
+        object dbedtNomeMarca: TDBEdit
+          Left = 83
+          Top = 85
+          Width = 121
+          Height = 21
+          TabOrder = 6
         end
-      end
-      inherited pnlGrid: TPanel
-        Width = 552
-        Height = 195
-        ExplicitLeft = 0
-        ExplicitTop = 49
-        ExplicitWidth = 558
-        ExplicitHeight = 229
-        inherited dbgrdPrincipal: TDBGrid
-          Width = 550
-          Height = 193
+        object btnPesquisarCliente: TButton
+          Left = 59
+          Top = 223
+          Width = 18
+          Height = 21
+          Caption = '...'
+          TabOrder = 7
+          OnClick = btnPesquisarClienteClick
         end
-      end
-      inherited pnlInfos: TPanel
-        Top = 244
-        Width = 552
-        ExplicitTop = 278
-        inherited dbnvgrPrincipal: TDBNavigator
-          Hints.Strings = ()
+        object edtNomeCliente: TDBEdit
+          Left = 83
+          Top = 223
+          Width = 121
+          Height = 21
+          TabOrder = 8
         end
       end
     end
   end
   inherited pnlBotoes: TPanel
-    Width = 560
+    Left = 531
+    Width = 63
+    ExplicitLeft = 531
+    ExplicitWidth = 63
+    inherited btnInserir: TSpeedButton
+      Width = 57
+    end
+    inherited btnEditar: TSpeedButton
+      Width = 57
+    end
+    inherited btnExcluir: TSpeedButton
+      Width = 57
+    end
+    inherited btnSalvar: TSpeedButton
+      Width = 57
+    end
+    inherited btnCancelar: TSpeedButton
+      Width = 57
+    end
+    inherited btnImprimir: TSpeedButton
+      Width = 57
+    end
+    inherited btnSair: TSpeedButton
+      Width = 57
+    end
+  end
+  inherited pnlMenuBotton: TPanel
+    inherited lblStatusForm: TLabel
+      Height = 14
+    end
+  end
+  object btnPesquisaMarca: TButton [3]
+    Left = 64
+    Top = 109
+    Width = 18
+    Height = 21
+    Caption = '...'
+    TabOrder = 3
   end
   inherited frxrprtPrincipal: TfrxReport
     Datasets = <>
