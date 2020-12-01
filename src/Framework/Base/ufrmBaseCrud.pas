@@ -19,9 +19,7 @@ type
       tsListagem: TTabSheet;
       pnlFiltros: TPanel;
       pnlGrid: TPanel;
-      pnlInfos: TPanel;
       dbgrdPrincipal: TDBGrid;
-      dbnvgrPrincipal: TDBNavigator;
       cbbCampos: TComboBox;
       cbbFiltros: TComboBox;
       pnlPrincipal: TPanel;
@@ -50,6 +48,8 @@ type
       EdtPesquisar: TEdit;
       pnlMenuBotton: TPanel;
       lblStatusForm: TLabel;
+      pnlInfos: TPanel;
+      dbnvgrPrincipal: TDBNavigator;
       procedure dbgrdPrincipalTitleClick (Column: TColumn);
       procedure FormClose (Sender: TObject; var Action: TCloseAction);
       procedure actInserirExecute (Sender: TObject);
@@ -59,17 +59,18 @@ type
       procedure actCancelarExecute (Sender: TObject);
       procedure actImprimirExecute (Sender: TObject);
       procedure FormShow (Sender: TObject);
+      procedure pgcPrincipalChanging (Sender: TObject; var AllowChange: Boolean);
    Private
       Procedure ControlaLabelStatusFrom;
    protected
-    { Functions de valida��es e etc. }
+    { Functions de validações e etc. }
       function GetDataSetAtivo: TFDquery; virtual;
       function GetGridAtiva: TDBGrid; virtual;
       function GetPanelCad: TPanel; virtual;
       function ValidouCampos: Boolean; virtual;
 
       procedure InitializeForm; virtual;
-    { Parte dos Bot�es }
+    { Parte dos Botões }
       procedure InserirRegistro; virtual;
       procedure EditarRegistro; virtual;
       procedure ExcluirRegistro; virtual;
@@ -94,7 +95,7 @@ type
 implementation
 
 uses
-   ufrmBaseDM, Sistema.Utils.Grid, Sistema.Utils.Helpers;
+   ufrmBaseDM, Sistema.Utils.Grid, Sistema.Utils.Helpers, Sistema.Utils.Busca;
 
 {$R *.dfm}
 
@@ -155,7 +156,8 @@ end;
 
 procedure TfrmBaseCrud.AfterOpen (DataSet: TDataSet);
 begin
-   //
+   inherited;
+   // cbbCampos.Items;
 end;
 
 procedure TfrmBaseCrud.CancelarRegistro;
@@ -192,6 +194,9 @@ procedure TfrmBaseCrud.EditarRegistro;
 begin
    DataSetAtivo.Edit;
    ManterEstadoBotoes;
+   if Assigned (FControlFocus.CompFocusEdit) then
+      if FControlFocus.CompFocusEdit.CanFocus then
+         FControlFocus.CompFocusEdit.SetFocus;
 end;
 
 procedure TfrmBaseCrud.ExcluirRegistro;
@@ -213,7 +218,7 @@ end;
 
 function TfrmBaseCrud.GetDataSetAtivo: TFDquery;
 begin
-   Result := TFDquery (dsPadrao.DataSet);
+   Result := frmBaseDM.FDPrincipal;
 end;
 
 function TfrmBaseCrud.GetGridAtiva: TDBGrid;
@@ -223,7 +228,7 @@ end;
 
 function TfrmBaseCrud.GetPanelCad: TPanel;
 begin
-   Result := pnlGrid;
+   Result := pnlPrincipal;
 end;
 
 function TfrmBaseCrud.GetSQLPadrao: string;
@@ -239,7 +244,7 @@ end;
 
 procedure TfrmBaseCrud.InitializeForm;
 begin
-   tsListagem.Show;
+   pgcPrincipal.ActivePage := tsListagem;
    frmBaseDM.FDPrincipal.AfterOpen := AfterOpen;
    frmBaseDM.FDPrincipal.LoadSQL (GetSQLPadrao);
    ManterEstadoBotoes;
@@ -252,8 +257,9 @@ begin
       pgcPrincipal.ActivePage := tsCadastro;
    DataSetAtivo.Insert;
    ManterEstadoBotoes;
-   if FControlFocus.CompFocusInsert.CanFocus then
-      FControlFocus.CompFocusInsert.SetFocus;
+   if Assigned (FControlFocus.CompFocusInsert) then
+      if FControlFocus.CompFocusInsert.CanFocus then
+         FControlFocus.CompFocusInsert.SetFocus;
 end;
 
 procedure TfrmBaseCrud.ManterEstadoBotoes;
@@ -263,8 +269,10 @@ begin
    actInserir.Enabled := (DataSetAtivo.State = dsBrowse) and
      not actSalvar.Enabled;
    actEditar.Enabled := actInserir.Enabled and not DataSetAtivo.IsEmpty;
+   actImprimir.Enabled := actEditar.Enabled;
    actExcluir.Enabled := actEditar.Enabled;
-   actSair.Enabled := not actSalvar.Enabled;
+   actSair.Enabled := actInserir.Enabled;
+
    PanelCad.Enabled := DataSetAtivo.State in [dsEdit, dsInsert];
    GridAtiva.Enabled := not PanelCad.Enabled;
 
@@ -273,6 +281,12 @@ begin
 
    // Atualiza as informações na label de status.
    ControlaLabelStatusFrom;
+end;
+
+procedure TfrmBaseCrud.pgcPrincipalChanging (Sender: TObject;
+  var AllowChange: Boolean);
+begin
+   AllowChange := not (DataSetAtivo.State in [dsEdit, dsInsert]);
 end;
 
 procedure TfrmBaseCrud.Sair;
