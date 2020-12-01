@@ -1,2 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<BorlandProject/>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2020/11/24 21:06:25.000.110,=C:\Projeto\ZerhoMec\prj\Unit1.pas</Transaction>
+    <Transaction>2020/11/24 21:09:12.000.531,C:\Projeto\ZerhoMec\prj\Unit1.pas=C:\Projeto\ZerhoMec\src\frmLoginUsuario\uFrmLoginUsuario.pas</Transaction>
+    <Transaction>2020/11/24 21:09:12.000.531,C:\Projeto\ZerhoMec\prj\Unit1.dfm=C:\Projeto\ZerhoMec\src\frmLoginUsuario\uFrmLoginUsuario.dfm</Transaction>
+    <Transaction>2020/12/01 20:01:12.689,=C:\Projeto\ZerhoMec\src\Framework\Utils\Sistema.Utils.Busca.pas</Transaction>
+    <Transaction>2020/12/01 20:01:12.981,=C:\Projeto\ZerhoMec\src\Framework\Utils\ufrwUtilsForms.pas</Transaction>
+    <Transaction>2020/12/01 20:02:07.644,=C:\Projeto\ZerhoMec\src\Framework\Busca\UFRMBusca.pas</Transaction>
+  </Transactions>
+</BorlandProject>
