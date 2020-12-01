@@ -18,11 +18,8 @@ type
     actListMenu: TActionList;
     ActCadUsuario: TAction;
     miCadastroUsuario: TMenuItem;
-    actNotaVenda: TAction;
-    miNotaVenda: TMenuItem;
     procedure tmMenuTimer(Sender: TObject);
     procedure ActCadUsuarioExecute(Sender: TObject);
-    procedure actNotaVendaExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,14 +43,17 @@ begin
   AbrirForm('TfrmCadLogin');
 end;
 
-procedure TfrmPrincipal.actNotaVendaExecute(Sender: TObject);
-begin
-  AbrirForm('TfrmNotaVenda');
-end;
-
 procedure TfrmPrincipal.tmMenuTimer(Sender: TObject);
 begin
   lblDataHora.Caption := DateToStr(now());;
 end;
+
+Initialization
+
+RegisterClass(TfrmPrincipal);
+
+finalization
+
+UnRegisterClass(TfrmPrincipal);
 
 end.
