@@ -26,9 +26,10 @@ object frmBaseCrud: TfrmBaseCrud
     Top = 0
     Width = 523
     Height = 453
-    ActivePage = tsListagem
+    ActivePage = tsCadastro
     Align = alClient
     TabOrder = 0
+    OnChanging = pgcPrincipalChanging
     object tsListagem: TTabSheet
       Caption = 'Listagem'
       ImageIndex = 1
@@ -679,11 +680,10 @@ object frmBaseCrud: TfrmBaseCrud
     end
   end
   object actlstPrincipal: TActionList
-    Left = 160
-    Top = 248
+    Left = 544
+    Top = 400
     object actInserir: TAction
       Caption = 'Inserir'
-      ImageIndex = 1
       OnExecute = actInserirExecute
     end
     object actEditar: TAction
@@ -712,8 +712,8 @@ object frmBaseCrud: TfrmBaseCrud
   end
   object dsPadrao: TDataSource
     DataSet = frmBaseDM.FDPrincipal
-    Left = 104
-    Top = 248
+    Left = 448
+    Top = 112
   end
   object frxrprtPrincipal: TfrxReport
     Version = '6.2.1'
@@ -730,8 +730,8 @@ object frmBaseCrud: TfrmBaseCrud
       'begin'
       ''
       'end.')
-    Left = 224
-    Top = 248
+    Left = 448
+    Top = 16
     Datasets = <>
     Variables = <>
     Style = <>
@@ -741,7 +741,7 @@ object frmBaseCrud: TfrmBaseCrud
     CloseDataSource = False
     DataSource = dsPadrao
     BCDToCurrency = False
-    Left = 280
-    Top = 251
+    Left = 448
+    Top = 67
   end
 end

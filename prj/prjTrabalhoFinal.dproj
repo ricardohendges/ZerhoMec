@@ -123,10 +123,11 @@
             <Form>frmCadLogin</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\src\frmNotaVenda\ufrmNotaVenda.pas">
-            <Form>frmNotaVenda</Form>
+        <DCCReference Include="..\src\Framework\Busca\UFRMBusca.pas">
+            <Form>FRMBusca</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="..\src\Framework\Utils\Sistema.Utils.Busca.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -991,7 +992,6 @@
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">False</Platform>
             </Platforms>
-            <ModelSupport>False</ModelSupport>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>
