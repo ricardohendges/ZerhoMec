@@ -9,7 +9,9 @@ uses
   Sistema.Utils.Grid in '..\src\Framework\Utils\Sistema.Utils.Grid.pas',
   Sistema.Utils.Helpers in '..\src\Framework\Utils\Sistema.Utils.Helpers.pas',
   Sistema.Utils.Types in '..\src\Framework\Utils\Sistema.Utils.Types.pas',
-  ufrmCadLogin in '..\src\frmCadLogin\ufrmCadLogin.pas' {frmCadLogin};
+  Sistema.Utils.Busca in '..\src\Framework\Utils\Sistema.Utils.Busca.pas',
+  ufrmCadLogin in '..\src\frmCadLogin\ufrmCadLogin.pas' {frmCadLogin},
+  UFRMBusca in '..\src\Framework\Busca\UFRMBusca.pas' {FRMBusca};
 
 {$R *.res}
 
