@@ -1,5 +1,5 @@
-inherited frmCadLogin: TfrmCadLogin
-  Caption = 'frmCadLogin'
+inherited frmMarca: TfrmMarca
+  Caption = 'Marca'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
@@ -12,66 +12,57 @@ inherited frmCadLogin: TfrmCadLogin
     end
     inherited tsCadastro: TTabSheet
       inherited pnlPrincipal: TPanel
-        object lblCodigo: TLabel
+        ExplicitLeft = -24
+        ExplicitTop = 35
+        object Label1: TLabel
           Left = 20
           Top = 5
           Width = 33
           Height = 13
           Caption = 'C'#243'digo'
         end
-        object lblBuscarCliente: TLabel
-          Left = 20
-          Top = 45
-          Width = 123
-          Height = 13
-          Caption = 'Forma de busca de dados'
-        end
-        object edtCodigo: TEdit
+        object edtCodigo: TDBEdit
           Left = 20
           Top = 20
           Width = 121
           Height = 21
+          DataField = 'MAR_ID'
+          DataSource = dsPadrao
           TabOrder = 0
-          Text = 'edtCodigo'
         end
-        object edtDescCliente: TEdit
-          Left = 98
-          Top = 60
-          Width = 287
+        object edtNome: TDBEdit
+          Left = 20
+          Top = 112
+          Width = 227
           Height = 21
+          DataField = 'MAR_NOME'
+          DataSource = dsPadrao
           TabOrder = 1
         end
-        object btnBuscarCliente: TButton
+        object edtTipo: TDBEdit
           Left = 20
-          Top = 58
-          Width = 75
-          Height = 25
-          Caption = 'Cliente'
+          Top = 64
+          Width = 227
+          Height = 21
+          DataField = 'MAR_TIPO'
+          DataSource = dsPadrao
           TabOrder = 2
-          OnClick = btnBuscarClienteClick
         end
       end
     end
   end
-  inherited pnlMenuBotton: TPanel
-    inherited lblStatusForm: TLabel
-      Height = 14
-    end
-  end
   inherited actlstPrincipal: TActionList
-    inherited actSair: TAction
-      AutoCheck = True
-    end
+    Left = 184
   end
   inherited frxrprtPrincipal: TfrxReport
-    Left = 456
-    Top = 8
+    Left = 296
+    Top = 240
     Datasets = <>
     Variables = <>
     Style = <>
   end
   inherited frxDBDatasetPrincipal: TfrxDBDataset
-    Left = 488
-    Top = 8
+    Left = 416
+    Top = 243
   end
 end

@@ -1,10 +1,10 @@
 [Posicionamento de campos]
 *1º Edit top 20 left 20 
 *Os Labels sempre top - 15 dos edits
+*2° campo em diante posicione o label com o top do edit superior a ele + 25, e o edit desse label ao top do seu label + 15.
 
-*Edits | [nome]-X-[cep]-X-[cod][desc] | (Prox Aula)
-
-[Detalhes dos forms] (Dionatan)
--> Responsividade
--> Tamanho mínimo do formulário
+[Detalhes dos forms]
 -> Captios
+-> Todos devem ter labels e edits com nomes correspondentes a informação contida nele Ex. lblCliente edtCliente
+-> Qualquer mudança feita que possa interferir no posicionamento de campos que já estejam 
+na FrameWork, consultar Dionatan, Maglan ou Ricardo antes de fazer a mudança
