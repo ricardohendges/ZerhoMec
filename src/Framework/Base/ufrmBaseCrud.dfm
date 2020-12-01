@@ -18,6 +18,7 @@ object frmBaseCrud: TfrmBaseCrud
   OldCreateOrder = False
   Visible = True
   OnClose = FormClose
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object pgcPrincipal: TPageControl
@@ -25,14 +26,13 @@ object frmBaseCrud: TfrmBaseCrud
     Top = 0
     Width = 523
     Height = 453
-    ActivePage = tsListagem
+    ActivePage = tsCadastro
     Align = alClient
     TabOrder = 0
-    ExplicitHeight = 471
+    OnChanging = pgcPrincipalChanging
     object tsListagem: TTabSheet
       Caption = 'Listagem'
       ImageIndex = 1
-      ExplicitHeight = 443
       object pnlFiltros: TPanel
         Left = 0
         Top = 0
@@ -104,7 +104,6 @@ object frmBaseCrud: TfrmBaseCrud
         Height = 351
         Align = alClient
         TabOrder = 1
-        ExplicitHeight = 369
         object dbgrdPrincipal: TDBGrid
           Left = 1
           Top = 1
@@ -121,8 +120,6 @@ object frmBaseCrud: TfrmBaseCrud
           TitleFont.Height = -11
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
-          OnCellClick = dbgrdPrincipalCellClick
-          OnMouseWheel = dbgrdPrincipalMouseWheel
           OnTitleClick = dbgrdPrincipalTitleClick
         end
       end
@@ -147,15 +144,11 @@ object frmBaseCrud: TfrmBaseCrud
           VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbRefresh]
           Align = alClient
           TabOrder = 0
-          ExplicitLeft = 0
-          ExplicitTop = -1
-          ExplicitHeight = 25
         end
       end
     end
     object tsCadastro: TTabSheet
       Caption = 'Cadastro'
-      ExplicitHeight = 443
       object pnlPrincipal: TPanel
         Left = 0
         Top = 0
@@ -164,7 +157,6 @@ object frmBaseCrud: TfrmBaseCrud
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitHeight = 443
       end
     end
   end
@@ -176,7 +168,6 @@ object frmBaseCrud: TfrmBaseCrud
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitHeight = 471
     object btnInserir: TSpeedButton
       AlignWithMargins = True
       Left = 3
@@ -673,7 +664,6 @@ object frmBaseCrud: TfrmBaseCrud
     Height = 18
     Align = alBottom
     TabOrder = 2
-    ExplicitTop = 454
     object lblStatusForm: TLabel
       AlignWithMargins = True
       Left = 11
@@ -686,17 +676,14 @@ object frmBaseCrud: TfrmBaseCrud
       Margins.Bottom = 1
       Align = alLeft
       Caption = '--------------------------------'
-      ExplicitLeft = 280
-      ExplicitTop = 0
       ExplicitHeight = 13
     end
   end
   object actlstPrincipal: TActionList
-    Left = 160
-    Top = 248
+    Left = 544
+    Top = 400
     object actInserir: TAction
       Caption = 'Inserir'
-      ImageIndex = 1
       OnExecute = actInserirExecute
     end
     object actEditar: TAction
@@ -725,8 +712,8 @@ object frmBaseCrud: TfrmBaseCrud
   end
   object dsPadrao: TDataSource
     DataSet = frmBaseDM.FDPrincipal
-    Left = 104
-    Top = 248
+    Left = 448
+    Top = 112
   end
   object frxrprtPrincipal: TfrxReport
     Version = '6.2.1'
@@ -743,8 +730,8 @@ object frmBaseCrud: TfrmBaseCrud
       'begin'
       ''
       'end.')
-    Left = 224
-    Top = 248
+    Left = 448
+    Top = 16
     Datasets = <>
     Variables = <>
     Style = <>
@@ -754,7 +741,7 @@ object frmBaseCrud: TfrmBaseCrud
     CloseDataSource = False
     DataSource = dsPadrao
     BCDToCurrency = False
-    Left = 280
-    Top = 251
+    Left = 448
+    Top = 67
   end
 end
