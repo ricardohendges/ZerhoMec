@@ -14,11 +14,12 @@ type
     LabelMarcasID: TLabel;
     LabelMarcasNome: TLabel;
     LabelMarcasTipo: TLabel;
-    edtMarcasID: TDBEdit;
     edtMarcasNome: TDBEdit;
     edtMarcasTipo: TDBEdit;
+    edtMarcasID: TDBEdit;
 
   protected
+    function GetSQLPadrao: string; override;
     procedure AfterOpen(DataSet: TDataSet); override;
     procedure InitializeForm; override;
   end;
@@ -44,18 +45,16 @@ begin
   end;
 end;
 
-function TfrmEstado.GetSQLPadrao: String;
+function TFrmMarcas.GetSQLPadrao: string;
 begin
- 'SELECT MARCA.MAR_ID,' +
- 'MARCA.MAR_NOME,' +
- 'MARCA.MAR_TIPO' +
- 'FROM MARCA';
+  Result := ' SELECT MARCA.MAR_ID, ' + ' MARCA.MAR_NOME, ' + ' MARCA.MAR_TIPO ' +
+    ' FROM MARCA ';
 end;
 
 procedure TFrmMarcas.InitializeForm;
 begin
   inherited;
-  FControlFocus.CompFocusInsert := edtMarcasID;
+FControlFocus.CompFocusInsert := edtMarcasID ;
   FControlFocus.CompFocusEdit := edtMarcasNome;
 end;
 

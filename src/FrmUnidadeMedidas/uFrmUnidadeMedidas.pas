@@ -17,6 +17,8 @@ type
     LabelUndMedidaNome: TLabel;
 
   protected
+    function GetSQLPadrao: string; override;
+
     procedure AfterOpen(DataSet: TDataSet); override;
     procedure InitializeForm; override;
   end;
@@ -41,11 +43,10 @@ begin
   end;
 end;
 
-function TfrmEstado.GetSQLPadrao: String;
+function TFrmUnidadeMedidas.GetSQLPadrao: string;
 begin
- 'SELECT UNIDADE_MEDIDA.UND_ABR,' +
- 'UNIDADE_MEDIDA.UND_NOME' +
- 'FROM UNIDADE_MEDIDA';
+  Result := 'SELECT UNIDADE_MEDIDA.UND_ABR,' + 'UNIDADE_MEDIDA.UND_NOME' +
+    ' FROM UNIDADE_MEDIDA ';
 end;
 
 procedure TFrmUnidadeMedidas.InitializeForm;

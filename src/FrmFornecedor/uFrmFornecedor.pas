@@ -11,8 +11,6 @@ uses
 
 type
   TFrmFornecedor = class(TfrmBaseCrud)
-    edtForneID: TDBEdit;
-    edtForneMunID: TDBEdit;
     edtForneNome: TDBEdit;
     edtForneCNPJ: TDBEdit;
     edtForneSitua: TDBEdit;
@@ -29,8 +27,11 @@ type
     LabelForneEmail: TLabel;
     edtForneEndere: TDBEdit;
     LabelForneEndere: TLabel;
+    edtForneID: TDBEdit;
+    edtForneIDMun: TDBEdit;
 
   protected
+    function GetSQLPadrao: string; override;
     procedure AfterOpen(DataSet: TDataSet); override;
     procedure InitializeForm; override;
   end;
@@ -62,20 +63,14 @@ begin
   end;
 end;
 
-function TfrmEstado.GetSQLPadrao: String;
-begin
-   'SELECT FORNECEDOR.FOR_ID,' +
-   'FORNECEDOR.MUN_ID,' +
-   'FORNECEDOR.FOR_NOME,' +
-   'FORNECEDOR.FOR_CNPJ,' +
-   'FORNECEDOR.FOR_SITUACAO,' +
-   'FORNECEDOR.FOR_INSCRICAO,' +
-   'FORNECEDOR.FOR_TELEFONE,' +
-   'FORNECEDOR.FOR_EMAIL,' +
-   'FORNECEDOR.FOR_ENDERECO' +
-   'FROM FORNECEDOR';
-end;
 
+function TFrmFornecedor.GetSQLPadrao: string;
+begin
+  Result := ' SELECT FORNECEDOR.FOR_ID, ' + ' FORNECEDOR.MUN_ID, ' +
+    ' FORNECEDOR.FOR_NOME, ' + ' FORNECEDOR.FOR_CNPJ, ' + ' FORNECEDOR.FOR_SITUACAO, '
+    + ' FORNECEDOR.FOR_INSCRICAO, ' + ' FORNECEDOR.FOR_TELEFONE, ' +
+    ' FORNECEDOR.FOR_EMAIL, ' + ' FORNECEDOR.FOR_ENDERECO ' + ' FROM FORNECEDOR ';
+end;
 
 procedure TFrmFornecedor.InitializeForm;
 begin
