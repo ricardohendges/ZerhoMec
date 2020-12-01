@@ -20,6 +20,7 @@ type
     EditEstSigla: TDBEdit;
     EditEstPaisNome: TDBEdit;
   protected
+    function GetSQLPadrao: string;  override;
     procedure AfterOpen(DataSet: TDataSet); override;
     procedure InitializeForm; override;
   end;
@@ -48,11 +49,8 @@ end;
 
 function TFrmEstado.GetSQLPadrao: String;
 begin
-  'SELECT ESTADO.EST_ID,' +
-          'ESTADO.EST_NOME,' +
-          'ESTADO.EST_SIGLA,' +
-          'ESTADO.PAIS_NOME' +
-    'FROM ESTADO';
+  Result := ' SELECT ESTADO.EST_ID,' + '        ESTADO.EST_NOME,' +
+    '        ESTADO.EST_SIGLA,' + '        ESTADO.PAIS_NOME' + '   FROM ESTADO';
 end;
 
 procedure TFrmEstado.InitializeForm;
