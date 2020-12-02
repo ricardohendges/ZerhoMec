@@ -96,35 +96,30 @@
         </DelphiCompile>
         <DCCReference Include="..\src\Framework\Base\ufrmBaseCrud.pas">
             <Form>frmBaseCrud</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\src\Framework\DataModule\ufrmBaseDM.pas">
             <Form>frmBaseDM</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="..\src\frmCadLogin\ufrmCadLogin.pas">
             <Form>frmCadLogin</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\src\frmLoginUsuario\uFrmLoginUsuario.pas">
             <Form>frmLoginUsuario</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\src\Framework\Utils\Sistema.Utils.Busca.pas"/>
         <DCCReference Include="..\src\Framework\Utils\Sistema.Utils.Forms.pas"/>
         <DCCReference Include="..\src\Framework\Utils\Sistema.Utils.Grid.pas"/>
         <DCCReference Include="..\src\Framework\Utils\Sistema.Utils.Helpers.pas"/>
         <DCCReference Include="..\src\Framework\Utils\Sistema.Utils.Types.pas"/>
-        <DCCReference Include="..\src\Framework\Utils\ufrwUtilsForms.pas"/>
         <DCCReference Include="..\src\ufrmPrincipal.pas">
             <Form>frmPrincipal</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\src\Framework\Busca\UFRMBusca.pas">
             <Form>FRMBusca</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="..\src\Framework\Logon\UFramework.Logon.pas"/>
+        <DCCReference Include="..\src\Framework\Utils\Sistema.Utils.Connection.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

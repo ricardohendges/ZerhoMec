@@ -9,7 +9,8 @@ uses
    FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
    FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
    FireDAC.Stan.Async, FireDAC.DApt, Vcl.Buttons, Vcl.StdCtrls, Data.DB,
-   FireDAC.Comp.DataSet, FireDAC.Comp.Client, ufrmBaseDm;
+   FireDAC.Comp.DataSet, FireDAC.Comp.Client, ufrmBaseDm, System.ImageList,
+   Vcl.ImgList;
 
 type
    TfrmLoginUsuario = class(TForm)
@@ -22,14 +23,12 @@ type
       lblUsuario: TLabel;
       EdtSenha: TEdit;
       Label1: TLabel;
-      BtnConectar: TSpeedButton;
-      BtnSair: TSpeedButton;
-    Button1: TButton;
-      procedure BtnConectarClick (Sender: TObject);
+      btnSair: TButton;
+      btnEntrar: TButton;
       procedure BtnSairClick (Sender: TObject);
+      procedure btnEntrarClick (Sender: TObject);
    private
       Function ValidarLoginUsuario: Boolean;
-      function GetConnection: TFDConnection;
       Procedure ValidarCampos;
       Procedure SimularBarraProgresso;
    public
@@ -37,13 +36,10 @@ type
       destructor Destroy; override;
    end;
 
-Var
-   frmLoginUsuario: TfrmLoginUsuario;
-
 implementation
 
 Uses
-   Sistema.Utils.Forms;
+   Sistema.Utils.Forms, Sistema.Utils.Connection;
 
 {$R *.dfm}
 
@@ -52,65 +48,38 @@ Uses
   @Autor     Djonatan
   @Objetive
   -------------------------------------------------- }
-procedure TfrmLoginUsuario.BtnConectarClick (Sender: TObject);
+procedure TfrmLoginUsuario.btnEntrarClick (Sender: TObject);
 Const
-   CMsgLoginAprovado = 'Bem vindo %s !!';
    CMsgLoginIncorreto = 'Nome de usuário ou senha está incorreto!!';
 begin
    // Verifica se os campos usuário e senha estão com informações.
    ValidarCampos;
-   if ValidarLoginUsuario then
-   Begin
-      ShowMessage (Format(CMsgLoginAprovado, [
-      { 0 } fdSql.FieldByName('USU_NOME').AsString]));
-      ModalResult := mrOk;
-      Close;
-   End
-   else
+   if not ValidarLoginUsuario then
    Begin
       ShowMessage (CMsgLoginIncorreto);
       // Validar se podera receber o foco.
       if edtUsuario.CanFocus then
          edtUsuario.SetFocus;
+      ModalResult := mrNone;
    End;
 end;
 
-{ --------------------------------------------------
-  @Autor     Djonatan
-  @Objetive
-  -------------------------------------------------- }
 procedure TfrmLoginUsuario.BtnSairClick (Sender: TObject);
 begin
    if MessageDlg ('Deseja fechar o sistema?', mtConfirmation, mbYesNo, 1) = mrYes then
-   begin
-      ModalResult := mrCancel;
       Close;
-   end;
 end;
 
 constructor TfrmLoginUsuario.Create (AOwner: TComponent);
 begin
    inherited;
-   fdSql.Connection := GetConnection;
+   fdSql.Connection := GbaseConnection.GetConnection;
 end;
 
 destructor TfrmLoginUsuario.Destroy;
 begin
    fdSql.Connection.Free;
    inherited;
-end;
-
-function TfrmLoginUsuario.GetConnection: TFDConnection;
-var
-   vCustom: TFDConnection;
-begin
-   if FileExists ('..\\DB\Config.ini') then
-   begin
-      vCustom := TFDConnection.Create (nil);
-      vCustom.Params.LoadFromFile ('..\\DB\Config.ini');
-      vCustom.Connected := True;
-      Result := vCustom;
-   end;
 end;
 
 procedure TfrmLoginUsuario.SimularBarraProgresso;
@@ -126,26 +95,18 @@ end;
 
 procedure TfrmLoginUsuario.ValidarCampos;
 begin
-
    if Trim (edtUsuario.Text) = EmptyStr then
    Begin
-
       ShowMessage ('O campo "Nome de usuário" é de preenchimento obrigatório!');
-
       if edtUsuario.CanFocus then
          edtUsuario.SetFocus;
-
       Abort;
    End;
-
    if Trim (EdtSenha.Text) = EmptyStr then
    Begin
-
       ShowMessage ('O campo "Senha" é de preenchimento obrigatório!');
-
       if EdtSenha.CanFocus then
          EdtSenha.SetFocus;
-
       Abort;
    End;
 end;

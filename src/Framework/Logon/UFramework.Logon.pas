@@ -5,22 +5,26 @@ interface
 uses
    System.Classes, System.SysUtils, Vcl.Controls;
 
-function Logou: Boolean;
+type
+   TLogin = class
+   public
+      class function Logou: Boolean;
+   end;
 
 implementation
 
 uses
    uFrmLoginUsuario;
 
-{ TFrameworkLogon }
+{ TLogin }
 
-function Logou: Boolean;
+class function TLogin.Logou: Boolean;
 var
    vLogin: TfrmLoginUsuario;
 begin
    vLogin := TfrmLoginUsuario.Create (nil);
    try
-      Result := vLogin.ShowModal = mrOk;
+      Result := (vLogin.ShowModal = mrOk);
    finally
       FreeAndNil (vLogin);
    end;
