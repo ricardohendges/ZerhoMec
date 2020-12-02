@@ -11,20 +11,19 @@ uses
 
 type
   TfrmNotaVenda = class(TfrmBaseCrud)
-    dbedtNvID: TDBEdit;
-    dbedtNvValor: TDBEdit;
     dbedtNvCliID: TDBEdit;
-    dbedtNvSituacao: TDBEdit;
-    dbedtNvData: TDBEdit;
     dbedtNvFpID: TDBEdit;
     dbedtNvAvista: TDBEdit;
+    dbedtNvSituacao: TDBEdit;
+    dbedtNvValor: TDBEdit;
+    dbedtNvData: TDBEdit;
+    dbedtNvID: TDBEdit;
 
   protected
     function GetSQLPadrao: string; override;
     procedure AfterOpen(DataSet: TDataSet); override;
     procedure InitializeForm; override;
   end;
-
 
 implementation
 
@@ -36,21 +35,21 @@ uses
 
 procedure TfrmNotaVenda.AfterOpen(DataSet: TDataSet);
 var
-  vColunas : TGridColunas;
+  vColunas: TGridColunas;
 begin
   vColunas := TGridColunas.Create(dbgrdPrincipal);
 
   try
-    vColunas.Add('NTV_ID','ID',0,'0');
-    vColunas.Add('FPA_ID','Forma Pgto');
-    vColunas.Add('CLI_ID','ID Cliente');
-    vColunas.Add('NTV_DATA','Data');
-    vColunas.Add('NTV_SITUACAO','Situação');
-    vColunas.Add('CLI_NOME','Cliente');
-    vColunas.Add('CLI_CPF','CPF');
-    vColunas.Add('CLI_TELEFONE','Telefone');
-    vColunas.Add('FPA_DESC','Descrição');
-    vColunas.Add('NTV_ID','Valor');
+    vColunas.Add('NTV_ID', 'ID', 0, '0');
+    vColunas.Add('FPA_ID', 'Forma Pgto');
+    vColunas.Add('CLI_ID', 'ID Cliente');
+    vColunas.Add('NTV_DATA', 'Data');
+    vColunas.Add('NTV_SITUACAO', 'Situação');
+    vColunas.Add('CLI_NOME', 'Cliente');
+    vColunas.Add('CLI_CPF', 'CPF');
+    vColunas.Add('CLI_TELEFONE', 'Telefone');
+    vColunas.Add('FPA_DESC', 'Descrição');
+    vColunas.Add('NTV_ID', 'Valor');
   finally
     vColunas.Free;
   end;
@@ -58,8 +57,7 @@ end;
 
 function TfrmNotaVenda.GetSQLPadrao: string;
 begin
-  result :=
-    ' SELECT NOTA_VENDA.NTV_ID, NOTA_VENDA.FPA_ID, ' +
+  result := ' SELECT NOTA_VENDA.NTV_ID, NOTA_VENDA.FPA_ID, ' +
     '        NOTA_VENDA.CLI_ID, NOTA_VENDA.NTV_AVISTA, ' +
     '        NOTA_VENDA.NTV_DATA, NOTA_VENDA.NTV_SITUACAO, ' +
     '        NOTA_VENDA.NTV_VALOR, ' +

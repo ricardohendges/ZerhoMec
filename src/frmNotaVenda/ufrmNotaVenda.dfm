@@ -1,9 +1,8 @@
 inherited frmNotaVenda: TfrmNotaVenda
-  Caption = 'frmNotaVenda'
+  Caption = 'Nota de Venda'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
-    ActivePage = tsCadastro
     inherited tsListagem: TTabSheet
       inherited pnlInfos: TPanel
         inherited dbnvgrPrincipal: TDBNavigator
@@ -11,69 +10,73 @@ inherited frmNotaVenda: TfrmNotaVenda
         end
       end
     end
-  end
-  object dbedtNvID: TDBEdit [3]
-    Left = 448
-    Top = 32
-    Width = 41
-    Height = 21
-    DataField = 'NTV_ID'
-    DataSource = dsPadrao
-    TabOrder = 3
-  end
-  object dbedtNvValor: TDBEdit [4]
-    Left = 202
-    Top = 163
-    Width = 121
-    Height = 21
-    DataField = 'NTV_VALOR'
-    DataSource = dsPadrao
-    TabOrder = 4
-  end
-  object dbedtNvCliID: TDBEdit [5]
-    Left = 18
-    Top = 59
-    Width = 121
-    Height = 21
-    DataField = 'CLI_ID'
-    DataSource = dsPadrao
-    TabOrder = 5
-  end
-  object dbedtNvSituacao: TDBEdit [6]
-    Left = 18
-    Top = 217
-    Width = 121
-    Height = 21
-    DataField = 'NTV_SITUACAO'
-    DataSource = dsPadrao
-    TabOrder = 6
-  end
-  object dbedtNvData: TDBEdit [7]
-    Left = 202
-    Top = 217
-    Width = 121
-    Height = 21
-    DataField = 'NTV_DATA'
-    DataSource = dsPadrao
-    TabOrder = 7
-  end
-  object dbedtNvFpID: TDBEdit [8]
-    Left = 18
-    Top = 115
-    Width = 121
-    Height = 21
-    DataField = 'FPA_ID'
-    DataSource = dsPadrao
-    TabOrder = 8
-  end
-  object dbedtNvAvista: TDBEdit [9]
-    Left = 18
-    Top = 163
-    Width = 121
-    Height = 21
-    DataField = 'NTV_AVISTA'
-    DataSource = dsPadrao
-    TabOrder = 9
+    inherited tsCadastro: TTabSheet
+      inherited pnlPrincipal: TPanel
+        object dbedtNvCliID: TDBEdit
+          Left = 14
+          Top = 27
+          Width = 121
+          Height = 21
+          DataField = 'CLI_ID'
+          DataSource = dsPadrao
+          TabOrder = 0
+        end
+        object dbedtNvFpID: TDBEdit
+          Left = 14
+          Top = 64
+          Width = 121
+          Height = 21
+          DataField = 'FPA_ID'
+          DataSource = dsPadrao
+          TabOrder = 1
+        end
+        object dbedtNvAvista: TDBEdit
+          Left = 14
+          Top = 107
+          Width = 121
+          Height = 21
+          DataField = 'NTV_AVISTA'
+          DataSource = dsPadrao
+          TabOrder = 2
+        end
+        object dbedtNvSituacao: TDBEdit
+          Left = 14
+          Top = 147
+          Width = 121
+          Height = 21
+          DataField = 'NTV_SITUACAO'
+          DataSource = dsPadrao
+          TabOrder = 3
+        end
+        object dbedtNvValor: TDBEdit
+          Left = 198
+          Top = 27
+          Width = 121
+          Height = 21
+          DataField = 'NTV_VALOR'
+          DataSource = dsPadrao
+          TabOrder = 4
+        end
+        object dbedtNvData: TDBEdit
+          Left = 198
+          Top = 64
+          Width = 121
+          Height = 21
+          DataField = 'NTV_DATA'
+          DataSource = dsPadrao
+          TabOrder = 5
+        end
+        object dbedtNvID: TDBEdit
+          Left = 456
+          Top = 8
+          Width = 41
+          Height = 21
+          DataField = 'NTV_ID'
+          DataSource = dsPadrao
+          TabOrder = 6
+        end
+      end
+    end
   end
   inherited actlstPrincipal: TActionList
     Left = 272
@@ -263,7 +266,6 @@ inherited frmNotaVenda: TfrmNotaVenda
       'NTV_DATA=NTV_DATA'
       'NTV_SITUACAO=NTV_SITUACAO'
       'NTV_VALOR=NTV_VALOR')
-    Left = 448
     Top = 395
   end
 end
