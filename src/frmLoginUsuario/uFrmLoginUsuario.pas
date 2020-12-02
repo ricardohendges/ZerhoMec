@@ -3,38 +3,37 @@ unit uFrmLoginUsuario;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.ExtCtrls,
-  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
-  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
-  FireDAC.Stan.Async, FireDAC.DApt, Vcl.Buttons, Vcl.StdCtrls, Data.DB,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client, ufrmBaseDm, System.ImageList,
-  Vcl.ImgList;
+   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+   System.Classes, Vcl.Graphics, System.UITypes,
+   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.ExtCtrls,
+   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+   FireDAC.Stan.Async, FireDAC.DApt, Vcl.Buttons, Vcl.StdCtrls, Data.DB,
+   FireDAC.Comp.DataSet, FireDAC.Comp.Client, ufrmBaseDm, System.ImageList,
+   Vcl.ImgList;
 
 type
-  TfrmLoginUsuario = class(TForm)
-    tmLogin: TTimer;
-    pgbProgresso: TProgressBar;
-    fdSql: TFDQuery;
-    imgSistema: TImage;
-    GroupBox1: TGroupBox;
-    edtUsuario: TEdit;
-    lblUsuario: TLabel;
-    EdtSenha: TEdit;
-    Label1: TLabel;
-    btnSair: TButton;
-    btnEntrar: TButton;
-    procedure BtnSairClick(Sender: TObject);
-    procedure btnEntrarClick(Sender: TObject);
-  private
-    Function ValidarLoginUsuario: Boolean;
-    Procedure ValidarCampos;
-    Procedure SimularBarraProgresso;
-  public
-    constructor Create(AOwner: TComponent); override;
-    destructor Destroy; override;
-  end;
+   TfrmLoginUsuario = class(TForm)
+      tmLogin: TTimer;
+      pgbProgresso: TProgressBar;
+      fdSql: TFDQuery;
+      imgSistema: TImage;
+      GroupBox1: TGroupBox;
+      edtUsuario: TEdit;
+      lblUsuario: TLabel;
+      EdtSenha: TEdit;
+      Label1: TLabel;
+      btnSair: TButton;
+      btnEntrar: TButton;
+      procedure BtnSairClick (Sender: TObject);
+      procedure btnEntrarClick (Sender: TObject);
+   private
+      Function ValidarLoginUsuario: Boolean;
+      Procedure ValidarCampos;
+   public
+      constructor Create (AOwner: TComponent); override;
+      destructor Destroy; override;
+   end;
 
 implementation
 
@@ -49,10 +48,10 @@ Uses
   -------------------------------------------------- }
 procedure TfrmLoginUsuario.btnEntrarClick(Sender: TObject);
 Const
-  CMsgLoginIncorreto = 'Nome de usuário ou senha está incorreto!!';
+  CMsgLoginIncorreto = 'Nome de usuï¿½rio ou senha estï¿½ incorreto!!';
 begin
 
-  // Verifica se os campos usuário e senha estão com informações.
+  // Verifica se os campos usuï¿½rio e senha estï¿½o com informaï¿½ï¿½es.
   ValidarCampos;
 
   if not ValidarLoginUsuario then
@@ -89,26 +88,13 @@ begin
   inherited;
 end;
 
-procedure TfrmLoginUsuario.SimularBarraProgresso;
-var
-  I: Integer;
-begin
-
-  For I := 1 to 100 do
-  Begin
-    pgbProgresso.Position := pgbProgresso.Position + 1;
-    Sleep(100);
-  end;
-
-end;
-
 procedure TfrmLoginUsuario.ValidarCampos;
 begin
 
   if Trim(edtUsuario.Text) = EmptyStr then
   Begin
 
-    ShowMessage('O campo "Nome de usuário" é de preenchimento obrigatório!');
+    ShowMessage('O campo "Nome de usuï¿½rio" ï¿½ de preenchimento obrigatï¿½rio!');
 
     if edtUsuario.CanFocus then
       edtUsuario.SetFocus;
@@ -120,7 +106,7 @@ begin
   if Trim(EdtSenha.Text) = EmptyStr then
   Begin
 
-    ShowMessage('O campo "Senha" é de preenchimento obrigatório!');
+    ShowMessage('O campo "Senha" ï¿½ de preenchimento obrigatï¿½rio!');
 
     if EdtSenha.CanFocus then
       EdtSenha.SetFocus;
