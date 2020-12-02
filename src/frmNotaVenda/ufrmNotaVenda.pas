@@ -18,6 +18,13 @@ type
     dbedtNvValor: TDBEdit;
     dbedtNvData: TDBEdit;
     dbedtNvID: TDBEdit;
+    lbl1: TLabel;
+    lbl2: TLabel;
+    lbl3: TLabel;
+    lbl4: TLabel;
+    lbl5: TLabel;
+    lbl6: TLabel;
+    lbl7: TLabel;
 
   protected
     function GetSQLPadrao: string; override;
@@ -41,8 +48,8 @@ begin
 
   try
     vColunas.Add('NTV_ID', 'ID', 0, '0');
-    vColunas.Add('FPA_ID', 'Forma Pgto');
-    vColunas.Add('CLI_ID', 'ID Cliente');
+    vColunas.Add('FPA_ID', 'Forma Pgto', 0, '0');
+    vColunas.Add('CLI_ID', 'ID Cliente', 0, '0');
     vColunas.Add('NTV_DATA', 'Data');
     vColunas.Add('NTV_SITUACAO', 'Situação');
     vColunas.Add('CLI_NOME', 'Cliente');

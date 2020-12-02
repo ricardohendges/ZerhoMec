@@ -11,10 +11,65 @@ inherited frmNotaVenda: TfrmNotaVenda
       end
     end
     inherited tsCadastro: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 515
+      ExplicitHeight = 425
       inherited pnlPrincipal: TPanel
+        ExplicitLeft = 1
+        ExplicitTop = 2
+        object lbl1: TLabel
+          Left = 198
+          Top = 34
+          Width = 24
+          Height = 13
+          Caption = 'Valor'
+        end
+        object lbl2: TLabel
+          Left = 7
+          Top = 157
+          Width = 30
+          Height = 13
+          Caption = 'Avista'
+        end
+        object lbl3: TLabel
+          Left = 198
+          Top = 128
+          Width = 23
+          Height = 13
+          Caption = 'Data'
+        end
+        object lbl4: TLabel
+          Left = 7
+          Top = 213
+          Width = 41
+          Height = 13
+          Caption = 'Situa'#231#227'o'
+        end
+        object lbl5: TLabel
+          Left = 7
+          Top = 45
+          Width = 47
+          Height = 13
+          Caption = 'ID Cliente'
+        end
+        object lbl6: TLabel
+          Left = 7
+          Top = 106
+          Width = 75
+          Height = 13
+          Caption = 'ID Forma Pagto'
+        end
+        object lbl7: TLabel
+          Left = 439
+          Top = 16
+          Width = 11
+          Height = 13
+          Caption = 'ID'
+        end
         object dbedtNvCliID: TDBEdit
-          Left = 14
-          Top = 27
+          Left = 7
+          Top = 64
           Width = 121
           Height = 21
           DataField = 'CLI_ID'
@@ -22,8 +77,8 @@ inherited frmNotaVenda: TfrmNotaVenda
           TabOrder = 0
         end
         object dbedtNvFpID: TDBEdit
-          Left = 14
-          Top = 64
+          Left = 7
+          Top = 125
           Width = 121
           Height = 21
           DataField = 'FPA_ID'
@@ -31,8 +86,8 @@ inherited frmNotaVenda: TfrmNotaVenda
           TabOrder = 1
         end
         object dbedtNvAvista: TDBEdit
-          Left = 14
-          Top = 107
+          Left = 7
+          Top = 176
           Width = 121
           Height = 21
           DataField = 'NTV_AVISTA'
@@ -40,8 +95,8 @@ inherited frmNotaVenda: TfrmNotaVenda
           TabOrder = 2
         end
         object dbedtNvSituacao: TDBEdit
-          Left = 14
-          Top = 147
+          Left = 7
+          Top = 232
           Width = 121
           Height = 21
           DataField = 'NTV_SITUACAO'
@@ -50,7 +105,7 @@ inherited frmNotaVenda: TfrmNotaVenda
         end
         object dbedtNvValor: TDBEdit
           Left = 198
-          Top = 27
+          Top = 53
           Width = 121
           Height = 21
           DataField = 'NTV_VALOR'
@@ -59,7 +114,7 @@ inherited frmNotaVenda: TfrmNotaVenda
         end
         object dbedtNvData: TDBEdit
           Left = 198
-          Top = 64
+          Top = 147
           Width = 121
           Height = 21
           DataField = 'NTV_DATA'
@@ -68,7 +123,7 @@ inherited frmNotaVenda: TfrmNotaVenda
         end
         object dbedtNvID: TDBEdit
           Left = 456
-          Top = 8
+          Top = 13
           Width = 41
           Height = 21
           DataField = 'NTV_ID'
@@ -76,6 +131,11 @@ inherited frmNotaVenda: TfrmNotaVenda
           TabOrder = 6
         end
       end
+    end
+  end
+  inherited pnlMenuBotton: TPanel
+    inherited lblStatusForm: TLabel
+      Height = 14
     end
   end
   inherited actlstPrincipal: TActionList
@@ -90,7 +150,7 @@ inherited frmNotaVenda: TfrmNotaVenda
     DataSet = frxDBDatasetPrincipal
     DataSetName = 'dsPadrao'
     ReportOptions.CreateDate = 44145.902236655100000000
-    ReportOptions.LastChange = 44145.902236655100000000
+    ReportOptions.LastChange = 44166.920514178240000000
     Left = 352
     Top = 392
     Datasets = <>
@@ -169,7 +229,7 @@ inherited frmNotaVenda: TfrmNotaVenda
         object Memo3: TfrxMemoView
           AllowVectorExport = True
           Left = 34.015770000000000000
-          Top = 3.779530000000020000
+          Top = 3.779530000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
           Frame.Typ = []
@@ -179,58 +239,18 @@ inherited frmNotaVenda: TfrmNotaVenda
         object Memo4: TfrxMemoView
           AllowVectorExport = True
           Left = 132.283550000000000000
-          Top = 3.779529999999990000
+          Top = 3.779530000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
           Frame.Typ = []
           Memo.UTF8W = (
             'ID Forma Pgto')
         end
-        object Memo5: TfrxMemoView
-          AllowVectorExport = True
-          Left = 230.551330000000000000
-          Top = 3.779529999999990000
-          Width = 52.913420000000000000
-          Height = 18.897650000000000000
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Avista')
-        end
         object Memo6: TfrxMemoView
           AllowVectorExport = True
-          Left = 287.244280000000000000
-          Top = 3.779529999999990000
-          Width = 132.283550000000000000
-          Height = 18.897650000000000000
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Cliente')
-        end
-        object Memo7: TfrxMemoView
-          AllowVectorExport = True
-          Left = 423.307360000000000000
-          Top = 3.779529999999990000
-          Width = 86.929190000000000000
-          Height = 18.897650000000000000
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'CPF')
-        end
-        object Memo8: TfrxMemoView
-          AllowVectorExport = True
-          Left = 514.016080000000000000
-          Top = 3.779529999999990000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Descri'#231#227'o')
-        end
-        object Memo9: TfrxMemoView
-          AllowVectorExport = True
-          Left = 608.504330000000000000
-          Top = 3.779529999999990000
-          Width = 68.031540000000000000
+          Left = 226.771800000000000000
+          Top = 3.779530000000000000
+          Width = 151.181200000000000000
           Height = 18.897650000000000000
           Frame.Typ = []
           Memo.UTF8W = (
@@ -238,9 +258,9 @@ inherited frmNotaVenda: TfrmNotaVenda
         end
         object Memo10: TfrxMemoView
           AllowVectorExport = True
-          Left = 680.315400000000000000
-          Top = 3.779529999999990000
-          Width = 49.133890000000000000
+          Left = 377.953000000000000000
+          Top = 3.779530000000000000
+          Width = 64.252010000000000000
           Height = 18.897650000000000000
           Frame.Typ = []
           Memo.UTF8W = (
@@ -254,18 +274,60 @@ inherited frmNotaVenda: TfrmNotaVenda
         Top = 215.433210000000000000
         Width = 718.110700000000000000
         RowCount = 0
+        object Memo11: TfrxMemoView
+          AllowVectorExport = True
+          Top = 3.779530000000000000
+          Width = 34.015770000000000000
+          Height = 18.897650000000000000
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[dsPadrao."NTV_ID"]')
+        end
+        object Memo12: TfrxMemoView
+          AllowVectorExport = True
+          Left = 34.015770000000000000
+          Top = 3.779530000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[dsPadrao."NTV.CLI_ID]')
+        end
+        object Memo13: TfrxMemoView
+          AllowVectorExport = True
+          Left = 132.283550000000000000
+          Top = 3.779530000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[dsPadrao."NTV.FPA_ID]')
+        end
+        object Memo14: TfrxMemoView
+          AllowVectorExport = True
+          Left = 226.771800000000000000
+          Top = 3.779530000000000000
+          Width = 151.181200000000000000
+          Height = 18.897650000000000000
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[dsPadrao."NTV.VALOR]')
+        end
+        object Memo18: TfrxMemoView
+          AllowVectorExport = True
+          Left = 377.953000000000000000
+          Top = 3.779530000000000000
+          Width = 64.252010000000000000
+          Height = 18.897650000000000000
+          Visible = False
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[dsPadrao."NTV.DATA]')
+        end
       end
     end
   end
   inherited frxDBDatasetPrincipal: TfrxDBDataset
-    FieldAliases.Strings = (
-      'NTV_ID=NTV_ID'
-      'FPA_ID=FPA_ID'
-      'CLI_ID=CLI_ID'
-      'NTV_AVISTA=NTV_AVISTA'
-      'NTV_DATA=NTV_DATA'
-      'NTV_SITUACAO=NTV_SITUACAO'
-      'NTV_VALOR=NTV_VALOR')
     Top = 395
   end
 end
