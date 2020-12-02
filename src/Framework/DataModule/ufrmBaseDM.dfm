@@ -24,4 +24,9 @@ object frmBaseDM: TfrmBaseDM
     Left = 144
     Top = 16
   end
+  object FDSqlUtilsDB: TFDQuery
+    Connection = FDConnection
+    Left = 184
+    Top = 104
+  end
 end

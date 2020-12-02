@@ -16,6 +16,7 @@ type
       TFDPhysFBDriverLink: TFDPhysFBDriverLink;
       TFDGUIxWaitCursor: TFDGUIxWaitCursor;
       FDPrincipal: TFDQuery;
+    FDSqlUtilsDB: TFDQuery;
       procedure DataModuleCreate (Sender: TObject);
    private
     { Private declarations }
@@ -34,6 +35,8 @@ implementation
 
 
 procedure TfrmBaseDM.DataModuleCreate (Sender: TObject);
+var
+   vArq: TIniFile;
 begin
    if FileExists ('..\\DB\Config.ini') then
    begin

@@ -13,7 +13,8 @@ uses
   Sistema.Utils.Types in '..\src\Framework\Utils\Sistema.Utils.Types.pas',
   ufrwUtilsForms in '..\src\Framework\Utils\ufrwUtilsForms.pas',
   ufrmPrincipal in '..\src\ufrmPrincipal.pas' {frmPrincipal},
-  UFRMBusca in '..\src\Framework\Busca\UFRMBusca.pas' {FRMBusca};
+  UFRMBusca in '..\src\Framework\Busca\UFRMBusca.pas' {FRMBusca},
+  Sistema.Utils.UtilsDB in '..\src\Framework\Utils\Sistema.Utils.UtilsDB.pas';
 
 {$R *.res}
 
