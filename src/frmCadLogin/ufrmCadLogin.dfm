@@ -115,6 +115,8 @@ inherited frmCadLogin: TfrmCadLogin
           Top = 202
           Width = 188
           Height = 21
+          DataField = 'USU_TIPO'
+          DataSource = dsPadrao
           Items.Strings = (
             'Admin'
             'Normal')

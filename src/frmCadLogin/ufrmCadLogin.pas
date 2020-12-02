@@ -25,8 +25,14 @@ type
     dbCbTipoUsuario: TDBComboBox;
     lblTipoUsuario: TLabel;
     procedure actInserirExecute(Sender: TObject);
+    procedure actSalvarExecute(Sender: TObject);
   protected
     function GetSQLPadrao: string; override;
+
+  private
+
+    Function ValidouSenha: Boolean;
+
   end;
 
 var
@@ -49,10 +55,26 @@ begin
 
 end;
 
+procedure TfrmCadLogin.actSalvarExecute(Sender: TObject);
+begin
+  inherited;
+
+  if ValidouSenha then
+    ShowMessage('As senhas não são iguais');
+
+end;
+
 function TfrmCadLogin.GetSQLPadrao: string;
 begin
   Result := ' SELECT USUARIO.USU_ID, USUARIO.USU_LOGIN, USUARIO.USU_SENHA, ' +
     '        USUARIO.USU_NOME, USUARIO.USU_TIPO ' + '   FROM USUARIO ';
+end;
+
+function TfrmCadLogin.ValidouSenha: Boolean;
+begin
+
+  Result := dbEdtSenha.Text = edtConfirmarSenha.Text;
+
 end;
 
 initialization

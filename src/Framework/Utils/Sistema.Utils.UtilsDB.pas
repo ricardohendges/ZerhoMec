@@ -5,7 +5,7 @@ interface
 type
   TUitlsDB = class
 
-    class function BuscarProximoID(ANomeTabela, ANomeCampo: String): String;
+    class function BuscarProximoID(ANomeTabela, ANomeCampo: String): Integer;
   end;
 
 implementation
@@ -14,7 +14,7 @@ uses
   ufrmBaseDm, System.SysUtils, Vcl.Dialogs;
 
 class function TUitlsDB.BuscarProximoID(ANomeTabela,
-  ANomeCampo: String): String;
+  ANomeCampo: String): Integer;
 const
   CSql = 'SELECT MAX(%0:S) FROM %1:S';
 begin
