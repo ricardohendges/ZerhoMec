@@ -14,8 +14,7 @@ uses
   ufrmPrincipal in '..\src\ufrmPrincipal.pas' {frmPrincipal},
   UFRMBusca in '..\src\Framework\Busca\UFRMBusca.pas' {FRMBusca},
   UFramework.Logon in '..\src\Framework\Logon\UFramework.Logon.pas',
-  Sistema.Utils.Connection in '..\src\Framework\Utils\Sistema.Utils.Connection.pas',
-  Sistema.Utils.UtilsDB in '..\src\Framework\Utils\Sistema.Utils.UtilsDB.pas';
+  Sistema.Utils.Connection in '..\src\Framework\Utils\Sistema.Utils.Connection.pas';
 
 {$R *.res}
 

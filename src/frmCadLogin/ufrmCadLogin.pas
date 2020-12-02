@@ -24,7 +24,6 @@ type
     lblUsuario: TLabel;
     dbCbTipoUsuario: TDBComboBox;
     lblTipoUsuario: TLabel;
-    procedure actInserirExecute(Sender: TObject);
     procedure actSalvarExecute(Sender: TObject);
   protected
     function GetSQLPadrao: string; override;
@@ -41,19 +40,9 @@ var
 implementation
 
 uses
-  Sistema.Utils.Busca, Sistema.Utils.Types, Sistema.Utils.UtilsDB;
+  Sistema.Utils.Busca, Sistema.Utils.Types;
 
 {$R *.dfm}
-
-procedure TfrmCadLogin.actInserirExecute(Sender: TObject);
-begin
-
-  inherited;
-
-  dsPadrao.DataSet.FieldByName('USU_ID').AsInteger :=
-    TUitlsDB.BuscarProximoID('USUARIO', 'USU_ID');
-
-end;
 
 procedure TfrmCadLogin.actSalvarExecute(Sender: TObject);
 begin
