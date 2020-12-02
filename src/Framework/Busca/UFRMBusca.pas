@@ -29,12 +29,11 @@ type
       procedure btnBuscarClick (Sender: TObject);
       procedure FormCreate (Sender: TObject);
    private
-      FBuscaPor: TTpBusca;
+      FSQL: string;
       FDados: TResBusca;
       procedure ReposicionaBotoes;
-      procedure AlimentaCampos;
    public
-      class function Exibir (ALookupBusca: TTpBusca): TResBusca;
+      class function Exibir (ASQL: string): TResBusca;
    end;
 
 implementation
@@ -45,17 +44,6 @@ uses
 {$R *.dfm}
 
 { TFRMBusca }
-
-procedure TFRMBusca.AlimentaCampos;
-var
-   vSQL: string;
-begin
-   case FBuscaPor of
-      tbCLIENTE:
-         vSQL := cSQL_CLIENTE;
-   end;
-   FDSelecao.Open (vSQL);
-end;
 
 procedure TFRMBusca.btnBuscarClick (Sender: TObject);
 begin
@@ -89,13 +77,13 @@ begin
    GGridTitulos.OrdenaGrid (FDSelecao, Column);
 end;
 
-class function TFRMBusca.Exibir (ALookupBusca: TTpBusca): TResBusca;
+class function TFRMBusca.Exibir (ASQL: string): TResBusca;
 var
    vPopup: TFRMBusca;
 begin
    vPopup := TFRMBusca.Create (nil);
    try
-      vPopup.FBuscaPor := ALookupBusca;
+      vPopup.FSQL := ASQL;
       vPopup.ShowModal;
       Result := vPopup.FDados;
    finally
@@ -111,7 +99,7 @@ end;
 procedure TFRMBusca.FormShow (Sender: TObject);
 begin
    ReposicionaBotoes;
-   AlimentaCampos;
+   FDSelecao.Open (FSQL);
 end;
 
 procedure TFRMBusca.ReposicionaBotoes;

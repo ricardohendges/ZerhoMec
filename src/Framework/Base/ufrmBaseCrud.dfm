@@ -149,10 +149,6 @@ object frmBaseCrud: TfrmBaseCrud
     end
     object tsCadastro: TTabSheet
       Caption = 'Cadastro'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object pnlPrincipal: TPanel
         Left = 0
         Top = 0
@@ -715,7 +711,7 @@ object frmBaseCrud: TfrmBaseCrud
     end
   end
   object dsPadrao: TDataSource
-    DataSet = frmBaseDM.FDPrincipal
+    DataSet = FDPadrao
     Left = 448
     Top = 112
   end
@@ -747,5 +743,10 @@ object frmBaseCrud: TfrmBaseCrud
     BCDToCurrency = False
     Left = 448
     Top = 67
+  end
+  object FDPadrao: TFDQuery
+    Connection = frmBaseDM.FDConnection
+    Left = 420
+    Top = 112
   end
 end

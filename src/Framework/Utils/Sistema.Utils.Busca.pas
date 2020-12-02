@@ -6,10 +6,13 @@ uses
   Sistema.Utils.Types, System.Classes, FireDAC.Comp.Client;
 
 type
-  TSisBusca = class
-  public
-    function BuscaDescricao(ATpBusca: TTpBusca): TResBusca;
-  end;
+   TSisBusca = class
+   private
+      function GetSQLBusca (ATpBusca: TTpBusca): string;
+   public
+      function BuscaDescricao (ATpBusca: TTpBusca): TResBusca;
+      function GetDescricao (ATpBusca: TTpBusca; ACondicao, ACodigo: string): TResBusca;
+   end;
 
 var
   GSisBusca: TSisBusca;
@@ -17,13 +20,32 @@ var
 implementation
 
 uses
-  UFRMBusca;
+   UFRMBusca, System.Generics.Collections;
 
 { TSisBusca }
 
 function TSisBusca.BuscaDescricao(ATpBusca: TTpBusca): TResBusca;
 begin
-  Result := TFRMBusca.Exibir(ATpBusca);
+   Result := TFRMBusca.Exibir (GetSQLBusca(ATpBusca));
+end;
+
+function TSisBusca.GetDescricao (ATpBusca: TTpBusca; ACondicao,
+  ACodigo: string): TResBusca;
+begin
+   Result.Fields := TDictionary< string, string >.Create;
+   try
+
+   finally
+
+   end;
+end;
+
+function TSisBusca.GetSQLBusca (ATpBusca: TTpBusca): string;
+begin
+   case ATpBusca of
+      tbCLIENTE:
+         Result := cSQL_CLIENTE;
+   end;
 end;
 
 end.
