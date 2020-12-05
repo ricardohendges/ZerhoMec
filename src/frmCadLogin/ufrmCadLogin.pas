@@ -7,7 +7,10 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ufrmBaseCrud, Data.DB, frxClass,
   frxDBSet, System.Actions, Vcl.ActnList, Vcl.Buttons, Vcl.DBCtrls, Vcl.Grids,
-  Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Mask;
+  Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Mask,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TfrmCadLogin = class(TfrmBaseCrud)
@@ -25,32 +28,37 @@ type
     dbCbTipoUsuario: TDBComboBox;
     lblTipoUsuario: TLabel;
     procedure actSalvarExecute(Sender: TObject);
+    procedure edtConfirmarSenhaExit(Sender: TObject);
   protected
     function GetSQLPadrao: string; override;
 
   private
 
-    Function ValidouSenha: Boolean;
+    Procedure ValidouSenha;
 
   end;
-
-var
-  frmCadLogin: TfrmCadLogin;
 
 implementation
 
 uses
-  Sistema.Utils.Busca, Sistema.Utils.Types;
+  Sistema.Utils.Busca, Sistema.Utils.Types, Sistema.Utils.Connection;
 
 {$R *.dfm}
 
 procedure TfrmCadLogin.actSalvarExecute(Sender: TObject);
 begin
+
+  ValidouSenha;
+
+  inherited;
+end;
+
+procedure TfrmCadLogin.edtConfirmarSenhaExit(Sender: TObject);
+begin
+
   inherited;
 
-  if ValidouSenha then
-    ShowMessage('As senhas não são iguais');
-
+  ValidouSenha;
 end;
 
 function TfrmCadLogin.GetSQLPadrao: string;
@@ -59,10 +67,22 @@ begin
     '        USUARIO.USU_NOME, USUARIO.USU_TIPO ' + '   FROM USUARIO ';
 end;
 
-function TfrmCadLogin.ValidouSenha: Boolean;
+procedure TfrmCadLogin.ValidouSenha;
 begin
 
-  Result := dbEdtSenha.Text = edtConfirmarSenha.Text;
+  If dbEdtSenha.Text <> edtConfirmarSenha.Text then
+  Begin
+
+    ShowMessage('As senhas não são iguais');
+
+    edtConfirmarSenha.Clear;
+
+    if dbEdtSenha.CanFocus then
+      dbEdtSenha.SetFocus;
+
+    abort;
+
+  End;
 
 end;
 

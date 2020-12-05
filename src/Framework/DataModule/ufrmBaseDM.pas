@@ -33,8 +33,6 @@ implementation
 
 
 procedure TfrmBaseDM.DataModuleCreate (Sender: TObject);
-var
-   vArq: TIniFile;
 begin
    if FileExists ('..\\DB\Config.ini') then
    begin

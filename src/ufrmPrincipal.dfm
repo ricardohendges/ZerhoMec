@@ -2,7 +2,7 @@ object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
   Caption = 'Menu principal'
-  ClientHeight = 875
+  ClientHeight = 729
   ClientWidth = 1155
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -13,11 +13,12 @@ object frmPrincipal: TfrmPrincipal
   FormStyle = fsMDIForm
   Menu = mmPrincipal
   OldCreateOrder = False
+  WindowState = wsMaximized
   PixelsPerInch = 96
   TextHeight = 13
   object pnlBottonBar: TPanel
     Left = 0
-    Top = 859
+    Top = 713
     Width = 1155
     Height = 16
     Margins.Top = 0

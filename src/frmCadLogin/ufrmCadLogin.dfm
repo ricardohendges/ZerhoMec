@@ -1,5 +1,6 @@
 inherited frmCadLogin: TfrmCadLogin
   Caption = 'frmCadLogin'
+  FormStyle = fsNormal
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
@@ -16,6 +17,8 @@ inherited frmCadLogin: TfrmCadLogin
       ExplicitWidth = 515
       ExplicitHeight = 425
       inherited pnlPrincipal: TPanel
+        ExplicitLeft = 1
+        ExplicitTop = 2
         object lblCodigo: TLabel
           Left = 73
           Top = 40
@@ -50,7 +53,7 @@ inherited frmCadLogin: TfrmCadLogin
           Width = 329
           Height = 79
           Caption = 'Validar senha:'
-          TabOrder = 2
+          TabOrder = 3
           object lblConfirmarSenha: TLabel
             Left = 3
             Top = 44
@@ -72,6 +75,7 @@ inherited frmCadLogin: TfrmCadLogin
             Height = 21
             DataField = 'USU_SENHA'
             DataSource = dsPadrao
+            PasswordChar = '*'
             TabOrder = 0
           end
           object edtConfirmarSenha: TEdit
@@ -79,8 +83,9 @@ inherited frmCadLogin: TfrmCadLogin
             Top = 44
             Width = 188
             Height = 21
+            PasswordChar = '*'
             TabOrder = 1
-            Text = 'edtConfirmarSenha'
+            OnExit = edtConfirmarSenhaExit
           end
         end
         object dbEdtCodigo: TDBEdit
@@ -108,7 +113,7 @@ inherited frmCadLogin: TfrmCadLogin
           Height = 21
           DataField = 'USU_LOGIN'
           DataSource = dsPadrao
-          TabOrder = 3
+          TabOrder = 2
         end
         object dbCbTipoUsuario: TDBComboBox
           Left = 116
@@ -145,5 +150,9 @@ inherited frmCadLogin: TfrmCadLogin
   inherited frxDBDatasetPrincipal: TfrxDBDataset
     Left = 488
     Top = 8
+  end
+  inherited FDPadrao: TFDQuery
+    Left = 388
+    Top = 40
   end
 end
