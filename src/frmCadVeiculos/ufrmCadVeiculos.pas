@@ -9,7 +9,7 @@ uses
   Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Mask;
 
 type
-  TfrmBaseCrud2 = class(TfrmBaseCrud)
+  TfrmVeiculos = class(TfrmBaseCrud)
     lblVEI_ID: TLabel;
     dbedtVEI_ID: TDBEdit;
     lblCLI_ID: TLabel;
@@ -27,14 +27,14 @@ type
     btnPesquisarCliente: TButton;
     edtNomeCliente: TDBEdit;
     procedure btnPesquisarClienteClick(Sender: TObject);
-  private
-    { Private declarations }
-  public
-    { Public declarations }
+  protected
+    procedure InitializeForm; override;
+    function GetSQLPadrao: string; override;
+    procedure AfterOpen(DataSet: TDataSet); override;
   end;
 
 var
-  frmBaseCrud2: TfrmBaseCrud2;
+  frmVeiculos: TfrmVeiculos;
 
 implementation
 
@@ -42,8 +42,22 @@ uses
   Sistema.Utils.Busca, Sistema.Utils.Types;
 
 {$R *.dfm}
+procedure TfrmVeiculos.InitializeForm;
+begin
 
-procedure TfrmBaseCrud2.btnPesquisarClienteClick(Sender: TObject);
+end;
+
+function TfrmVeiculos.GetSQLPadrao: string;
+begin
+
+end;
+
+procedure TfrmVeiculos.AfterOpen(DataSet: TDataSet);
+begin
+
+end;
+
+procedure TfrmVeiculos.btnPesquisarClienteClick(Sender: TObject);
 var
    vResult: TResBusca;
 begin

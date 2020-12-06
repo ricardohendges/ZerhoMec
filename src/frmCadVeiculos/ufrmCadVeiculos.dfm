@@ -1,50 +1,48 @@
-inherited frmBaseCrud2: TfrmBaseCrud2
+inherited frmVeiculos: TfrmVeiculos
   Caption = 'Cadastro de Veiculos'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
     Width = 531
-    ExplicitWidth = 34
+    ExplicitWidth = 531
     inherited tsListagem: TTabSheet
-      ExplicitWidth = 521
+      ExplicitWidth = 523
       inherited pnlFiltros: TPanel
         Width = 523
-        ExplicitWidth = 521
+        ExplicitWidth = 523
         inherited gbPesquisar: TGroupBox
           Width = 208
-          ExplicitWidth = 206
+          ExplicitWidth = 208
           inherited EdtPesquisar: TEdit
             Width = 199
-            ExplicitWidth = 197
+            ExplicitWidth = 199
           end
         end
       end
       inherited pnlGrid: TPanel
         Width = 523
-        ExplicitWidth = 521
+        ExplicitWidth = 523
         inherited dbgrdPrincipal: TDBGrid
           Width = 521
         end
       end
       inherited pnlInfos: TPanel
         Width = 523
-        ExplicitWidth = 521
+        ExplicitWidth = 523
         inherited dbnvgrPrincipal: TDBNavigator
           Width = 519
           Hints.Strings = ()
-          ExplicitWidth = 517
+          ExplicitWidth = 519
         end
       end
     end
     inherited tsCadastro: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
-      ExplicitWidth = 26
+      ExplicitWidth = 523
       ExplicitHeight = 425
       inherited pnlPrincipal: TPanel
         Width = 523
-        ExplicitLeft = 1
-        ExplicitTop = 2
         ExplicitWidth = 523
         object lblVEI_ID: TLabel
           Left = 20
@@ -93,6 +91,8 @@ inherited frmBaseCrud2: TfrmBaseCrud2
           Top = 39
           Width = 33
           Height = 21
+          DataField = 'VEI_ID'
+          DataSource = dsPadrao
           TabOrder = 0
         end
         object edtCLI_COD: TEdit
@@ -108,6 +108,8 @@ inherited frmBaseCrud2: TfrmBaseCrud2
           Top = 85
           Width = 33
           Height = 21
+          DataField = 'MAR_ID'
+          DataSource = dsPadrao
           TabOrder = 2
         end
         object dbedtVEI_ANO: TDBEdit
@@ -115,6 +117,8 @@ inherited frmBaseCrud2: TfrmBaseCrud2
           Top = 177
           Width = 33
           Height = 21
+          DataField = 'VEI_ANO'
+          DataSource = dsPadrao
           TabOrder = 3
         end
         object dbedtVEI_MODELO: TDBEdit
@@ -122,6 +126,8 @@ inherited frmBaseCrud2: TfrmBaseCrud2
           Top = 131
           Width = 184
           Height = 21
+          DataField = 'VEI_MODELO'
+          DataSource = dsPadrao
           TabOrder = 4
         end
         object dbedtVEI_PLACA: TDBEdit
@@ -129,6 +135,8 @@ inherited frmBaseCrud2: TfrmBaseCrud2
           Top = 177
           Width = 56
           Height = 21
+          DataField = 'VEI_PLACA'
+          DataSource = dsPadrao
           TabOrder = 5
         end
         object dbedtNomeMarca: TDBEdit
@@ -154,6 +162,14 @@ inherited frmBaseCrud2: TfrmBaseCrud2
           Height = 21
           TabOrder = 8
         end
+        object btnPesquisaMarca: TButton
+          Left = 59
+          Top = 85
+          Width = 18
+          Height = 21
+          Caption = '...'
+          TabOrder = 9
+        end
       end
     end
   end
@@ -164,38 +180,37 @@ inherited frmBaseCrud2: TfrmBaseCrud2
     ExplicitWidth = 63
     inherited btnInserir: TSpeedButton
       Width = 57
+      ExplicitWidth = 57
     end
     inherited btnEditar: TSpeedButton
       Width = 57
+      ExplicitWidth = 57
     end
     inherited btnExcluir: TSpeedButton
       Width = 57
+      ExplicitWidth = 57
     end
     inherited btnSalvar: TSpeedButton
       Width = 57
+      ExplicitWidth = 57
     end
     inherited btnCancelar: TSpeedButton
       Width = 57
+      ExplicitWidth = 57
     end
     inherited btnImprimir: TSpeedButton
       Width = 57
+      ExplicitWidth = 57
     end
     inherited btnSair: TSpeedButton
       Width = 57
+      ExplicitWidth = 57
     end
   end
   inherited pnlMenuBotton: TPanel
     inherited lblStatusForm: TLabel
       Height = 14
     end
-  end
-  object btnPesquisaMarca: TButton [3]
-    Left = 64
-    Top = 109
-    Width = 18
-    Height = 21
-    Caption = '...'
-    TabOrder = 3
   end
   inherited frxrprtPrincipal: TfrxReport
     Datasets = <>
