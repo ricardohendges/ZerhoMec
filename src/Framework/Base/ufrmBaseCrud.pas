@@ -50,7 +50,6 @@ type
       pnlInfos: TPanel;
       dbnvgrPrincipal: TDBNavigator;
       FDPadrao: TFDQuery;
-    dbNavCadastro: TDBNavigator;
       procedure dbgrdPrincipalTitleClick (Column: TColumn);
       procedure FormClose (Sender: TObject; var Action: TCloseAction);
       procedure actInserirExecute (Sender: TObject);
