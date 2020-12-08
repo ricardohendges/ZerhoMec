@@ -3,14 +3,13 @@
 interface
 
 uses
-   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-   System.Classes, Vcl.Graphics,
-   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Data.DB, Vcl.Grids,
-   Vcl.DBGrids, Vcl.ExtCtrls, Vcl.DBCtrls, Vcl.StdCtrls, Vcl.Buttons,
-   System.Actions, Vcl.ActnList, frxClass, frxDBSet, FireDAC.Stan.Intf,
-   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
-   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Mask, Sistema.Utils.Types;
+   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, Vcl.Mask,
+   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
+   Vcl.ComCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls, Vcl.DBCtrls,
+   Vcl.StdCtrls, Vcl.Buttons, System.Actions, Vcl.ActnList, frxClass, frxDBSet,
+   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
+   FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async,
+   FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Sistema.Utils.Types;
 
 type
    TfrmBaseCrud = class(TForm)
@@ -50,6 +49,8 @@ type
       lblStatusForm: TLabel;
       pnlInfos: TPanel;
       dbnvgrPrincipal: TDBNavigator;
+      FDPadrao: TFDQuery;
+    dbNavCadastro: TDBNavigator;
       procedure dbgrdPrincipalTitleClick (Column: TColumn);
       procedure FormClose (Sender: TObject; var Action: TCloseAction);
       procedure actInserirExecute (Sender: TObject);
@@ -64,7 +65,7 @@ type
       Procedure ControlaLabelStatusFrom;
    protected
     { Functions de validações e etc. }
-      function GetDataSetAtivo: TFDquery; virtual;
+      function GetDataSetAtivo: TFDQuery; virtual;
       function GetGridAtiva: TDBGrid; virtual;
       function GetPanelCad: TPanel; virtual;
       function ValidouCampos: Boolean; virtual;
@@ -85,7 +86,7 @@ type
     { Controle de bot�es }
       procedure ManterEstadoBotoes;
     { Propertys }
-      property DataSetAtivo: TFDquery read GetDataSetAtivo;
+      property DataSetAtivo: TFDQuery read GetDataSetAtivo;
       property PanelCad: TPanel read GetPanelCad;
       property GridAtiva: TDBGrid read GetGridAtiva;
    public
@@ -187,7 +188,7 @@ end;
 
 procedure TfrmBaseCrud.dbgrdPrincipalTitleClick (Column: TColumn);
 begin
-   GGridTitulos.OrdenaGrid (TFDquery(dsPadrao.DataSet), Column);
+   GGridTitulos.OrdenaGrid (TFDQuery(dsPadrao.DataSet), Column);
 end;
 
 procedure TfrmBaseCrud.EditarRegistro;
@@ -216,9 +217,9 @@ begin
    InitializeForm;
 end;
 
-function TfrmBaseCrud.GetDataSetAtivo: TFDquery;
+function TfrmBaseCrud.GetDataSetAtivo: TFDQuery;
 begin
-   Result := frmBaseDM.FDPrincipal;
+   Result := FDPadrao;
 end;
 
 function TfrmBaseCrud.GetGridAtiva: TDBGrid;
@@ -245,15 +246,14 @@ end;
 procedure TfrmBaseCrud.InitializeForm;
 begin
    pgcPrincipal.ActivePage := tsListagem;
-   frmBaseDM.FDPrincipal.AfterOpen := AfterOpen;
-   frmBaseDM.FDPrincipal.LoadSQL (GetSQLPadrao);
+   DataSetAtivo.AfterOpen := AfterOpen;
+   DataSetAtivo.LoadSQL (GetSQLPadrao);
    ManterEstadoBotoes;
 end;
 
 procedure TfrmBaseCrud.InserirRegistro;
 begin
-   if (DataSetAtivo = frmBaseDM.FDPrincipal) and
-     (pgcPrincipal.ActivePage <> tsCadastro) then
+   if (DataSetAtivo = FDPadrao) and (pgcPrincipal.ActivePage <> tsCadastro) then
       pgcPrincipal.ActivePage := tsCadastro;
    DataSetAtivo.Insert;
    ManterEstadoBotoes;
