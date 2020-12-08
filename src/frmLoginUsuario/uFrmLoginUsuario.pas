@@ -4,7 +4,7 @@ interface
 
 uses
    Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-   System.Classes, Vcl.Graphics,
+   System.Classes, Vcl.Graphics, System.UITypes,
    Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.ExtCtrls,
    FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
    FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
@@ -30,7 +30,6 @@ type
    private
       Function ValidarLoginUsuario: Boolean;
       Procedure ValidarCampos;
-      Procedure SimularBarraProgresso;
    public
       constructor Create (AOwner: TComponent); override;
       destructor Destroy; override;
@@ -80,17 +79,6 @@ destructor TfrmLoginUsuario.Destroy;
 begin
    fdSql.Connection.Free;
    inherited;
-end;
-
-procedure TfrmLoginUsuario.SimularBarraProgresso;
-var
-   I: Integer;
-begin
-   For I := 1 to 100 do
-   Begin
-      pgbProgresso.Position := pgbProgresso.Position + 1;
-      Sleep (100);
-   end;
 end;
 
 procedure TfrmLoginUsuario.ValidarCampos;

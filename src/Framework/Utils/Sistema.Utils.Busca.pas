@@ -3,7 +3,7 @@ unit Sistema.Utils.Busca;
 interface
 
 uses
-   Sistema.Utils.Types, System.Classes, FireDAC.Comp.Client;
+   Sistema.Utils.Types, System.Classes, FireDAC.Comp.Client, System.SysUtils, Data.DB;
 
 type
    TSisBusca = class
@@ -11,7 +11,7 @@ type
       function GetSQLBusca (ATpBusca: TTpBusca): string;
    public
       function BuscaDescricao (ATpBusca: TTpBusca): TResBusca;
-      function GetDescricao (ATpBusca: TTpBusca; ACondicao, ACodigo: string): TResBusca;
+      function GetDescricao (ATpBusca: TTpBusca; ACondicao: string): TResBusca;
    end;
 
 var
@@ -20,7 +20,7 @@ var
 implementation
 
 uses
-   UFRMBusca, System.Generics.Collections;
+   UFRMBusca, System.Generics.Collections, Sistema.Utils.Connection, Sistema.Utils.Helpers;
 
 { TSisBusca }
 
@@ -29,14 +29,27 @@ begin
    Result := TFRMBusca.Exibir (GetSQLBusca(ATpBusca));
 end;
 
-function TSisBusca.GetDescricao (ATpBusca: TTpBusca; ACondicao,
-  ACodigo: string): TResBusca;
+function TSisBusca.GetDescricao (ATpBusca: TTpBusca; ACondicao: string): TResBusca;
+var
+   vQuery: TFDQuery;
+   vFields: TDictionary< string, string >;
+   I: Integer;
 begin
-   Result.Fields := TDictionary< string, string >.Create;
+   vFields := TDictionary< string, string >.Create;
+   vQuery := GbaseConnection.GetQueryWithConnection;
    try
-
+      vQuery.LoadSQL (GetSQLBusca(ATpBusca) + ACondicao);
+      Result.Ok := not vQuery.IsEmpty;
+      if Result.Ok then
+      begin
+         for I := 0 to Pred(vQuery.Fields.Count) do
+            vFields.Add (vQuery.Fields[I].FieldName, vQuery.Fields[I].Text);
+         Result.Fields := vFields;
+      end;
    finally
-
+      vQuery.Connection.Free;
+      vQuery.Free;
+      Freeandnil (vFields);
    end;
 end;
 
