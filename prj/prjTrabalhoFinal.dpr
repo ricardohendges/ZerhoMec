@@ -11,17 +11,22 @@ uses
   Sistema.Utils.Grid in '..\src\Framework\Utils\Sistema.Utils.Grid.pas',
   Sistema.Utils.Helpers in '..\src\Framework\Utils\Sistema.Utils.Helpers.pas',
   Sistema.Utils.Types in '..\src\Framework\Utils\Sistema.Utils.Types.pas',
-  ufrwUtilsForms in '..\src\Framework\Utils\ufrwUtilsForms.pas',
   ufrmPrincipal in '..\src\ufrmPrincipal.pas' {frmPrincipal},
-  UFRMBusca in '..\src\Framework\Busca\UFRMBusca.pas' {FRMBusca};
+  UFRMBusca in '..\src\Framework\Busca\UFRMBusca.pas' {FRMBusca},
+  UFramework.Logon in '..\src\Framework\Logon\UFramework.Logon.pas',
+  Sistema.Utils.Connection in '..\src\Framework\Utils\Sistema.Utils.Connection.pas';
 
 {$R *.res}
 
+
 begin
-  Application.Initialize;
-  Application.MainFormOnTaskbar := True;
+   if TLogin.Logou then
+   begin
+      Application.Initialize;
+      Application.MainFormOnTaskbar := True;
+      Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TfrmBaseDM, frmBaseDM);
-  Application.CreateForm(TfrmLoginUsuario, frmLoginUsuario);
-  Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.Run;
+   end;
+
 end.

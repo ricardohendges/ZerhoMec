@@ -13,6 +13,7 @@ object frmPrincipal: TfrmPrincipal
   FormStyle = fsMDIForm
   Menu = mmPrincipal
   OldCreateOrder = False
+  WindowState = wsMaximized
   PixelsPerInch = 96
   TextHeight = 13
   object pnlBottonBar: TPanel
