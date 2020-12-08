@@ -15,7 +15,6 @@ type
       FDConnection: TFDConnection;
       TFDPhysFBDriverLink: TFDPhysFBDriverLink;
       TFDGUIxWaitCursor: TFDGUIxWaitCursor;
-      FDPrincipal: TFDQuery;
       procedure DataModuleCreate (Sender: TObject);
    private
     { Private declarations }

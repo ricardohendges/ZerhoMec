@@ -17,11 +17,4 @@ object frmBaseDM: TfrmBaseDM
     Left = 48
     Top = 112
   end
-  object FDPrincipal: TFDQuery
-    Connection = FDConnection
-    SQL.Strings = (
-      'select * from cliente')
-    Left = 144
-    Top = 16
-  end
 end
