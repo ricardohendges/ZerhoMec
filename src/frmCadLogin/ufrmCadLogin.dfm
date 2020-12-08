@@ -1,5 +1,6 @@
 inherited frmCadLogin: TfrmCadLogin
   Caption = 'frmCadLogin'
+  FormStyle = fsNormal
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
@@ -11,44 +12,120 @@ inherited frmCadLogin: TfrmCadLogin
       end
     end
     inherited tsCadastro: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 515
+      ExplicitHeight = 425
       inherited pnlPrincipal: TPanel
+        ExplicitLeft = 1
+        ExplicitTop = 2
         object lblCodigo: TLabel
-          Left = 20
-          Top = 5
-          Width = 33
+          Left = 73
+          Top = 40
+          Width = 37
           Height = 13
-          Caption = 'C'#243'digo'
+          Caption = 'C'#243'digo:'
         end
-        object lblBuscarCliente: TLabel
-          Left = 20
-          Top = 45
-          Width = 123
+        object lblNome: TLabel
+          Left = 33
+          Top = 64
+          Width = 77
           Height = 13
-          Caption = 'Forma de busca de dados'
+          Caption = 'Nome completo:'
         end
-        object edtCodigo: TEdit
-          Left = 20
-          Top = 20
+        object lblUsuario: TLabel
+          Left = 26
+          Top = 91
+          Width = 84
+          Height = 13
+          Caption = 'Nome de usu'#225'rio:'
+        end
+        object lblTipoUsuario: TLabel
+          Left = 64
+          Top = 203
+          Width = 46
+          Height = 13
+          Caption = 'Privil'#233'gio:'
+        end
+        object grpValidarSenha: TGroupBox
+          Left = 24
+          Top = 118
+          Width = 329
+          Height = 79
+          Caption = 'Validar senha:'
+          TabOrder = 3
+          object lblConfirmarSenha: TLabel
+            Left = 3
+            Top = 44
+            Width = 83
+            Height = 13
+            Caption = 'Confirmar senha:'
+          end
+          object lblSenha: TLabel
+            Left = 52
+            Top = 17
+            Width = 34
+            Height = 13
+            Caption = 'Senha:'
+          end
+          object dbEdtSenha: TDBEdit
+            Left = 92
+            Top = 17
+            Width = 188
+            Height = 21
+            DataField = 'USU_SENHA'
+            DataSource = dsPadrao
+            PasswordChar = '*'
+            TabOrder = 0
+          end
+          object edtConfirmarSenha: TEdit
+            Left = 92
+            Top = 44
+            Width = 188
+            Height = 21
+            PasswordChar = '*'
+            TabOrder = 1
+            OnExit = edtConfirmarSenhaExit
+          end
+        end
+        object dbEdtCodigo: TDBEdit
+          Left = 116
+          Top = 37
           Width = 121
           Height = 21
+          DataField = 'USU_ID'
+          DataSource = dsPadrao
           TabOrder = 0
-          Text = 'edtCodigo'
         end
-        object edtDescCliente: TEdit
-          Left = 98
-          Top = 60
-          Width = 287
+        object dbEdtNome: TDBEdit
+          Left = 116
+          Top = 64
+          Width = 121
           Height = 21
+          DataField = 'USU_NOME'
+          DataSource = dsPadrao
           TabOrder = 1
         end
-        object btnBuscarCliente: TButton
-          Left = 20
-          Top = 58
-          Width = 75
-          Height = 25
-          Caption = 'Cliente'
+        object dbEdtUsername: TDBEdit
+          Left = 116
+          Top = 91
+          Width = 121
+          Height = 21
+          DataField = 'USU_LOGIN'
+          DataSource = dsPadrao
           TabOrder = 2
-          OnClick = btnBuscarClienteClick
+        end
+        object dbCbTipoUsuario: TDBComboBox
+          Left = 116
+          Top = 202
+          Width = 188
+          Height = 21
+          DataField = 'USU_TIPO'
+          DataSource = dsPadrao
+          Items.Strings = (
+            'Admin'
+            'Normal')
+          TabOrder = 4
         end
       end
     end
@@ -73,5 +150,9 @@ inherited frmCadLogin: TfrmCadLogin
   inherited frxDBDatasetPrincipal: TfrxDBDataset
     Left = 488
     Top = 8
+  end
+  inherited FDPadrao: TFDQuery
+    Left = 388
+    Top = 40
   end
 end
