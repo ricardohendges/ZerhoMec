@@ -58,6 +58,8 @@ begin
    case ATpBusca of
       tbCLIENTE:
          Result := cSQL_CLIENTE;
+      tbMunicipio:
+         Result := cSQL_MUNICIPIO;
    end;
 end;
 
