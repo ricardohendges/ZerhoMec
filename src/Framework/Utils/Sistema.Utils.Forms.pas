@@ -7,7 +7,7 @@ procedure AbrirForm (AClassName: String);
 implementation
 
 uses
-   Vcl.Forms, System.Classes, Vcl.Dialogs;
+   Vcl.Forms, System.Classes;
 
 procedure AbrirForm (AClassName: String);
 var
@@ -25,10 +25,7 @@ begin
    end;
    vFormClass := TFormClass (FindClass(AClassName));
    vForm := vFormClass.Create (Application);
-   if vForm.ClassName <> AClassName then
-      ShowMessage ('Formulário não encontrado')
-   else
-      vForm.Show;
+   vForm.Show;
 end;
 
 end.

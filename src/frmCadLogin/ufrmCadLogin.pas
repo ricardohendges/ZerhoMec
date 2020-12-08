@@ -3,66 +3,95 @@ unit ufrmCadLogin;
 interface
 
 uses
-   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-   System.Classes, Vcl.Graphics,
-   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ufrmBaseCrud, Data.DB, frxClass,
-   frxDBSet, System.Actions, Vcl.ActnList, Vcl.Buttons, Vcl.DBCtrls, Vcl.Grids,
-   Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls;
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ufrmBaseCrud, Data.DB, frxClass,
+  frxDBSet, System.Actions, Vcl.ActnList, Vcl.Buttons, Vcl.DBCtrls, Vcl.Grids,
+  Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Mask,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
-   TfrmCadLogin = class(TfrmBaseCrud)
-      lblCodigo: TLabel;
-      edtCodigo: TEdit;
-      edtDescCliente: TEdit;
-      lblBuscarCliente: TLabel;
-      btnBuscarCliente: TButton;
-      procedure btnBuscarClienteClick (Sender: TObject);
-   protected
-      function GetSQLPadrao: string; override;
-   end;
+  TfrmCadLogin = class(TfrmBaseCrud)
+    dbEdtCodigo: TDBEdit;
+    dbEdtNome: TDBEdit;
+    dbEdtUsername: TDBEdit;
+    dbEdtSenha: TDBEdit;
+    edtConfirmarSenha: TEdit;
+    grpValidarSenha: TGroupBox;
+    lblConfirmarSenha: TLabel;
+    lblSenha: TLabel;
+    lblCodigo: TLabel;
+    lblNome: TLabel;
+    lblUsuario: TLabel;
+    dbCbTipoUsuario: TDBComboBox;
+    lblTipoUsuario: TLabel;
+    procedure actSalvarExecute(Sender: TObject);
+    procedure edtConfirmarSenhaExit(Sender: TObject);
+  protected
+    function GetSQLPadrao: string; override;
 
-var
-   frmCadLogin: TfrmCadLogin;
+  private
+
+    Procedure ValidouSenha;
+
+  end;
 
 implementation
 
 uses
-   Sistema.Utils.Busca, Sistema.Utils.Types;
+  Sistema.Utils.Busca, Sistema.Utils.Types, Sistema.Utils.Connection;
 
 {$R *.dfm}
 
-
-procedure TfrmCadLogin.btnBuscarClienteClick (Sender: TObject);
-var
-   vResult: TResBusca;
+procedure TfrmCadLogin.actSalvarExecute(Sender: TObject);
 begin
-   inherited;
-   vResult := GSisBusca.BuscaDescricao (tbCLIENTE);
-   try
-      if vResult.Ok then
-      begin
-         // dsPadrao.DataSet.FieldByName ('').AsString := vResult.Fields['DESCRICAO'];
-         edtDescCliente.Text := vResult.Fields['DESCRICAO'];
-      end;
-   finally
-      FreeAndNil (vResult.Fields);
-   end;
+
+  ValidouSenha;
+
+  inherited;
+end;
+
+procedure TfrmCadLogin.edtConfirmarSenhaExit(Sender: TObject);
+begin
+
+  inherited;
+
+  ValidouSenha;
 end;
 
 function TfrmCadLogin.GetSQLPadrao: string;
 begin
-   Result :=
-     ' SELECT USUARIO.USU_ID, USUARIO.USU_LOGIN, USUARIO.USU_SENHA, ' +
-     '        USUARIO.USU_NOME, USUARIO.USU_TIPO ' +
-     '   FROM USUARIO ';
+  Result := ' SELECT USUARIO.USU_ID, USUARIO.USU_LOGIN, USUARIO.USU_SENHA, ' +
+    '        USUARIO.USU_NOME, USUARIO.USU_TIPO ' + '   FROM USUARIO ';
+end;
+
+procedure TfrmCadLogin.ValidouSenha;
+begin
+
+  If dbEdtSenha.Text <> edtConfirmarSenha.Text then
+  Begin
+
+    ShowMessage('As senhas não são iguais');
+
+    edtConfirmarSenha.Clear;
+
+    if dbEdtSenha.CanFocus then
+      dbEdtSenha.SetFocus;
+
+    abort;
+
+  End;
+
 end;
 
 initialization
 
-RegisterClass (TfrmCadLogin);
+RegisterClass(TfrmCadLogin);
 
 finalization
 
-UnRegisterClass (TfrmCadLogin);
+UnRegisterClass(TfrmCadLogin);
 
 end.
