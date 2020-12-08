@@ -31,7 +31,6 @@ var
 
 implementation
 
-
 {$R *.dfm}
 
 
@@ -47,7 +46,15 @@ end;
 
 procedure TfrmPrincipal.tmMenuTimer (Sender: TObject);
 begin
-   lblDataHora.Caption := DateToStr (now());;
+   lblDataHora.Caption := DateToStr (now());
 end;
+
+Initialization
+
+RegisterClass (TfrmPrincipal);
+
+finalization
+
+UnRegisterClass (TfrmPrincipal);
 
 end.
