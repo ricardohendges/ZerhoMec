@@ -39,7 +39,7 @@ type
 implementation
 
 uses
-   Sistema.Utils.Grid, ufrmBaseDM, Sistema.Utils.Connection;
+   Sistema.Utils.Grid, ufrmBaseDM;
 
 {$R *.dfm}
 
@@ -87,8 +87,6 @@ begin
       vPopup.ShowModal;
       Result := vPopup.FDados;
    finally
-      vPopup.FDSelecao.Connection.Free;
-      vPopup.FDados.Fields.Free;
       FreeAndNil (vPopup);
    end;
 end;
@@ -96,7 +94,6 @@ end;
 procedure TFRMBusca.FormCreate (Sender: TObject);
 begin
    FDados.Fields := TDictionary< string, string >.Create;
-   FDSelecao.Connection := GbaseConnection.GetConnection;
 end;
 
 procedure TFRMBusca.FormShow (Sender: TObject);

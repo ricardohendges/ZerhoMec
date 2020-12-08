@@ -26,7 +26,6 @@ function TBaseConnection.GetConnection: TFDConnection;
 var
    vCustom: TFDConnection;
 begin
-   Result := nil;
    if FileExists ('..\\DB\Config.ini') then
    begin
       vCustom := TFDConnection.Create (nil);
