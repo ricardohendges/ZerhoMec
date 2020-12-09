@@ -4,8 +4,12 @@ inherited frmCadLogin: TfrmCadLogin
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
-    ActivePage = tsListagem
+    ActivePage = tsCadastro
     inherited tsListagem: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 515
+      ExplicitHeight = 425
       inherited pnlFiltros: TPanel
         inherited gbCampos: TGroupBox
           inherited cbbCampos: TComboBox
@@ -29,9 +33,7 @@ inherited frmCadLogin: TfrmCadLogin
           inherited EdtPesquisar: TEdit
             ParentShowHint = False
             ShowHint = True
-            Text = ''
             TextHint = 'Pesquisar...'
-            OnChange = EdtPesquisarChange
           end
         end
       end
@@ -47,37 +49,33 @@ inherited frmCadLogin: TfrmCadLogin
       ExplicitWidth = 515
       ExplicitHeight = 425
       inherited pnlPrincipal: TPanel
-        object lblCodigo: TLabel [0]
+        object lblCodigo: TLabel
           Left = 33
           Top = 29
           Width = 37
           Height = 13
           Caption = 'C'#243'digo:'
         end
-        object lblNome: TLabel [1]
+        object lblNome: TLabel
           Left = 33
           Top = 75
           Width = 77
           Height = 13
           Caption = 'Nome completo:'
         end
-        object lblUsuario: TLabel [2]
+        object lblUsuario: TLabel
           Left = 33
           Top = 121
           Width = 84
           Height = 13
           Caption = 'Nome de usu'#225'rio:'
         end
-        object lblTipoUsuario: TLabel [3]
+        object lblTipoUsuario: TLabel
           Left = 33
           Top = 302
           Width = 46
           Height = 13
           Caption = 'Privil'#233'gio:'
-        end
-        inherited dbNavCadastro: TDBNavigator
-          Hints.Strings = ()
-          TabOrder = 5
         end
         object grpValidarSenha: TGroupBox
           Left = 33
