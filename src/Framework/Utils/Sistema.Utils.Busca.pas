@@ -47,6 +47,10 @@ begin
          Result := cSQL_CLIENTE;
       tbMunicipio:
          Result := cSQL_MUNICIPIO;
+      tbEstado:
+         Result := cSQL_Estado;
+      tbMarca:
+         Result := cSQL_MARCA;
    end;
 end;
 

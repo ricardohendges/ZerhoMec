@@ -26,7 +26,7 @@ object frmBaseCrud: TfrmBaseCrud
     Top = 0
     Width = 523
     Height = 453
-    ActivePage = tsCadastro
+    ActivePage = tsListagem
     Align = alClient
     TabOrder = 0
     OnChanging = pgcPrincipalChanging
@@ -56,7 +56,6 @@ object frmBaseCrud: TfrmBaseCrud
             Width = 130
             Height = 21
             TabOrder = 0
-            Text = 'cbbCampos'
           end
         end
         object gbFiltros: TGroupBox
@@ -72,7 +71,14 @@ object frmBaseCrud: TfrmBaseCrud
             Width = 115
             Height = 21
             TabOrder = 0
-            Text = 'cbbFiltros'
+            OnChange = cbbFiltrosChange
+            Items.Strings = (
+              'Igual'
+              'Maior ou igual'
+              'Menor ou igual'
+              'Menor'
+              'Maior'
+              'Contendo')
           end
         end
         object gbPesquisar: TGroupBox
@@ -93,7 +99,8 @@ object frmBaseCrud: TfrmBaseCrud
             Height = 21
             Anchors = [akLeft, akTop, akRight]
             TabOrder = 0
-            Text = 'EdtPesquisar'
+            OnChange = EdtPesquisarChange
+            OnExit = EdtPesquisarExit
           end
         end
       end
