@@ -1,6 +1,5 @@
 inherited frmNotaVenda: TfrmNotaVenda
   Caption = 'Nota de Venda'
-  ExplicitTop = -22
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
@@ -19,8 +18,6 @@ inherited frmNotaVenda: TfrmNotaVenda
       ExplicitWidth = 515
       ExplicitHeight = 425
       inherited pnlPrincipal: TPanel
-        ExplicitLeft = -2
-        ExplicitTop = 2
         object lbl1: TLabel
           Left = 200
           Top = 45
@@ -138,8 +135,6 @@ inherited frmNotaVenda: TfrmNotaVenda
     object tsNotaItemVenda: TTabSheet
       Caption = 'Itens da Venda'
       ImageIndex = 2
-      ExplicitLeft = 5
-      ExplicitTop = 26
       object pnlItemNTV: TPanel
         Left = 0
         Top = 0
@@ -147,8 +142,6 @@ inherited frmNotaVenda: TfrmNotaVenda
         Height = 177
         Align = alTop
         TabOrder = 0
-        ExplicitLeft = -2
-        ExplicitTop = -5
         object lbl8: TLabel
           Left = 20
           Top = 5
@@ -261,14 +254,6 @@ inherited frmNotaVenda: TfrmNotaVenda
           DataSource = dsItemNTV
           TabOrder = 6
         end
-        object dbnvgr1: TDBNavigator
-          Left = 20
-          Top = 146
-          Width = 240
-          Height = 25
-          DataSource = dsItemNTV
-          TabOrder = 7
-        end
       end
       object pnlItemNTVGrid: TPanel
         Left = 0
@@ -277,10 +262,6 @@ inherited frmNotaVenda: TfrmNotaVenda
         Height = 248
         Align = alClient
         TabOrder = 1
-        ExplicitLeft = 64
-        ExplicitTop = 203
-        ExplicitWidth = 185
-        ExplicitHeight = 41
         object dbgrdItemVenda: TDBGrid
           Left = 1
           Top = 1

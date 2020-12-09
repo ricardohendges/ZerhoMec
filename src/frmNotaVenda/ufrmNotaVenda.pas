@@ -48,7 +48,6 @@ type
     lbl12: TLabel;
     lbl13: TLabel;
     lbl14: TLabel;
-    dbnvgr1: TDBNavigator;
     frxdbdtItem: TfrxDBDataset;
     procedure pgcPrincipalChange(Sender: TObject);
     procedure FDQueryItemNTVNewRecord(DataSet: TDataSet);
