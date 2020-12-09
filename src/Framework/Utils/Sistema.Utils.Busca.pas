@@ -20,7 +20,7 @@ var
 implementation
 
 uses
-   UFRMBusca, System.Generics.Collections;
+   UFRMBusca, System.Generics.Collections, Sistema.Utils.Connection;
 
 { TSisBusca }
 
@@ -32,12 +32,9 @@ end;
 function TSisBusca.GetDescricao (ATpBusca: TTpBusca; ACondicao,
   ACodigo: string): TResBusca;
 begin
-   Result.Fields := TDictionary< string, string >.Create;
-   try
-
-   finally
-
-   end;
+   Result.Fields :=
+     GbaseConnection.GetResultFromSQL (GetSQLBusca(ATpBusca) + ACondicao);
+   Result.Ok := Result.Fields.Count > 0;
 end;
 
 function TSisBusca.GetSQLBusca (ATpBusca: TTpBusca): string;
@@ -45,6 +42,14 @@ begin
    case ATpBusca of
       tbCLIENTE:
          Result := cSQL_CLIENTE;
+      tbMunicipio:
+         Result := cSQL_MUNICIPIO;
+      tbEstado:
+         Result := cSQL_Estado;
+      tbMarca:
+         Result := cSQL_MARCA;
+      tbNotaCompra:
+         Result := cSQL_NotaCompra;
    end;
 end;
 
