@@ -50,6 +50,8 @@ begin
          Result := cSQL_MARCA;
       tbNotaCompra:
          Result := cSQL_NotaCompra;
+      tbUndMedida:
+         Result := cSQL_NotaCompra;
    end;
 end;
 
