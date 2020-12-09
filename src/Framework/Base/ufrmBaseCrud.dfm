@@ -711,7 +711,7 @@ object frmBaseCrud: TfrmBaseCrud
     end
   end
   object dsPadrao: TDataSource
-    DataSet = frmBaseDM.FDPrincipal
+    DataSet = FDPadrao
     Left = 448
     Top = 112
   end
@@ -743,5 +743,10 @@ object frmBaseCrud: TfrmBaseCrud
     BCDToCurrency = False
     Left = 448
     Top = 67
+  end
+  object FDPadrao: TFDQuery
+    Connection = frmBaseDM.FDConnection
+    Left = 420
+    Top = 112
   end
 end
