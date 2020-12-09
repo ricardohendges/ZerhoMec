@@ -3,8 +3,6 @@ inherited frmClientes: TfrmClientes
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
-    ExplicitLeft = -6
-    ExplicitTop = -6
     inherited tsListagem: TTabSheet
       inherited pnlInfos: TPanel
         inherited dbnvgrPrincipal: TDBNavigator
@@ -18,82 +16,85 @@ inherited frmClientes: TfrmClientes
       ExplicitWidth = 515
       ExplicitHeight = 425
       inherited pnlPrincipal: TPanel
-        ExplicitLeft = -16
-        ExplicitTop = 3
-        object lblCLIC_COD: TLabel
+        object lblCLIC_COD: TLabel [0]
           Left = 20
-          Top = 5
+          Top = 49
           Width = 33
           Height = 13
           Caption = 'C'#243'digo'
         end
-        object lblCLI_NOME: TLabel
+        object lblCLI_NOME: TLabel [1]
           Left = 20
-          Top = 60
+          Top = 100
           Width = 27
           Height = 13
           Caption = 'Nome'
         end
-        object lblCLI_CPF: TLabel
+        object lblCLI_CPF: TLabel [2]
           Left = 228
-          Top = 60
+          Top = 100
           Width = 19
           Height = 13
           Caption = 'CPF'
         end
-        object lblNASCIMENTO: TLabel
+        object lblNASCIMENTO: TLabel [3]
           Left = 20
-          Top = 115
+          Top = 155
           Width = 96
           Height = 13
           Caption = 'Data de Nascimento'
         end
-        object lblSEXO: TLabel
+        object lblSEXO: TLabel [4]
           Left = 228
-          Top = 115
+          Top = 155
           Width = 24
           Height = 13
           Caption = 'Sexo'
         end
-        object lblTELEFONE: TLabel
+        object lblTELEFONE: TLabel [5]
           Left = 20
-          Top = 170
+          Top = 210
           Width = 42
           Height = 13
           Caption = 'Telefone'
         end
-        object lblEMAIL: TLabel
+        object lblEMAIL: TLabel [6]
           Left = 228
-          Top = 170
+          Top = 210
           Width = 28
           Height = 13
           Caption = 'E-mail'
         end
-        object btnBUSCA_MUN: TSpeedButton
-          Left = 42
-          Top = 239
-          Width = 23
-          Height = 22
+        object btnBUSCA_MUN: TSpeedButton [7]
+          Left = 56
+          Top = 279
+          Width = 25
+          Height = 21
           Caption = '...'
+          OnClick = btnBUSCA_MUNClick
         end
-        object lblMUNICIPIO: TLabel
+        object lblMUNICIPIO: TLabel [8]
           Left = 20
-          Top = 225
+          Top = 265
           Width = 43
           Height = 13
           Caption = 'Municipio'
         end
-        object lblENDERECO: TLabel
+        object lblENDERECO: TLabel [9]
           Left = 20
-          Top = 276
+          Top = 316
           Width = 45
           Height = 13
           Caption = 'Endere'#231'o'
         end
+        inherited dbNavCadastro: TDBNavigator
+          Hints.Strings = ()
+          TabOrder = 9
+        end
         object dbedtCLI_ID: TDBEdit
           Left = 20
-          Top = 20
-          Width = 121
+          Top = 64
+          Width = 33
           Height = 21
           DataField = 'CLI_ID'
           DataSource = dsPadrao
@@ -101,7 +102,7 @@ inherited frmClientes: TfrmClientes
         end
         object dbedtCLI_NOME: TDBEdit
           Left = 20
-          Top = 75
+          Top = 115
           Width = 189
           Height = 21
           DataField = 'CLI_NOME'
@@ -110,7 +111,7 @@ inherited frmClientes: TfrmClientes
         end
         object dbedtCLI_CPF: TDBEdit
           Left = 228
-          Top = 75
+          Top = 115
           Width = 121
           Height = 21
           DataField = 'CLI_CPF'
@@ -119,7 +120,7 @@ inherited frmClientes: TfrmClientes
         end
         object dbedtCLI_NASCIMENTO: TDBEdit
           Left = 20
-          Top = 130
+          Top = 170
           Width = 121
           Height = 21
           DataField = 'CLI_NASCIMENTO'
@@ -128,7 +129,7 @@ inherited frmClientes: TfrmClientes
         end
         object dbedtCLI_SEXO: TDBEdit
           Left = 228
-          Top = 130
+          Top = 170
           Width = 121
           Height = 21
           DataField = 'CLI_SEXO'
@@ -137,7 +138,7 @@ inherited frmClientes: TfrmClientes
         end
         object dbedtCLI_TELEFONE: TDBEdit
           Left = 20
-          Top = 185
+          Top = 225
           Width = 121
           Height = 21
           DataField = 'CLI_TELEFONE'
@@ -146,38 +147,38 @@ inherited frmClientes: TfrmClientes
         end
         object dbedtCLI_EMAIL: TDBEdit
           Left = 228
-          Top = 185
+          Top = 225
           Width = 121
           Height = 21
           DataField = 'CLI_EMAIL'
           DataSource = dsPadrao
           TabOrder = 6
         end
-        object dbedtMUN_ID: TDBEdit
-          Left = 20
-          Top = 240
-          Width = 21
+        object edtMUN_NOME: TDBEdit
+          Left = 87
+          Top = 279
+          Width = 262
           Height = 21
-          DataField = 'MUN_ID'
           DataSource = dsPadrao
           TabOrder = 7
         end
-        object edtMUN_NOME: TDBEdit
-          Left = 66
-          Top = 240
-          Width = 283
-          Height = 21
-          DataSource = dsPadrao
-          TabOrder = 8
-        end
         object dbedtCLI_ENDERECO: TDBEdit
           Left = 20
-          Top = 295
+          Top = 335
           Width = 329
           Height = 21
           DataField = 'CLI_ENDERECO'
           DataSource = dsPadrao
-          TabOrder = 9
+          TabOrder = 8
+        end
+        object dbedtMUN_ID: TDBEdit
+          Left = 20
+          Top = 279
+          Width = 30
+          Height = 21
+          DataField = 'MUN_ID'
+          DataSource = dsPadrao
+          TabOrder = 10
         end
       end
     end
@@ -191,5 +192,8 @@ inherited frmClientes: TfrmClientes
     Datasets = <>
     Variables = <>
     Style = <>
+  end
+  inherited FDPadrao: TFDQuery
+    Left = 404
   end
 end

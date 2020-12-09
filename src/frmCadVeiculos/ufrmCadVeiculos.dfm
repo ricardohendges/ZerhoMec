@@ -43,132 +43,142 @@ inherited frmVeiculos: TfrmVeiculos
       ExplicitHeight = 425
       inherited pnlPrincipal: TPanel
         Width = 523
+        ExplicitLeft = -88
+        ExplicitTop = 35
         ExplicitWidth = 523
-        object lblVEI_ID: TLabel
+        object lblVEI_ID: TLabel [0]
           Left = 20
-          Top = 20
+          Top = 37
           Width = 33
           Height = 13
           Caption = 'C'#243'digo'
         end
-        object lblCLI_ID: TLabel
-          Left = 20
-          Top = 204
+        object lblCLI_ID: TLabel [1]
+          Left = 16
+          Top = 257
           Width = 107
           Height = 13
           Caption = 'Propriet'#225'rio do Veiculo'
         end
-        object lblMARCA_VEICULO: TLabel
+        object lblMARCA_VEICULO: TLabel [2]
           Left = 20
-          Top = 66
+          Top = 92
           Width = 29
           Height = 13
           Caption = 'Marca'
         end
-        object lblANO: TLabel
+        object lblANO: TLabel [3]
           Left = 20
-          Top = 158
+          Top = 202
           Width = 19
           Height = 13
           Caption = 'Ano'
         end
-        object lblVEI_MODELO: TLabel
+        object lblVEI_MODELO: TLabel [4]
           Left = 20
-          Top = 112
+          Top = 147
           Width = 34
           Height = 13
           Caption = 'Modelo'
         end
-        object lblVEI_PLACA: TLabel
+        object lblVEI_PLACA: TLabel [5]
           Left = 71
-          Top = 158
+          Top = 202
           Width = 25
           Height = 13
           Caption = 'Placa'
         end
+        inherited dbNavCadastro: TDBNavigator
+          Width = 521
+          Hints.Strings = ()
+          TabOrder = 7
+          ExplicitWidth = 521
+        end
         object dbedtVEI_ID: TDBEdit
           Left = 20
-          Top = 39
+          Top = 52
           Width = 33
           Height = 21
           DataField = 'VEI_ID'
           DataSource = dsPadrao
           TabOrder = 0
         end
-        object edtCLI_COD: TEdit
-          Left = 20
-          Top = 223
-          Width = 33
-          Height = 21
-          TabOrder = 1
-          Text = 'edtCLI_COD'
-        end
-        object dbedtMAR_ID: TDBEdit
-          Left = 20
-          Top = 85
-          Width = 33
-          Height = 21
-          DataField = 'MAR_ID'
-          DataSource = dsPadrao
-          TabOrder = 2
-        end
         object dbedtVEI_ANO: TDBEdit
           Left = 20
-          Top = 177
+          Top = 217
           Width = 33
           Height = 21
           DataField = 'VEI_ANO'
           DataSource = dsPadrao
-          TabOrder = 3
+          TabOrder = 1
         end
         object dbedtVEI_MODELO: TDBEdit
           Left = 20
-          Top = 131
+          Top = 162
           Width = 184
           Height = 21
           DataField = 'VEI_MODELO'
           DataSource = dsPadrao
-          TabOrder = 4
+          TabOrder = 2
         end
         object dbedtVEI_PLACA: TDBEdit
           Left = 71
-          Top = 177
+          Top = 217
           Width = 56
           Height = 21
           DataField = 'VEI_PLACA'
           DataSource = dsPadrao
-          TabOrder = 5
+          TabOrder = 3
         end
         object dbedtNomeMarca: TDBEdit
-          Left = 83
-          Top = 85
-          Width = 121
+          Left = 90
+          Top = 107
+          Width = 114
           Height = 21
-          TabOrder = 6
+          TabOrder = 4
         end
         object btnPesquisarCliente: TButton
           Left = 59
-          Top = 223
-          Width = 18
+          Top = 276
+          Width = 25
           Height = 21
           Caption = '...'
-          TabOrder = 7
+          TabOrder = 5
           OnClick = btnPesquisarClienteClick
-        end
-        object edtNomeCliente: TDBEdit
-          Left = 83
-          Top = 223
-          Width = 121
-          Height = 21
-          TabOrder = 8
         end
         object btnPesquisaMarca: TButton
           Left = 59
-          Top = 85
-          Width = 18
+          Top = 107
+          Width = 25
           Height = 21
           Caption = '...'
+          TabOrder = 6
+          OnClick = btnPesquisaMarcaClick
+        end
+        object dbedtMAR_ID: TDBEdit
+          Left = 20
+          Top = 107
+          Width = 33
+          Height = 21
+          DataField = 'MAR_ID'
+          DataSource = dsPadrao
+          TabOrder = 8
+        end
+        object dbedtCLI_COD: TDBEdit
+          Left = 20
+          Top = 276
+          Width = 33
+          Height = 21
+          DataSource = dsPadrao
           TabOrder = 9
+        end
+        object dbedtCLI_NOME: TDBEdit
+          Left = 90
+          Top = 276
+          Width = 114
+          Height = 21
+          DataSource = dsPadrao
+          TabOrder = 10
         end
       end
     end
@@ -212,9 +222,20 @@ inherited frmVeiculos: TfrmVeiculos
       Height = 14
     end
   end
+  inherited dsPadrao: TDataSource
+    Left = 456
+    Top = 144
+  end
   inherited frxrprtPrincipal: TfrxReport
     Datasets = <>
     Variables = <>
     Style = <>
+  end
+  inherited FDPadrao: TFDQuery
+    SQL.Strings = (
+      'SELECT *'
+      '  FROM VEICULO')
+    Left = 380
+    Top = 120
   end
 end
