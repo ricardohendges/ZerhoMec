@@ -13,15 +13,18 @@ uses
   FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
-  TfrmMunicÌpio = class(TfrmBaseCrud)
+  TfrmMunic√≠pio = class(TfrmBaseCrud)
     EdtIDMunicipio: TDBEdit;
     EdtIDEstado: TDBEdit;
     EdtMunicipio: TDBEdit;
     EdtIGBE: TDBEdit;
-    ID_MunicÌpio: TLabel;
+    ID_Munic√≠pio: TLabel;
     ID_Estado: TLabel;
-    MunicÌpio: TLabel;
+    Munic√≠pio: TLabel;
     IBGE: TLabel;
+    Button1: TButton;
+    DBEdit1: TDBEdit;
+    procedure Button1Click(Sender: TObject);
   protected
     function GetSQLPadrao: string; override;
     procedure AfterOpen(DataSet: TDataSet); override;
@@ -32,18 +35,18 @@ implementation
 
 {$R *.dfm}
 
-uses Sistema.Utils.Grid;
+uses Sistema.Utils.Grid, Sistema.Utils.Busca, Sistema.Utils.Types;
 
 
-procedure TfrmMunicÌpio.AfterOpen(DataSet: TDataSet);
+procedure TfrmMunic√≠pio.AfterOpen(DataSet: TDataSet);
 var
   vCampos: TGridColunas;
 begin
   vCampos := TGridColunas.Create(dbgrdPrincipal);
   try
-    vCampos.Add('MUN_ID', 'MunicÌpio ID');
+    vCampos.Add('MUN_ID', 'Munic√≠pio ID');
     vCampos.Add('EST_ID', 'Estado ID');
-    vCampos.Add('MUN_NOME', 'MunicÌpio');
+    vCampos.Add('MUN_NOME', 'Munic√≠pio');
     vCampos.Add('MUN_IBGE', 'IBGE');
   finally
     vCampos.Free;
@@ -51,14 +54,31 @@ begin
 
 end;
 
-function TfrmMunicÌpio.GetSQLPadrao: string;
+procedure TfrmMunic√≠pio.Button1Click(Sender: TObject);
+var
+   vResult: TResBusca;
+begin
+   inherited;
+   vResult := GSisBusca.BuscaDescricao (tbESTADO);
+   try
+      if vResult.Ok then
+      begin
+         dsPadrao.DataSet.FieldByName ('').AsString := vResult.Fields['DESCRICAO'];
+
+      end;
+   finally
+      FreeAndNil (vResult.Fields);
+   end;
+end;
+
+function TfrmMunic√≠pio.GetSQLPadrao: string;
 begin
 Result :=
 'SELECT MUNICIPIO.MUN_ID, MUNICIPIO.EST_ID, MUNICIPIO.MUN_NOME, MUNICIPIO.MUN_IBGE FROM MUNICIPIO';
 
 end;
 
-procedure TfrmMunicÌpio.InitializeForm;
+procedure TfrmMunic√≠pio.InitializeForm;
 begin
   inherited;
 FControlFocus.CompFocusInsert := EdtIDMunicipio;
@@ -68,10 +88,10 @@ end;
 
 initialization
 
-RegisterClass(TfrmMunicÌpio);
+RegisterClass(TfrmMunic√≠pio);
 
 finalization
 
-UnRegisterClass(TfrmMunicÌpio);
+UnRegisterClass(TfrmMunic√≠pio);
 
 end.

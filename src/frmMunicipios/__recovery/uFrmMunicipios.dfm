@@ -1,5 +1,5 @@
-inherited frmPagamentos: TfrmPagamentos
-  Caption = 'Pagamentos'
+﻿inherited frmMunicípio: TfrmMunicípio
+  Caption = 'Munic'#237'pio'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
@@ -16,53 +16,87 @@ inherited frmPagamentos: TfrmPagamentos
       ExplicitWidth = 515
       ExplicitHeight = 425
       inherited pnlPrincipal: TPanel
-        object LabelIDPagamento: TLabel
+        ExplicitLeft = -2
+        ExplicitTop = 2
+        object ID_Município: TLabel
           Left = 20
-          Top = 8
-          Width = 75
+          Top = 5
+          Width = 61
           Height = 13
-          Caption = 'Pagamento  ID:'
+          Caption = 'Munic'#237'pio ID:'
         end
-        object LabelDesconto: TLabel
+        object ID_Estado: TLabel
           Left = 20
-          Top = 50
-          Width = 50
+          Top = 47
+          Width = 51
           Height = 13
-          Caption = 'Descri'#231#227'o:'
+          Caption = 'Estado ID:'
         end
-        object LabelObservacao: TLabel
+        object Município: TLabel
           Left = 20
-          Top = 90
-          Width = 62
+          Top = 87
+          Width = 47
           Height = 13
-          Caption = 'Observa'#231#227'o:'
+          Caption = 'Munic'#237'pio:'
         end
-        object EdtPagamento: TDBEdit
+        object IBGE: TLabel
           Left = 20
-          Top = 25
+          Top = 127
+          Width = 27
+          Height = 13
+          Caption = 'IBGE:'
+        end
+        object EdtIDEstado: TDBEdit
+          Left = 20
+          Top = 60
           Width = 121
           Height = 21
-          DataField = 'FPA_ID'
-          DataSource = dsPadrao
-          TabOrder = 0
-        end
-        object EdtDescricao: TDBEdit
-          Left = 20
-          Top = 65
-          Width = 121
-          Height = 21
-          DataField = 'FPA_DESC'
+          DataField = 'EST_ID'
           DataSource = dsPadrao
           TabOrder = 1
         end
-        object EdtObservacao: TDBEdit
+        object EdtMunicipio: TDBEdit
           Left = 20
-          Top = 105
+          Top = 100
           Width = 121
           Height = 21
-          DataField = 'FPA_OBS'
+          DataField = 'MUN_NOME'
           DataSource = dsPadrao
           TabOrder = 2
+        end
+        object EdtIGBE: TDBEdit
+          Left = 20
+          Top = 142
+          Width = 121
+          Height = 21
+          DataField = 'MUN_IBGE'
+          DataSource = dsPadrao
+          TabOrder = 3
+        end
+        object EdtIDMunicipio: TDBEdit
+          Left = 20
+          Top = 20
+          Width = 121
+          Height = 21
+          DataField = 'MUN_ID'
+          DataSource = dsPadrao
+          TabOrder = 0
+        end
+        object Button1: TButton
+          Left = 168
+          Top = 58
+          Width = 75
+          Height = 25
+          Caption = 'Button1'
+          TabOrder = 4
+          OnClick = Button1Click
+        end
+        object DBEdit1: TDBEdit
+          Left = 272
+          Top = 60
+          Width = 121
+          Height = 21
+          TabOrder = 5
         end
       end
     end
@@ -73,8 +107,6 @@ inherited frmPagamentos: TfrmPagamentos
     end
   end
   inherited frxrprtPrincipal: TfrxReport
-    ReportOptions.CreateDate = 44145.902236655100000000
-    ReportOptions.LastChange = 44145.902236655100000000
     Datasets = <
       item
         DataSet = frxDBDatasetPrincipal
@@ -98,69 +130,78 @@ inherited frmPagamentos: TfrmPagamentos
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
         Frame.Typ = []
-        Height = 37.795300000000000000
+        Height = 52.913420000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
-        object Memo7: TfrxMemoView
+        object Memo9: TfrxMemoView
           AllowVectorExport = True
           Left = 226.771800000000000000
-          Top = -3.779530000000000000
-          Width = 272.126160000000000000
-          Height = 30.236240000000000000
+          Top = 11.338590000000000000
+          Width = 253.228510000000000000
+          Height = 34.015770000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -27
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Frame.Width = 4.000000000000000000
           Memo.UTF8W = (
-            'Tela de Pagamentos')
+            'Tela de Munic'#237'pios')
           ParentFont = False
         end
       end
       object Header1: TfrxHeader
         FillType = ftBrush
         Frame.Typ = []
-        Height = 37.795300000000000000
-        Top = 117.165430000000000000
+        Height = 34.015770000000000000
+        Top = 132.283550000000000000
         Width = 718.110700000000000000
-        object Memo4: TfrxMemoView
-          AllowVectorExport = True
-          Left = 7.559060000000000000
-          Top = 7.559060000000000000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Pagamento ID')
-        end
         object Memo5: TfrxMemoView
           AllowVectorExport = True
-          Left = 166.299320000000000000
-          Top = 7.559060000000000000
-          Width = 94.488250000000000000
+          Left = 7.559060000000000000
+          Top = 3.779530000000000000
+          Width = 83.149660000000000000
           Height = 18.897650000000000000
           Frame.Typ = []
           Memo.UTF8W = (
-            'Descri'#231#227'o')
+            'Munic'#237'pio ID')
         end
         object Memo6: TfrxMemoView
           AllowVectorExport = True
-          Left = 340.157700000000000000
-          Top = 7.559060000000000000
-          Width = 94.488250000000000000
+          Left = 151.181200000000000000
+          Top = 3.779530000000000000
+          Width = 68.031540000000000000
           Height = 18.897650000000000000
           Frame.Typ = []
           Memo.UTF8W = (
-            'Observa'#231#227'o')
+            'Estado ID')
+        end
+        object Memo7: TfrxMemoView
+          AllowVectorExport = True
+          Left = 294.803340000000000000
+          Top = 3.779530000000000000
+          Width = 56.692950000000000000
+          Height = 18.897650000000000000
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Estado')
+        end
+        object Memo8: TfrxMemoView
+          AllowVectorExport = True
+          Left = 476.220780000000000000
+          Top = 3.779530000000000000
+          Width = 45.354360000000000000
+          Height = 18.897650000000000000
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'IBGE')
         end
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
         Frame.Typ = []
-        Height = 34.015770000000000000
-        Top = 177.637910000000000000
+        Height = 26.456710000000000000
+        Top = 188.976500000000000000
         Width = 718.110700000000000000
         DataSet = frxDBDatasetPrincipal
         DataSetName = 'dsPadrao'
@@ -168,32 +209,42 @@ inherited frmPagamentos: TfrmPagamentos
         object Memo1: TfrxMemoView
           AllowVectorExport = True
           Left = 7.559060000000000000
-          Top = 7.559060000000000000
+          Top = 3.779530000000000000
+          Width = 136.063080000000000000
+          Height = 18.897650000000000000
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[dsPadrao."MUN_ID"]')
+        end
+        object Memo2: TfrxMemoView
+          AllowVectorExport = True
+          Left = 151.181200000000000000
+          Top = 3.779530000000000000
           Width = 132.283550000000000000
           Height = 18.897650000000000000
           Frame.Typ = []
           Memo.UTF8W = (
-            '[dsPadrao."FPA_ID"]')
-        end
-        object Memo2: TfrxMemoView
-          AllowVectorExport = True
-          Left = 166.299320000000000000
-          Top = 7.559060000000000000
-          Width = 154.960730000000000000
-          Height = 18.897650000000000000
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[dsPadrao."FPA_DESC"]')
+            '[dsPadrao."EST_ID"]')
         end
         object Memo3: TfrxMemoView
           AllowVectorExport = True
-          Left = 340.157700000000000000
-          Top = 7.559060000000000000
-          Width = 143.622140000000000000
+          Left = 294.803340000000000000
+          Top = 3.779530000000000000
+          Width = 166.299320000000000000
           Height = 18.897650000000000000
           Frame.Typ = []
           Memo.UTF8W = (
-            '[dsPadrao."FPA_OBS"]')
+            '[dsPadrao."MUN_NOME"]')
+        end
+        object Memo4: TfrxMemoView
+          AllowVectorExport = True
+          Left = 476.220780000000000000
+          Top = 3.779530000000000000
+          Width = 158.740260000000000000
+          Height = 18.897650000000000000
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[dsPadrao."MUN_IBGE"]')
         end
       end
     end
