@@ -52,14 +52,14 @@ begin
   vCampos := TGridColunas.Create(dbgrdPrincipal);
   try
     vCampos.Add('FOR_ID', 'ID Fornecedor');
-    vCampos.Add('MUN_ID', 'ID Endereço');
+    vCampos.Add('MUN_ID', 'ID EndereÃ§o');
     vCampos.Add('FOR_NOME', 'Nome');
     vCampos.Add('FOR_CNPJ', 'CNJP');
-    vCampos.Add('FOR_SITUACAO', 'Situação');
-    vCampos.Add('FOR_INSCRICAO', 'Inscrição');
+    vCampos.Add('FOR_SITUACAO', 'SituaÃ§Ã£o');
+    vCampos.Add('FOR_INSCRICAO', 'InscriÃ§Ã£o');
     vCampos.Add('FOR_TELEFONE', 'Telefone');
     vCampos.Add('FOR_EMAIL', 'E-Mail');
-    vCampos.Add('FOR_ENDERECO', 'Endereço');
+    vCampos.Add('FOR_ENDERECO', 'EndereÃ§o');
   finally
     vCampos.Free;
   end;
@@ -75,7 +75,7 @@ begin
    try
       if vResult.Ok then
       begin
-         dsPadrao.DataSet.FieldByName ('').AsString := vResult.Fields['DESCRICAO'];
+         dsPadrao.DataSet.FieldByName ('FORNECEDOR.MUN_ID').AsString := vResult.Fields['MUNICIPIO'];
       end;
    finally
       FreeAndNil (vResult.Fields);

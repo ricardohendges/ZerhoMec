@@ -2,7 +2,7 @@ object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
   Caption = 'Menu principal'
-  ClientHeight = 875
+  ClientHeight = 825
   ClientWidth = 1155
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,7 +17,7 @@ object frmPrincipal: TfrmPrincipal
   TextHeight = 13
   object pnlBottonBar: TPanel
     Left = 0
-    Top = 859
+    Top = 809
     Width = 1155
     Height = 16
     Margins.Top = 0
@@ -60,6 +60,22 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Cadastro'
       object miCadastroUsuario: TMenuItem
         Action = ActCadUsuario
+      end
+      object Marcas1: TMenuItem
+        Caption = 'Marcas'
+        OnClick = Marcas1Click
+      end
+      object Estado1: TMenuItem
+        Caption = 'Estado'
+        OnClick = Estado1Click
+      end
+      object UnidadeMedidas1: TMenuItem
+        Caption = 'Unidade Medidas'
+        OnClick = UnidadeMedidas1Click
+      end
+      object Fornecedor1: TMenuItem
+        Caption = 'Fornecedor'
+        OnClick = Fornecedor1Click
       end
     end
   end

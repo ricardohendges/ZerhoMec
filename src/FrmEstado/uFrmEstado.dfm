@@ -3,7 +3,6 @@ inherited FrmEstado: TFrmEstado
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
-    ActivePage = tsCadastro
     inherited tsListagem: TTabSheet
       inherited pnlInfos: TPanel
         inherited dbnvgrPrincipal: TDBNavigator
@@ -17,13 +16,11 @@ inherited FrmEstado: TFrmEstado
       ExplicitWidth = 515
       ExplicitHeight = 425
       inherited pnlPrincipal: TPanel
-        ExplicitLeft = -2
-        ExplicitTop = -2
         object LabelEstID: TLabel
           Left = 25
           Top = 0
           Width = 11
-          Height = 29
+          Height = 13
           Caption = 'ID'
         end
         object LabelEstSigla: TLabel
@@ -118,17 +115,10 @@ inherited FrmEstado: TFrmEstado
         Height = 64.252010000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
-      end
-      object Header1: TfrxHeader
-        FillType = ftBrush
-        Frame.Typ = []
-        Height = 41.574830000000000000
-        Top = 143.622140000000000000
-        Width = 718.110700000000000000
         object Memo1: TfrxMemoView
           AllowVectorExport = True
-          Left = 109.606370000000000000
-          Top = 3.779530000000000000
+          Left = 132.283550000000000000
+          Top = 11.338590000000000000
           Width = 464.882190000000000000
           Height = 26.456710000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -139,6 +129,77 @@ inherited FrmEstado: TFrmEstado
           Frame.Typ = []
           Memo.UTF8W = (
             'Relat'#243'rio de estados cadastrados')
+          ParentFont = False
+        end
+      end
+      object Header1: TfrxHeader
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 41.574830000000000000
+        Top = 143.622140000000000000
+        Width = 718.110700000000000000
+        object Memo6: TfrxMemoView
+          AllowVectorExport = True
+          Left = 26.456710000000000000
+          Top = 15.118120000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'ID Estado')
+          ParentFont = False
+        end
+        object Memo7: TfrxMemoView
+          AllowVectorExport = True
+          Left = 173.858380000000000000
+          Top = 15.118120000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Estado Nome ')
+          ParentFont = False
+        end
+        object Memo8: TfrxMemoView
+          AllowVectorExport = True
+          Left = 325.039580000000000000
+          Top = 15.118120000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Sigla')
+          ParentFont = False
+        end
+        object Memo9: TfrxMemoView
+          AllowVectorExport = True
+          Left = 495.118430000000000000
+          Top = 15.118120000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Pais Nome')
           ParentFont = False
         end
       end

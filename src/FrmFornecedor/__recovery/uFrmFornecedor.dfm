@@ -16,8 +16,8 @@ inherited FrmFornecedor: TFrmFornecedor
       ExplicitWidth = 515
       ExplicitHeight = 425
       inherited pnlPrincipal: TPanel
-        ExplicitLeft = -2
-        ExplicitTop = 2
+        ExplicitLeft = 1
+        ExplicitTop = -2
         object LabelForneID: TLabel
           Left = 20
           Top = 1

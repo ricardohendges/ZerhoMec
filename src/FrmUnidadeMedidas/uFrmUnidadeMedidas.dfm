@@ -3,7 +3,6 @@ inherited FrmUnidadeMedidas: TFrmUnidadeMedidas
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
-    ActivePage = tsCadastro
     inherited tsListagem: TTabSheet
       inherited pnlInfos: TPanel
         inherited dbnvgrPrincipal: TDBNavigator
@@ -17,6 +16,8 @@ inherited FrmUnidadeMedidas: TFrmUnidadeMedidas
       ExplicitWidth = 515
       ExplicitHeight = 425
       inherited pnlPrincipal: TPanel
+        ExplicitLeft = 1
+        ExplicitTop = 2
         object LabelUndMedidaABR: TLabel
           Left = 20
           Top = 0
@@ -81,15 +82,31 @@ inherited FrmUnidadeMedidas: TFrmUnidadeMedidas
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
         Frame.Typ = []
-        Height = 22.677180000000000000
+        Height = 49.133890000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
+        object Memo1: TfrxMemoView
+          AllowVectorExport = True
+          Left = 75.590600000000000000
+          Top = 3.779530000000000000
+          Width = 634.961040000000000000
+          Height = 34.015770000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -27
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Relat'#243'rio de unidade de medidas cadastradas')
+          ParentFont = False
+        end
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
         Frame.Typ = []
         Height = 18.897650000000000000
-        Top = 170.078850000000000000
+        Top = 196.535560000000000000
         Width = 718.110700000000000000
         DataSet = frxDBDatasetPrincipal
         DataSetName = 'dsPadrao'
@@ -132,22 +149,38 @@ inherited FrmUnidadeMedidas: TFrmUnidadeMedidas
         FillType = ftBrush
         Frame.Typ = []
         Height = 45.354360000000000000
-        Top = 102.047310000000000000
+        Top = 128.504020000000000000
         Width = 718.110700000000000000
-        object Memo1: TfrxMemoView
+        object Memo4: TfrxMemoView
           AllowVectorExport = True
-          Left = 64.252010000000000000
-          Top = 3.779530000000000000
-          Width = 634.961040000000000000
-          Height = 34.015770000000000000
+          Left = 26.456710000000000000
+          Top = 15.118120000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -27
+          Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
           Memo.UTF8W = (
-            'Relat'#243'rio de unidade de medidas cadastradas')
+            'Abrevia'#231#227'o')
+          ParentFont = False
+        end
+        object Memo5: TfrxMemoView
+          AllowVectorExport = True
+          Left = 188.976500000000000000
+          Top = 15.118120000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Nome')
           ParentFont = False
         end
       end
