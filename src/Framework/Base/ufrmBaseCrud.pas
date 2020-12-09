@@ -12,6 +12,8 @@ uses
    FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Sistema.Utils.Types;
 
 type
+   tpConsulta = (coIgual, coMaiorIgual, coMenorIgual, coMenor, coMaior, coContendo);
+
    TfrmBaseCrud = class(TForm)
       pgcPrincipal: TPageControl;
       tsCadastro: TTabSheet;
@@ -60,8 +62,14 @@ type
       procedure actImprimirExecute (Sender: TObject);
       procedure FormShow (Sender: TObject);
       procedure pgcPrincipalChanging (Sender: TObject; var AllowChange: Boolean);
+      procedure cbbFiltrosChange (Sender: TObject);
+      procedure EdtPesquisarChange (Sender: TObject);
+      procedure EdtPesquisarExit (Sender: TObject);
    Private
       Procedure ControlaLabelStatusFrom;
+      procedure CarregaCombos;
+      procedure FiltrarDados;
+      function GetCondicao: string;
    protected
     { Functions de validações e etc. }
       function GetDataSetAtivo: TFDQuery; virtual;
@@ -167,6 +175,23 @@ begin
    ManterEstadoBotoes;
 end;
 
+procedure TfrmBaseCrud.CarregaCombos;
+var
+   I: Integer;
+begin
+   if FDPadrao.FieldCount > 0 then
+   begin
+      for I := 0 to Pred(FDPadrao.FieldCount) do
+         cbbCampos.Items.Add (FDPadrao.Fields[I].FieldName);
+      cbbCampos.ItemIndex := 0;
+   end;
+end;
+
+procedure TfrmBaseCrud.cbbFiltrosChange (Sender: TObject);
+begin
+   EdtPesquisar.Clear;
+end;
+
 { ---------------------------------------------------
   ## Autor: Djonatan
   ## Object: Atualizar descri��o da label com status do DataSet.
@@ -199,11 +224,36 @@ begin
          FControlFocus.CompFocusEdit.SetFocus;
 end;
 
+procedure TfrmBaseCrud.EdtPesquisarChange (Sender: TObject);
+begin
+   FiltrarDados;
+end;
+
+procedure TfrmBaseCrud.EdtPesquisarExit (Sender: TObject);
+begin
+   FiltrarDados;
+end;
+
 procedure TfrmBaseCrud.ExcluirRegistro;
 begin
    DataSetAtivo.Delete;
    DataSetAtivo.Refresh;
    ManterEstadoBotoes;
+end;
+
+procedure TfrmBaseCrud.FiltrarDados;
+var
+   vField: string;
+begin
+   FDPadrao.Filtered := False;
+   if EdtPesquisar.Text <> EmptyStr then
+   begin
+      vField := cbbCampos.Items[cbbCampos.ItemIndex];
+      if FDPadrao.FindField (vField).DataType = ftString then
+         FDPadrao.Filter := vField + GetCondicao + QuotedStr ('%' + EdtPesquisar.Text + '%')
+      else
+         FDPadrao.Filter := vField + GetCondicao + EdtPesquisar.Text;
+   end;
 end;
 
 procedure TfrmBaseCrud.FormClose (Sender: TObject; var Action: TCloseAction);
@@ -214,6 +264,24 @@ end;
 procedure TfrmBaseCrud.FormShow (Sender: TObject);
 begin
    InitializeForm;
+end;
+
+function TfrmBaseCrud.GetCondicao: string;
+begin
+   case tpConsulta (cbbFiltros.ItemIndex) of
+      coIgual:
+         Result := ' = ';
+      coMaiorIgual:
+         Result := ' >= ';
+      coMenorIgual:
+         Result := ' <= ';
+      coMenor:
+         Result := ' < ';
+      coMaior:
+         Result := ' > ';
+      coContendo:
+         Result := ' LIKE ';
+   end;
 end;
 
 function TfrmBaseCrud.GetDataSetAtivo: TFDQuery;
@@ -238,7 +306,7 @@ end;
 
 procedure TfrmBaseCrud.Imprimir;
 begin
-  // Realiza a visualização do relatório.
+   // Realiza a visualização do relatório.
    frxrprtPrincipal.ShowReport ();
 end;
 
@@ -248,6 +316,7 @@ begin
    DataSetAtivo.AfterOpen := AfterOpen;
    DataSetAtivo.LoadSQL (GetSQLPadrao);
    ManterEstadoBotoes;
+   CarregaCombos;
 end;
 
 procedure TfrmBaseCrud.InserirRegistro;
