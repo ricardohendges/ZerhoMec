@@ -16,7 +16,7 @@ type
       Fields: TDictionary< String, string >;
    end;
 
-   TTpBusca = (tbCLIENTE, tbMunicipio);
+   TTpBusca = (tbCLIENTE, tbMunicipio, tbEstado);
 
 const
    cSQL_CLIENTE =
@@ -28,6 +28,11 @@ const
 
    cSQL_MUNICIPIO =
      ' SELECT MUN_ID AS ID, MUN_NOME AS DESCRICAO FROM MUNICIPIO ';
+
+   cSQL_Estado =
+     ' SELECT ESTADO.EST_ID, ESTADO.EST_NOME, ESTADO.EST_SIGLA, '+
+     '        ESTADO.PAIS_NOME '+
+     '   FROM ESTADO ';
 
 implementation
 
