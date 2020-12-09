@@ -10,7 +10,8 @@
     <Transaction>2020/12/01 20:42:05.000.253,=C:\Projeto\ZerhoMec\prj\Unit1.pas</Transaction>
     <Transaction>2020/12/01 20:42:42.000.727,C:\Projeto\ZerhoMec\src\Framework\Utils\Sistema.Utils.UtilsDB.pas=C:\Projeto\ZerhoMec\prj\Unit1.pas</Transaction>
     <Transaction>2020/12/01 22:32:35.000.446,C:\Projeto\ZerhoMec\src\Framework\Utils\Sistema.Utils.UtilsDB.pas=</Transaction>
-  </Transactions>  <ProjectSortOrder AutoSort="0" SortType="0">
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="..\..\ZerhoMec"/>
     <File Path="..\src"/>
     <File Path="..\src\Framework"/>

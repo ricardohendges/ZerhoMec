@@ -29,6 +29,7 @@ type
     lblTipoUsuario: TLabel;
     procedure actSalvarExecute(Sender: TObject);
     procedure edtConfirmarSenhaExit(Sender: TObject);
+    procedure EdtPesquisarChange(Sender: TObject);
   protected
     function GetSQLPadrao: string; override;
 
@@ -55,22 +56,51 @@ end;
 
 procedure TfrmCadLogin.edtConfirmarSenhaExit(Sender: TObject);
 begin
-
   inherited;
 
   ValidouSenha;
 end;
 
+procedure TfrmCadLogin.EdtPesquisarChange(Sender: TObject);
+var
+  LCampoFiltro, LOperador: String;
+begin
+
+  inherited;
+
+  case cbbCampos.ItemIndex of
+
+    0:
+      LCampoFiltro := 'UPPER(USU_ID) = ' + EdtPesquisar.Text;
+
+    1:
+      LCampoFiltro := 'UPPER(USU_NOME) LIKE(''%' +
+        UpperCase(EdtPesquisar.Text) + '%'')';
+
+    2:
+      LCampoFiltro := 'UPPER(USU_TIPO) LIKE(''%' +
+        UpperCase(EdtPesquisar.Text) + '%'')';
+
+  end;
+
+  FDPadrao.Filtered := False;
+  FDPadrao.Filter := LCampoFiltro + LOperador;
+  FDPadrao.Filtered := True;
+
+end;
+
 function TfrmCadLogin.GetSQLPadrao: string;
 begin
-  Result := ' SELECT USUARIO.USU_ID, USUARIO.USU_LOGIN, USUARIO.USU_SENHA, ' +
-    '        USUARIO.USU_NOME, USUARIO.USU_TIPO ' + '   FROM USUARIO ';
+
+  Result := ' SELECT USUARIO.USU_ID, USUARIO.USU_LOGIN, USUARIO.USU_SENHA, USUARIO.USU_NOME, USUARIO.USU_TIPO FROM USUARIO ';
+
 end;
 
 procedure TfrmCadLogin.ValidouSenha;
 begin
 
-  If dbEdtSenha.Text <> edtConfirmarSenha.Text then
+  If (dbEdtSenha.Text <> edtConfirmarSenha.Text) And
+    (dsPadrao.DataSet.State = dsInsert) then
   Begin
 
     ShowMessage('As senhas não são iguais');

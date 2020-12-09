@@ -4,7 +4,37 @@ inherited frmCadLogin: TfrmCadLogin
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
+    ActivePage = tsListagem
     inherited tsListagem: TTabSheet
+      inherited pnlFiltros: TPanel
+        inherited gbCampos: TGroupBox
+          inherited cbbCampos: TComboBox
+            ItemIndex = 1
+            Text = 'Nome'
+            Items.Strings = (
+              'C'#243'digo'
+              'Nome'
+              'Tipo')
+          end
+        end
+        inherited gbFiltros: TGroupBox
+          inherited cbbFiltros: TComboBox
+            ItemIndex = 0
+            Text = 'Cont'#233'm'
+            Items.Strings = (
+              'Cont'#233'm')
+          end
+        end
+        inherited gbPesquisar: TGroupBox
+          inherited EdtPesquisar: TEdit
+            ParentShowHint = False
+            ShowHint = True
+            Text = ''
+            TextHint = 'Pesquisar...'
+            OnChange = EdtPesquisarChange
+          end
+        end
+      end
       inherited pnlInfos: TPanel
         inherited dbnvgrPrincipal: TDBNavigator
           Hints.Strings = ()
@@ -17,60 +47,62 @@ inherited frmCadLogin: TfrmCadLogin
       ExplicitWidth = 515
       ExplicitHeight = 425
       inherited pnlPrincipal: TPanel
-        ExplicitLeft = 1
-        ExplicitTop = 2
-        object lblCodigo: TLabel
-          Left = 73
-          Top = 40
+        object lblCodigo: TLabel [0]
+          Left = 33
+          Top = 29
           Width = 37
           Height = 13
           Caption = 'C'#243'digo:'
         end
-        object lblNome: TLabel
+        object lblNome: TLabel [1]
           Left = 33
-          Top = 64
+          Top = 75
           Width = 77
           Height = 13
           Caption = 'Nome completo:'
         end
-        object lblUsuario: TLabel
-          Left = 26
-          Top = 91
+        object lblUsuario: TLabel [2]
+          Left = 33
+          Top = 121
           Width = 84
           Height = 13
           Caption = 'Nome de usu'#225'rio:'
         end
-        object lblTipoUsuario: TLabel
-          Left = 64
-          Top = 203
+        object lblTipoUsuario: TLabel [3]
+          Left = 33
+          Top = 302
           Width = 46
           Height = 13
           Caption = 'Privil'#233'gio:'
         end
+        inherited dbNavCadastro: TDBNavigator
+          Hints.Strings = ()
+          TabOrder = 5
+        end
         object grpValidarSenha: TGroupBox
-          Left = 24
-          Top = 118
+          Left = 33
+          Top = 173
           Width = 329
-          Height = 79
+          Height = 124
           Caption = 'Validar senha:'
           TabOrder = 3
           object lblConfirmarSenha: TLabel
-            Left = 3
-            Top = 44
+            Left = 12
+            Top = 66
             Width = 83
             Height = 13
             Caption = 'Confirmar senha:'
           end
           object lblSenha: TLabel
-            Left = 52
+            Left = 12
             Top = 17
             Width = 34
             Height = 13
             Caption = 'Senha:'
           end
           object dbEdtSenha: TDBEdit
-            Left = 92
-            Top = 17
+            Left = 12
+            Top = 36
             Width = 188
             Height = 21
             DataField = 'USU_SENHA'
@@ -79,8 +111,8 @@ inherited frmCadLogin: TfrmCadLogin
             TabOrder = 0
           end
           object edtConfirmarSenha: TEdit
-            Left = 92
-            Top = 44
+            Left = 12
+            Top = 85
             Width = 188
             Height = 21
             PasswordChar = '*'
@@ -89,17 +121,17 @@ inherited frmCadLogin: TfrmCadLogin
           end
         end
         object dbEdtCodigo: TDBEdit
-          Left = 116
-          Top = 37
-          Width = 121
+          Left = 33
+          Top = 48
+          Width = 88
           Height = 21
           DataField = 'USU_ID'
           DataSource = dsPadrao
           TabOrder = 0
         end
         object dbEdtNome: TDBEdit
-          Left = 116
-          Top = 64
+          Left = 33
+          Top = 94
           Width = 121
           Height = 21
           DataField = 'USU_NOME'
@@ -107,8 +139,8 @@ inherited frmCadLogin: TfrmCadLogin
           TabOrder = 1
         end
         object dbEdtUsername: TDBEdit
-          Left = 116
-          Top = 91
+          Left = 33
+          Top = 140
           Width = 121
           Height = 21
           DataField = 'USU_LOGIN'
@@ -116,8 +148,8 @@ inherited frmCadLogin: TfrmCadLogin
           TabOrder = 2
         end
         object dbCbTipoUsuario: TDBComboBox
-          Left = 116
-          Top = 202
+          Left = 33
+          Top = 322
           Width = 188
           Height = 21
           DataField = 'USU_TIPO'
@@ -140,19 +172,37 @@ inherited frmCadLogin: TfrmCadLogin
       AutoCheck = True
     end
   end
+  inherited dsPadrao: TDataSource
+    Left = 488
+    Top = 104
+  end
   inherited frxrprtPrincipal: TfrxReport
-    Left = 456
-    Top = 8
+    Left = 488
+    Top = 152
     Datasets = <>
     Variables = <>
     Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
+      PaperSize = 9
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+    end
   end
   inherited frxDBDatasetPrincipal: TfrxDBDataset
     Left = 488
     Top = 8
   end
   inherited FDPadrao: TFDQuery
-    Left = 388
-    Top = 40
+    Left = 484
+    Top = 56
   end
 end
