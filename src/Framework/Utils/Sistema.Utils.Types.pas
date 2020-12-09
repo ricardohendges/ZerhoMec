@@ -16,7 +16,7 @@ type
       Fields: TDictionary< String, string >;
    end;
 
-   TTpBusca = (tbCLIENTE);
+   TTpBusca = (tbCLIENTE, tbMunicipio, tbEstado, tbMarca, tbNotaCompra);
 
 const
    cSQL_CLIENTE =
@@ -25,6 +25,21 @@ const
      '   FROM CLIENTE CLI ' +
      '        INNER JOIN MUNICIPIO M ON M.MUN_ID = CLI.MUN_ID ' +
      '        INNER JOIN ESTADO E ON E.EST_ID = M.EST_ID ';
+
+   cSQL_MUNICIPIO =
+     ' SELECT MUN_ID AS ID, MUN_NOME AS DESCRICAO FROM MUNICIPIO ';
+
+   cSQL_Estado =
+     ' SELECT ESTADO.EST_ID, ESTADO.EST_NOME, ESTADO.EST_SIGLA, '+
+     '        ESTADO.PAIS_NOME '+
+     '   FROM ESTADO ';
+
+   cSQL_MARCA =
+      'SELECT MARCA.MAR_ID, MARCA.MAR_NOME, MARCA.MAR_TIPO FROM MARCA';
+
+   cSQL_NotaCompra =
+      'SELECT NOTA_COMPRA.NTC_ID AS ID, NOTA_COMPRA.ntc_situacao AS DESCRICAO '+
+      '  FROM NOTA_COMPRA' ;
 
 implementation
 
