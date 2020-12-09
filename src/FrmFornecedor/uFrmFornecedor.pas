@@ -7,7 +7,10 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ufrmBaseCrud, Data.DB, frxClass,
   frxDBSet, System.Actions, Vcl.ActnList, Vcl.Buttons, Vcl.DBCtrls, Vcl.Grids,
-  Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Mask;
+  Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Mask,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TFrmFornecedor = class(TfrmBaseCrud)
@@ -68,26 +71,30 @@ end;
 
 procedure TFrmFornecedor.btnPesquisaFornecedorClick(Sender: TObject);
 var
-   vResult: TResBusca;
+  vResult: TResBusca;
 begin
-   inherited;
-   vResult := GSisBusca.BuscaDescricao (tbCLIENTE);
-   try
-      if vResult.Ok then
-      begin
-         dsPadrao.DataSet.FieldByName ('').AsString := vResult.Fields['DESCRICAO'];
-      end;
-   finally
-      FreeAndNil (vResult.Fields);
-   end;
+  inherited;
+  vResult := GSisBusca.BuscaDescricao(tbMUNICIPIO);
+  try
+    if vResult.Ok then
+    begin
+      dsPadrao.DataSet.FieldByName('MUN_ID').AsString := vResult.Fields['ID'];
+      dsPadrao.DataSet.FieldByName('MUN_NOME').AsString := vResult.Fields['DESCRICAO'];
+    end;
+  finally
+    FreeAndNil(vResult.Fields);
+  end;
 end;
 
 function TFrmFornecedor.GetSQLPadrao: string;
 begin
-  Result := ' SELECT FORNECEDOR.FOR_ID, ' + ' FORNECEDOR.MUN_ID, ' +
-    ' FORNECEDOR.FOR_NOME, ' + ' FORNECEDOR.FOR_CNPJ, ' + ' FORNECEDOR.FOR_SITUACAO, '
-    + ' FORNECEDOR.FOR_INSCRICAO, ' + ' FORNECEDOR.FOR_TELEFONE, ' +
-    ' FORNECEDOR.FOR_EMAIL, ' + ' FORNECEDOR.FOR_ENDERECO ' + ' FROM FORNECEDOR ';
+  Result := ' SELECT FORNECEDOR.FOR_ID, ' + ' FORNECEDOR.MUN_ID, ' + ' FORNECEDOR.FOR_NOME, ' +
+' FORNECEDOR.FOR_CNPJ, ' + ' FORNECEDOR.FOR_SITUACAO, ' + ' FORNECEDOR.FOR_INSCRICAO, ' +
+' FORNECEDOR.FOR_TELEFONE, ' +  ' FORNECEDOR.FOR_EMAIL, ' + ' FORNECEDOR.FOR_ENDERECO, ' +
+' MUNICIPIO.MUN_NOME ' +
+' FROM FORNECEDOR ' +
+' INNER JOIN '+ ' MUNICIPIO ' +
+' ON ' + ' FORNECEDOR.MUN_ID ' + ' = ' +' MUNICIPIO.MUN_ID ';
 end;
 
 procedure TFrmFornecedor.InitializeForm;

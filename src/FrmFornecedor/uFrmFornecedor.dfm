@@ -16,7 +16,7 @@ inherited FrmFornecedor: TFrmFornecedor
       ExplicitWidth = 515
       ExplicitHeight = 425
       inherited pnlPrincipal: TPanel
-        ExplicitLeft = -2
+        ExplicitLeft = 1
         ExplicitTop = 2
         object LabelForneID: TLabel
           Left = 20
@@ -162,6 +162,15 @@ inherited FrmFornecedor: TFrmFornecedor
           DataSource = dsPadrao
           TabOrder = 8
         end
+        object btnPesquisaFornecedor: TButton
+          Left = 163
+          Top = 78
+          Width = 75
+          Height = 25
+          Caption = 'Pesquisa'
+          TabOrder = 9
+          OnClick = btnPesquisaFornecedorClick
+        end
       end
     end
   end
@@ -169,15 +178,6 @@ inherited FrmFornecedor: TFrmFornecedor
     inherited lblStatusForm: TLabel
       Height = 14
     end
-  end
-  object btnPesquisaFornecedor: TButton [3]
-    Left = 163
-    Top = 102
-    Width = 75
-    Height = 25
-    Caption = 'Pesquisa'
-    TabOrder = 3
-    OnClick = btnPesquisaFornecedorClick
   end
   inherited frxrprtPrincipal: TfrxReport
     ReportOptions.CreateDate = 44145.902236655100000000
