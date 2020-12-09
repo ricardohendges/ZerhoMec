@@ -32,6 +32,7 @@ type
     dbnvgr1: TDBNavigator;
     dsItens: TDataSource;
     qryItens: TFDQuery;
+    frxDataSetItens: TfrxDBDataset;
     procedure actSalvarExecute(Sender: TObject);
   protected
     function GetSQLPadrao: string; override;
