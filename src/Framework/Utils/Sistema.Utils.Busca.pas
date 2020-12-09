@@ -48,6 +48,8 @@ begin
          Result := cSQL_Estado;
       tbMarca:
          Result := cSQL_MARCA;
+      tbNotaCompra:
+         Result := cSQL_NotaCompra;
    end;
 end;
 
