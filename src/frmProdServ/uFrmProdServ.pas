@@ -30,6 +30,8 @@ type
     LabelProValor: TLabel;
     LabelProCusto: TLabel;
     LabelProSituacao: TLabel;
+    Button1: TButton;
+    procedure Button1Click(Sender: TObject);
   protected
     function GetSQLPadrao: string; override;
     procedure AfterOpen(DataSet: TDataSet); override;
@@ -40,7 +42,7 @@ implementation
 
 {$R *.dfm}
 
-uses Sistema.Utils.Grid;
+uses Sistema.Utils.Grid, Sistema.Utils.Busca, Sistema.Utils.Types;
 
 procedure TfrmProdServ.AfterOpen(DataSet: TDataSet);
 var
@@ -62,10 +64,32 @@ begin
 
 end;
 
+procedure TfrmProdServ.Button1Click(Sender: TObject);
+var
+   vResult: TResBusca;
+begin
+   inherited;
+   vResult := GSisBusca.BuscaDescricao (tbNotaCompra);
+   try
+      if vResult.Ok then
+      begin
+         dsPadrao.DataSet.FieldByName ('UND_NOME').AsString := vResult.Fields['DESCRICAO'];
+         dsPadrao.DataSet.FieldByName ('UND_ABR').AsString := vResult.Fields['ID'];
+
+      end;
+   finally
+      FreeAndNil (vResult.Fields);
+   end;
+end;
+
 function TfrmProdServ.GetSQLPadrao: string;
 begin
 Result :=
-'SELECT PRODUTO_SERVICO.PRO_ID, PRODUTO_SERVICO.UND_ABR, PRODUTO_SERVICO.MAR_ID, PRODUTO_SERVICO.PRO_NOME, PRODUTO_SERVICO.PRO_TIPO, PRODUTO_SERVICO.PRO_VALOR, PRODUTO_SERVICO.PRO_CUSTO, PRODUTO_SERVICO.PRO_SITUACAO FROM PRODUTO_SERVICO';
+' SELECT UNIDADE_MEDIDA.UND_NOME, PRODUTO_SERVICO.UND_ABR, PRODUTO_SERVICO.PRO_ID,' +
+' PRODUTO_SERVICO.UND_ABR, PRODUTO_SERVICO.MAR_ID, PRODUTO_SERVICO.PRO_NOME,' +
+' PRODUTO_SERVICO.PRO_TIPO, PRODUTO_SERVICO.PRO_VALOR, PRODUTO_SERVICO.PRO_CUSTO, PRODUTO_SERVICO.PRO_SITUACAO' +
+' FROM PRODUTO_SERVICO' +
+' JOIN UNIDADE_MEDIDA  on PRODUTO_SERVICO.UND_ABR = UNIDADE_MEDIDA.UND_ABR';
 
 end;
 

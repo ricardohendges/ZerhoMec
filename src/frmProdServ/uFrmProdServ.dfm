@@ -3,7 +3,12 @@ inherited frmProdServ: TfrmProdServ
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
+    ActivePage = tsCadastro
     inherited tsListagem: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 515
+      ExplicitHeight = 425
       inherited pnlInfos: TPanel
         inherited dbnvgrPrincipal: TDBNavigator
           Hints.Strings = ()
@@ -92,7 +97,7 @@ inherited frmProdServ: TfrmProdServ
         end
         object EdtMarca: TDBEdit
           Left = 20
-          Top = 105
+          Top = 104
           Width = 121
           Height = 21
           DataField = 'MAR_ID'
@@ -143,6 +148,15 @@ inherited frmProdServ: TfrmProdServ
           DataField = 'PRO_SITUACAO'
           DataSource = dsPadrao
           TabOrder = 7
+        end
+        object Button1: TButton
+          Left = 176
+          Top = 62
+          Width = 75
+          Height = 25
+          Caption = 'Button1'
+          TabOrder = 8
+          OnClick = Button1Click
         end
       end
     end

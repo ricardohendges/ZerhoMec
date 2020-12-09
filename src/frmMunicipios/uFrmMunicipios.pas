@@ -13,7 +13,7 @@ uses
   FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
-  TfrmMunicípio = class(TfrmBaseCrud)
+  TfrmMunicipio = class(TfrmBaseCrud)
     EdtIDMunicipio: TDBEdit;
     EdtIDEstado: TDBEdit;
     EdtMunicipio: TDBEdit;
@@ -22,6 +22,8 @@ type
     ID_Estado: TLabel;
     Município: TLabel;
     IBGE: TLabel;
+    Button1: TButton;
+    procedure Button1Click(Sender: TObject);
   protected
     function GetSQLPadrao: string; override;
     procedure AfterOpen(DataSet: TDataSet); override;
@@ -32,10 +34,10 @@ implementation
 
 {$R *.dfm}
 
-uses Sistema.Utils.Grid;
+uses Sistema.Utils.Grid, Sistema.Utils.Busca, Sistema.Utils.Types;
 
 
-procedure TfrmMunicípio.AfterOpen(DataSet: TDataSet);
+procedure TfrmMunicipio.AfterOpen(DataSet: TDataSet);
 var
   vCampos: TGridColunas;
 begin
@@ -51,14 +53,32 @@ begin
 
 end;
 
-function TfrmMunicípio.GetSQLPadrao: string;
+procedure TfrmMunicipio.Button1Click(Sender: TObject);
+var
+   vResult: TResBusca;
+begin
+   inherited;
+   vResult := GSisBusca.BuscaDescricao (tbEstado);
+   try
+      if vResult.Ok then
+      begin
+         dsPadrao.DataSet.FieldByName ('est_nome').AsString := vResult.Fields['DESCRICAO'];
+          dsPadrao.DataSet.FieldByName ('est_ID').AsString := vResult.Fields['ID'];
+
+      end;
+   finally
+      FreeAndNil (vResult.Fields);
+   end;
+end;
+
+function TfrmMunicipio.GetSQLPadrao: string;
 begin
 Result :=
-'SELECT MUNICIPIO.MUN_ID, MUNICIPIO.EST_ID, MUNICIPIO.MUN_NOME, MUNICIPIO.MUN_IBGE FROM MUNICIPIO';
+'SELECT MUNICIPIO.MUN_ID, MUNICIPIO.EST_ID, MUNICIPIO.MUN_NOME, MUNICIPIO.MUN_IBGE, e.EST_NOME FROM MUNICIPIO  JOIN estado e on e.EST_ID = municipio.EST_ID';
 
 end;
 
-procedure TfrmMunicípio.InitializeForm;
+procedure TfrmMunicipio.InitializeForm;
 begin
   inherited;
 FControlFocus.CompFocusInsert := EdtIDMunicipio;
@@ -68,10 +88,10 @@ end;
 
 initialization
 
-RegisterClass(TfrmMunicípio);
+RegisterClass(TfrmMunicipio);
 
 finalization
 
-UnRegisterClass(TfrmMunicípio);
+UnRegisterClass(TfrmMunicipio);
 
 end.

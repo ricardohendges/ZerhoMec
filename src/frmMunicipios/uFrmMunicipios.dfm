@@ -1,9 +1,14 @@
-﻿inherited frmMunicípio: TfrmMunicípio
+﻿inherited frmMunicipio: TfrmMunicipio
   Caption = 'Munic'#237'pio'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
+    ActivePage = tsCadastro
     inherited tsListagem: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 515
+      ExplicitHeight = 425
       inherited pnlInfos: TPanel
         inherited dbnvgrPrincipal: TDBNavigator
           Hints.Strings = ()
@@ -16,6 +21,8 @@
       ExplicitWidth = 515
       ExplicitHeight = 425
       inherited pnlPrincipal: TPanel
+        ExplicitLeft = -2
+        ExplicitTop = 2
         object ID_Município: TLabel
           Left = 20
           Top = 5
@@ -79,6 +86,15 @@
           DataField = 'MUN_ID'
           DataSource = dsPadrao
           TabOrder = 0
+        end
+        object Button1: TButton
+          Left = 168
+          Top = 58
+          Width = 75
+          Height = 25
+          Caption = 'Button1'
+          TabOrder = 4
+          OnClick = Button1Click
         end
       end
     end
