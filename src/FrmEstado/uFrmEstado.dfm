@@ -1,5 +1,5 @@
-inherited frmMarca: TfrmMarca
-  Caption = 'Marca'
+inherited FrmEstado: TFrmEstado
+  Caption = 'Estado'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
@@ -16,53 +16,69 @@ inherited frmMarca: TfrmMarca
       ExplicitWidth = 515
       ExplicitHeight = 425
       inherited pnlPrincipal: TPanel
-        object LabelMarCOD: TLabel
+        object LabelEstID: TLabel
+          Left = 25
+          Top = 0
+          Width = 11
+          Height = 13
+          Caption = 'ID'
+        end
+        object LabelEstSigla: TLabel
           Left = 20
-          Top = 5
-          Width = 33
+          Top = 112
+          Width = 22
           Height = 13
-          Caption = 'C'#243'digo'
+          Caption = 'Sigla'
         end
-        object LabelMarTipo: TLabel
-          Left = 22
-          Top = 45
-          Width = 20
+        object LabelEstNome: TLabel
+          Left = 20
+          Top = 55
+          Width = 63
           Height = 13
-          Caption = 'Tipo'
+          Caption = 'Nome Estado'
         end
-        object LabelMarNome: TLabel
-          Left = 22
-          Top = 93
-          Width = 27
+        object LabelEstPaisNome: TLabel
+          Left = 20
+          Top = 176
+          Width = 49
           Height = 13
-          Caption = 'Nome'
+          Caption = 'Pais Nome'
         end
-        object edtCodigo: TDBEdit
+        object EditEstID: TDBEdit
           Left = 20
           Top = 20
           Width = 121
           Height = 21
-          DataField = 'MAR_ID'
+          DataField = 'EST_ID'
           DataSource = dsPadrao
           TabOrder = 0
         end
-        object edtNome: TDBEdit
+        object EditEstNome: TDBEdit
           Left = 20
-          Top = 112
-          Width = 227
+          Top = 74
+          Width = 121
           Height = 21
-          DataField = 'MAR_NOME'
+          DataField = 'EST_NOME'
           DataSource = dsPadrao
           TabOrder = 1
         end
-        object edtTipo: TDBEdit
+        object EditEstSigla: TDBEdit
           Left = 20
-          Top = 64
-          Width = 227
+          Top = 131
+          Width = 121
           Height = 21
-          DataField = 'MAR_TIPO'
+          DataField = 'EST_SIGLA'
           DataSource = dsPadrao
           TabOrder = 2
+        end
+        object EditEstPaisNome: TDBEdit
+          Left = 20
+          Top = 195
+          Width = 121
+          Height = 21
+          DataField = 'PAIS_NOME'
+          DataSource = dsPadrao
+          TabOrder = 3
         end
       end
     end
@@ -72,12 +88,7 @@ inherited frmMarca: TfrmMarca
       Height = 14
     end
   end
-  inherited actlstPrincipal: TActionList
-    Left = 184
-  end
   inherited frxrprtPrincipal: TfrxReport
-    Left = 296
-    Top = 240
     Datasets = <
       item
         DataSet = frxDBDatasetPrincipal
@@ -101,15 +112,15 @@ inherited frmMarca: TfrmMarca
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
         Frame.Typ = []
-        Height = 41.574830000000000000
+        Height = 64.252010000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo1: TfrxMemoView
           AllowVectorExport = True
-          Left = 120.944960000000000000
-          Top = 3.779530000000000000
-          Width = 517.795610000000000000
-          Height = 37.795300000000000000
+          Left = 132.283550000000000000
+          Top = 11.338590000000000000
+          Width = 464.882190000000000000
+          Height = 26.456710000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -27
@@ -117,35 +128,19 @@ inherited frmMarca: TfrmMarca
           Font.Style = [fsBold]
           Frame.Typ = []
           Memo.UTF8W = (
-            'Relat'#243'rio de marcas cadastradas')
+            'Relat'#243'rio de estados cadastrados')
           ParentFont = False
         end
       end
-      object PageHeader1: TfrxPageHeader
+      object Header1: TfrxHeader
         FillType = ftBrush
         Frame.Typ = []
         Height = 41.574830000000000000
-        Top = 83.149660000000000000
+        Top = 143.622140000000000000
         Width = 718.110700000000000000
-        object Memo5: TfrxMemoView
-          AllowVectorExport = True
-          Left = 22.677180000000000000
-          Top = 15.118120000000000000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'ID')
-          ParentFont = False
-        end
         object Memo6: TfrxMemoView
           AllowVectorExport = True
-          Left = 181.417440000000000000
+          Left = 26.456710000000000000
           Top = 15.118120000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -156,12 +151,12 @@ inherited frmMarca: TfrmMarca
           Font.Style = [fsBold]
           Frame.Typ = []
           Memo.UTF8W = (
-            'Nome')
+            'ID Estado')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
           AllowVectorExport = True
-          Left = 340.157700000000000000
+          Left = 173.858380000000000000
           Top = 15.118120000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -172,56 +167,103 @@ inherited frmMarca: TfrmMarca
           Font.Style = [fsBold]
           Frame.Typ = []
           Memo.UTF8W = (
-            'Tipo')
+            'Estado Nome ')
+          ParentFont = False
+        end
+        object Memo8: TfrxMemoView
+          AllowVectorExport = True
+          Left = 325.039580000000000000
+          Top = 15.118120000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Sigla')
+          ParentFont = False
+        end
+        object Memo9: TfrxMemoView
+          AllowVectorExport = True
+          Left = 495.118430000000000000
+          Top = 15.118120000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Pais Nome')
           ParentFont = False
         end
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
         Frame.Typ = []
-        Height = 22.677180000000000000
-        Top = 185.196970000000000000
+        Height = 26.456710000000000000
+        Top = 207.874150000000000000
         Width = 718.110700000000000000
         DataSet = frxDBDatasetPrincipal
         DataSetName = 'dsPadrao'
         RowCount = 0
         object Memo2: TfrxMemoView
           AllowVectorExport = True
-          Left = 3.779530000000000000
-          Width = 139.842610000000000000
+          Left = 7.559060000000000000
+          Top = 3.779530000000000000
+          Width = 143.622140000000000000
           Height = 18.897650000000000000
           Frame.Typ = []
           Memo.UTF8W = (
-            '[dsPadrao."MAR_ID"]')
+            '[dsPadrao."EST_ID"]')
         end
         object Memo3: TfrxMemoView
           AllowVectorExport = True
-          Left = 151.181200000000000000
-          Width = 162.519790000000000000
+          Left = 158.740260000000000000
+          Top = 3.779530000000000000
+          Width = 154.960730000000000000
           Height = 18.897650000000000000
           Frame.Typ = []
           Memo.UTF8W = (
-            '[dsPadrao."MAR_NOME"]')
+            '[dsPadrao."EST_NOME"]')
         end
         object Memo4: TfrxMemoView
           AllowVectorExport = True
           Left = 321.260050000000000000
-          Width = 158.740260000000000000
+          Top = 3.779530000000000000
+          Width = 154.960730000000000000
           Height = 18.897650000000000000
           Frame.Typ = []
           Memo.UTF8W = (
-            '[dsPadrao."MAR_TIPO"]')
+            '[dsPadrao."EST_SIGLA"]')
+        end
+        object Memo5: TfrxMemoView
+          AllowVectorExport = True
+          Left = 483.779840000000000000
+          Top = 3.779530000000000000
+          Width = 162.519790000000000000
+          Height = 18.897650000000000000
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[dsPadrao."PAIS_NOME"]')
         end
         object Shape1: TfrxShapeView
           AllowVectorExport = True
-          Width = 483.779840000000000000
-          Height = 22.677180000000000000
+          Left = 3.779530000000000000
+          Width = 650.079160000000000000
+          Height = 26.456710000000000000
           Frame.Typ = []
         end
         object Line1: TfrxLineView
           AllowVectorExport = True
-          Left = 143.622140000000000000
-          Height = 22.677180000000000000
+          Left = 154.960730000000000000
+          Top = 26.456710000000000000
+          Height = -26.456710000000000000
           Color = clBlack
           Frame.Typ = []
           Diagonal = True
@@ -229,16 +271,22 @@ inherited frmMarca: TfrmMarca
         object Line2: TfrxLineView
           AllowVectorExport = True
           Left = 317.480520000000000000
-          Height = 22.677180000000000000
+          Top = 26.456710000000000000
+          Height = -26.456710000000000000
+          Color = clBlack
+          Frame.Typ = []
+          Diagonal = True
+        end
+        object Line3: TfrxLineView
+          AllowVectorExport = True
+          Left = 480.000310000000000000
+          Top = 26.456710000000000000
+          Height = -26.456710000000000000
           Color = clBlack
           Frame.Typ = []
           Diagonal = True
         end
       end
     end
-  end
-  inherited frxDBDatasetPrincipal: TfrxDBDataset
-    Left = 416
-    Top = 243
   end
 end

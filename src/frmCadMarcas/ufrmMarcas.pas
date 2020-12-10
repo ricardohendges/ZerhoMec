@@ -17,7 +17,9 @@ type
     edtCodigo: TDBEdit;
     edtNome: TDBEdit;
     edtTipo: TDBEdit;
-    Label1: TLabel;
+    LabelMarCOD: TLabel;
+    LabelMarTipo: TLabel;
+    LabelMarNome: TLabel;
   protected
     procedure InitializeForm; override;
     function GetSQLPadrao: string; override;
