@@ -1,8 +1,9 @@
-inherited frmMarca: TfrmMarca
-  Caption = 'Marca'
+inherited FrmMarcas: TFrmMarcas
+  Caption = 'Marcas'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
+    ActivePage = tsCadastro
     inherited tsListagem: TTabSheet
       inherited pnlInfos: TPanel
         inherited dbnvgrPrincipal: TDBNavigator
@@ -16,51 +17,51 @@ inherited frmMarca: TfrmMarca
       ExplicitWidth = 515
       ExplicitHeight = 425
       inherited pnlPrincipal: TPanel
-        object LabelMarCOD: TLabel
+        object LabelMarcasID: TLabel
           Left = 20
-          Top = 5
-          Width = 33
+          Top = 1
+          Width = 11
           Height = 13
-          Caption = 'C'#243'digo'
+          Caption = 'ID'
         end
-        object LabelMarTipo: TLabel
-          Left = 22
-          Top = 45
-          Width = 20
-          Height = 13
-          Caption = 'Tipo'
-        end
-        object LabelMarNome: TLabel
-          Left = 22
-          Top = 93
+        object LabelMarcasNome: TLabel
+          Left = 20
+          Top = 61
           Width = 27
           Height = 13
           Caption = 'Nome'
         end
-        object edtCodigo: TDBEdit
+        object LabelMarcasTipo: TLabel
+          Left = 20
+          Top = 117
+          Width = 20
+          Height = 13
+          Caption = 'Tipo'
+        end
+        object edtMarcasNome: TDBEdit
+          Left = 20
+          Top = 80
+          Width = 121
+          Height = 21
+          DataField = 'MAR_NOME'
+          DataSource = dsPadrao
+          TabOrder = 0
+        end
+        object edtMarcasTipo: TDBEdit
+          Left = 20
+          Top = 136
+          Width = 121
+          Height = 21
+          DataField = 'MAR_TIPO'
+          DataSource = dsPadrao
+          TabOrder = 1
+        end
+        object edtMarcasID: TDBEdit
           Left = 20
           Top = 20
           Width = 121
           Height = 21
           DataField = 'MAR_ID'
-          DataSource = dsPadrao
-          TabOrder = 0
-        end
-        object edtNome: TDBEdit
-          Left = 20
-          Top = 112
-          Width = 227
-          Height = 21
-          DataField = 'MAR_NOME'
-          DataSource = dsPadrao
-          TabOrder = 1
-        end
-        object edtTipo: TDBEdit
-          Left = 20
-          Top = 64
-          Width = 227
-          Height = 21
-          DataField = 'MAR_TIPO'
           DataSource = dsPadrao
           TabOrder = 2
         end
@@ -72,12 +73,7 @@ inherited frmMarca: TfrmMarca
       Height = 14
     end
   end
-  inherited actlstPrincipal: TActionList
-    Left = 184
-  end
   inherited frxrprtPrincipal: TfrxReport
-    Left = 296
-    Top = 240
     Datasets = <
       item
         DataSet = frxDBDatasetPrincipal
@@ -101,15 +97,21 @@ inherited frmMarca: TfrmMarca
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
         Frame.Typ = []
-        Height = 41.574830000000000000
+        Height = 22.677180000000000000
         Top = 18.897650000000000000
+        Width = 718.110700000000000000
+      end
+      object Header1: TfrxHeader
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 41.574830000000000000
+        Top = 102.047310000000000000
         Width = 718.110700000000000000
         object Memo1: TfrxMemoView
           AllowVectorExport = True
-          Left = 120.944960000000000000
-          Top = 3.779530000000000000
-          Width = 517.795610000000000000
-          Height = 37.795300000000000000
+          Left = 98.267780000000000000
+          Width = 464.882190000000000000
+          Height = 26.456710000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -27
@@ -121,66 +123,11 @@ inherited frmMarca: TfrmMarca
           ParentFont = False
         end
       end
-      object PageHeader1: TfrxPageHeader
-        FillType = ftBrush
-        Frame.Typ = []
-        Height = 41.574830000000000000
-        Top = 83.149660000000000000
-        Width = 718.110700000000000000
-        object Memo5: TfrxMemoView
-          AllowVectorExport = True
-          Left = 22.677180000000000000
-          Top = 15.118120000000000000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'ID')
-          ParentFont = False
-        end
-        object Memo6: TfrxMemoView
-          AllowVectorExport = True
-          Left = 181.417440000000000000
-          Top = 15.118120000000000000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Nome')
-          ParentFont = False
-        end
-        object Memo7: TfrxMemoView
-          AllowVectorExport = True
-          Left = 340.157700000000000000
-          Top = 15.118120000000000000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Tipo')
-          ParentFont = False
-        end
-      end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
         Frame.Typ = []
-        Height = 22.677180000000000000
-        Top = 185.196970000000000000
+        Height = 18.897650000000000000
+        Top = 166.299320000000000000
         Width = 718.110700000000000000
         DataSet = frxDBDatasetPrincipal
         DataSetName = 'dsPadrao'
@@ -188,7 +135,7 @@ inherited frmMarca: TfrmMarca
         object Memo2: TfrxMemoView
           AllowVectorExport = True
           Left = 3.779530000000000000
-          Width = 139.842610000000000000
+          Width = 143.622140000000000000
           Height = 18.897650000000000000
           Frame.Typ = []
           Memo.UTF8W = (
@@ -197,7 +144,7 @@ inherited frmMarca: TfrmMarca
         object Memo3: TfrxMemoView
           AllowVectorExport = True
           Left = 151.181200000000000000
-          Width = 162.519790000000000000
+          Width = 173.858380000000000000
           Height = 18.897650000000000000
           Frame.Typ = []
           Memo.UTF8W = (
@@ -205,8 +152,8 @@ inherited frmMarca: TfrmMarca
         end
         object Memo4: TfrxMemoView
           AllowVectorExport = True
-          Left = 321.260050000000000000
-          Width = 158.740260000000000000
+          Left = 328.819110000000000000
+          Width = 151.181200000000000000
           Height = 18.897650000000000000
           Frame.Typ = []
           Memo.UTF8W = (
@@ -214,31 +161,28 @@ inherited frmMarca: TfrmMarca
         end
         object Shape1: TfrxShapeView
           AllowVectorExport = True
-          Width = 483.779840000000000000
-          Height = 22.677180000000000000
+          Left = 3.779530000000000000
+          Width = 487.559370000000000000
+          Height = 18.897650000000000000
           Frame.Typ = []
         end
         object Line1: TfrxLineView
           AllowVectorExport = True
-          Left = 143.622140000000000000
-          Height = 22.677180000000000000
+          Left = 147.401670000000000000
+          Height = 18.897650000000000000
           Color = clBlack
           Frame.Typ = []
           Diagonal = True
         end
         object Line2: TfrxLineView
           AllowVectorExport = True
-          Left = 317.480520000000000000
-          Height = 22.677180000000000000
+          Left = 325.039580000000000000
+          Height = 18.897650000000000000
           Color = clBlack
           Frame.Typ = []
           Diagonal = True
         end
       end
     end
-  end
-  inherited frxDBDatasetPrincipal: TfrxDBDataset
-    Left = 416
-    Top = 243
   end
 end

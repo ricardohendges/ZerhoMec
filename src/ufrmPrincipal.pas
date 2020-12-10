@@ -18,8 +18,16 @@ type
       actListMenu: TActionList;
       ActCadUsuario: TAction;
       miCadastroUsuario: TMenuItem;
+    Marcas1: TMenuItem;
+    Estado1: TMenuItem;
+    UnidadeMedidas1: TMenuItem;
+    Fornecedor1: TMenuItem;
       procedure tmMenuTimer (Sender: TObject);
       procedure ActCadUsuarioExecute (Sender: TObject);
+    procedure Marcas1Click(Sender: TObject);
+    procedure Estado1Click(Sender: TObject);
+    procedure UnidadeMedidas1Click(Sender: TObject);
+    procedure Fornecedor1Click(Sender: TObject);
    private
     { Private declarations }
    public
@@ -30,6 +38,7 @@ var
    frmPrincipal: TfrmPrincipal;
 
 implementation
+
 
 {$R *.dfm}
 
@@ -44,17 +53,29 @@ begin
    AbrirForm ('TfrmCadLogin');
 end;
 
-procedure TfrmPrincipal.tmMenuTimer (Sender: TObject);
+procedure TfrmPrincipal.Estado1Click(Sender: TObject);
 begin
-   lblDataHora.Caption := DateToStr (now());
+ AbrirForm ('TfrmEstado');
 end;
 
-Initialization
+procedure TfrmPrincipal.Fornecedor1Click(Sender: TObject);
+begin
+ AbrirForm ('TfrmFornecedor');
+end;
 
-RegisterClass (TfrmPrincipal);
+procedure TfrmPrincipal.Marcas1Click(Sender: TObject);
+begin
+ AbrirForm ('TfrmMarca');
+end;
 
-finalization
+procedure TfrmPrincipal.tmMenuTimer (Sender: TObject);
+begin
+   lblDataHora.Caption := DateToStr (now());;
+end;
 
-UnRegisterClass (TfrmPrincipal);
+procedure TfrmPrincipal.UnidadeMedidas1Click(Sender: TObject);
+begin
+ AbrirForm ('TFrmUnidadeMedidas');
+end;
 
 end.
