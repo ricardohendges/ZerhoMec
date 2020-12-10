@@ -75,7 +75,6 @@ object frmPrincipal: TfrmPrincipal
       end
       object Fornecedor1: TMenuItem
         Caption = 'Fornecedor'
-        OnClick = Fornecedor1Click
       end
     end
   end
@@ -90,6 +89,10 @@ object frmPrincipal: TfrmPrincipal
     object ActCadUsuario: TAction
       Caption = 'Usu'#225'rio'
       OnExecute = ActCadUsuarioExecute
+    end
+    object actNotaVenda: TAction
+      Caption = 'Nota de Venda'
+      OnExecute = actNotaVendaExecute
     end
   end
 end
