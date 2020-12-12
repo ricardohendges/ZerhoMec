@@ -5,10 +5,6 @@
   inherited pgcPrincipal: TPageControl
     ActivePage = tsCadastro
     inherited tsListagem: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 515
-      ExplicitHeight = 425
       inherited pnlInfos: TPanel
         inherited dbnvgrPrincipal: TDBNavigator
           Hints.Strings = ()
@@ -21,8 +17,6 @@
       ExplicitWidth = 515
       ExplicitHeight = 425
       inherited pnlPrincipal: TPanel
-        ExplicitLeft = -2
-        ExplicitTop = 2
         object ID_Município: TLabel
           Left = 20
           Top = 5
@@ -97,11 +91,6 @@
           OnClick = Button1Click
         end
       end
-    end
-  end
-  inherited pnlMenuBotton: TPanel
-    inherited lblStatusForm: TLabel
-      Height = 14
     end
   end
   inherited frxrprtPrincipal: TfrxReport

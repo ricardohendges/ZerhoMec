@@ -3,7 +3,12 @@ inherited frmMarca: TfrmMarca
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
+    ActivePage = tsCadastro
     inherited tsListagem: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 515
+      ExplicitHeight = 425
       inherited pnlInfos: TPanel
         inherited dbnvgrPrincipal: TDBNavigator
           Hints.Strings = ()

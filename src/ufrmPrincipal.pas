@@ -18,16 +18,42 @@ type
       actListMenu: TActionList;
       ActCadUsuario: TAction;
       miCadastroUsuario: TMenuItem;
+    NotadeCompra1: TMenuItem;
+    Produtos1: TMenuItem;
     Marcas1: TMenuItem;
+    Movimentaes1: TMenuItem;
+    Financeiro1: TMenuItem;
+    N1: TMenuItem;
+    Clientes1: TMenuItem;
+    Fornecedores1: TMenuItem;
+    N3: TMenuItem;
+    Pessoa1: TMenuItem;
+    Localizao1: TMenuItem;
     Estado1: TMenuItem;
-    UnidadeMedidas1: TMenuItem;
-    Fornecedor1: TMenuItem;
+    Municipio1: TMenuItem;
+    UnidadeMedida1: TMenuItem;
+    FormaPagto1: TMenuItem;
+    N2: TMenuItem;
+    NotadeVenda1: TMenuItem;
+    ContasaReceber1: TMenuItem;
+    ContaPagar1: TMenuItem;
+    Veculos1: TMenuItem;
+    Cliente1: TMenuItem;
       procedure tmMenuTimer (Sender: TObject);
       procedure ActCadUsuarioExecute (Sender: TObject);
-    procedure Marcas1Click(Sender: TObject);
+    procedure NotadeCompra1Click(Sender: TObject);
+    procedure Clientes1Click(Sender: TObject);
+    procedure Fornecedores1Click(Sender: TObject);
     procedure Estado1Click(Sender: TObject);
-    procedure UnidadeMedidas1Click(Sender: TObject);
-    procedure Fornecedor1Click(Sender: TObject);
+    procedure Municipio1Click(Sender: TObject);
+    procedure Marcas1Click(Sender: TObject);
+    procedure Produtos1Click(Sender: TObject);
+    procedure UnidadeMedida1Click(Sender: TObject);
+    procedure FormaPagto1Click(Sender: TObject);
+    procedure NotadeVenda1Click(Sender: TObject);
+    procedure ContasaReceber1Click(Sender: TObject);
+    procedure ContaPagar1Click(Sender: TObject);
+    procedure Veculos1Click(Sender: TObject);
    private
     { Private declarations }
    public
@@ -53,19 +79,59 @@ begin
    AbrirForm ('TfrmCadLogin');
 end;
 
-procedure TfrmPrincipal.Estado1Click(Sender: TObject);
+procedure TfrmPrincipal.Clientes1Click(Sender: TObject);
 begin
- AbrirForm ('TfrmEstado');
+  AbrirForm('TfrmClientes');
 end;
 
-procedure TfrmPrincipal.Fornecedor1Click(Sender: TObject);
+procedure TfrmPrincipal.ContaPagar1Click(Sender: TObject);
 begin
- AbrirForm ('TfrmFornecedor');
+  AbrirForm('TfrmContasPagar');
+end;
+
+procedure TfrmPrincipal.ContasaReceber1Click(Sender: TObject);
+begin
+  AbrirForm('TfrmContaReceber');
+end;
+
+procedure TfrmPrincipal.Estado1Click(Sender: TObject);
+begin
+  AbrirForm('TFrmEstado');
+end;
+
+procedure TfrmPrincipal.FormaPagto1Click(Sender: TObject);
+begin
+  AbrirForm('TfrmPagamentos');
+end;
+
+procedure TfrmPrincipal.Fornecedores1Click(Sender: TObject);
+begin
+  AbrirForm('TFrmFornecedor');
 end;
 
 procedure TfrmPrincipal.Marcas1Click(Sender: TObject);
 begin
- AbrirForm ('TfrmMarca');
+  AbrirForm('TFrmMarcas');
+end;
+
+procedure TfrmPrincipal.Municipio1Click(Sender: TObject);
+begin
+  AbrirForm('TfrmMunicipio');
+end;
+
+procedure TfrmPrincipal.NotadeCompra1Click(Sender: TObject);
+begin
+  AbrirForm('TfrmNotasCompras');
+end;
+
+procedure TfrmPrincipal.NotadeVenda1Click(Sender: TObject);
+begin
+  AbrirForm('TfrmNotaVenda');
+end;
+
+procedure TfrmPrincipal.Produtos1Click(Sender: TObject);
+begin
+  AbrirForm('TfrmProdServ');
 end;
 
 procedure TfrmPrincipal.tmMenuTimer (Sender: TObject);
@@ -73,9 +139,14 @@ begin
    lblDataHora.Caption := DateToStr (now());;
 end;
 
-procedure TfrmPrincipal.UnidadeMedidas1Click(Sender: TObject);
+procedure TfrmPrincipal.UnidadeMedida1Click(Sender: TObject);
 begin
- AbrirForm ('TFrmUnidadeMedidas');
+  AbrirForm('TFrmUnidadeMedidas');
+end;
+
+procedure TfrmPrincipal.Veculos1Click(Sender: TObject);
+begin
+  AbrirForm('TfrmVeiculos');
 end;
 
 end.

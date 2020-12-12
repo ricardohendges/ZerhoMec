@@ -3,6 +3,7 @@ inherited frmClientes: TfrmClientes
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
+    ActivePage = tsCadastro
     inherited tsListagem: TTabSheet
       inherited pnlInfos: TPanel
         inherited dbnvgrPrincipal: TDBNavigator
@@ -16,56 +17,56 @@ inherited frmClientes: TfrmClientes
       ExplicitWidth = 515
       ExplicitHeight = 425
       inherited pnlPrincipal: TPanel
-        object lblCLIC_COD: TLabel [0]
+        object lblCLIC_COD: TLabel
           Left = 20
           Top = 49
           Width = 33
           Height = 13
           Caption = 'C'#243'digo'
         end
-        object lblCLI_NOME: TLabel [1]
+        object lblCLI_NOME: TLabel
           Left = 20
           Top = 100
           Width = 27
           Height = 13
           Caption = 'Nome'
         end
-        object lblCLI_CPF: TLabel [2]
+        object lblCLI_CPF: TLabel
           Left = 228
           Top = 100
           Width = 19
           Height = 13
           Caption = 'CPF'
         end
-        object lblNASCIMENTO: TLabel [3]
+        object lblNASCIMENTO: TLabel
           Left = 20
           Top = 155
           Width = 96
           Height = 13
           Caption = 'Data de Nascimento'
         end
-        object lblSEXO: TLabel [4]
+        object lblSEXO: TLabel
           Left = 228
           Top = 155
           Width = 24
           Height = 13
           Caption = 'Sexo'
         end
-        object lblTELEFONE: TLabel [5]
+        object lblTELEFONE: TLabel
           Left = 20
           Top = 210
           Width = 42
           Height = 13
           Caption = 'Telefone'
         end
-        object lblEMAIL: TLabel [6]
+        object lblEMAIL: TLabel
           Left = 228
           Top = 210
           Width = 28
           Height = 13
           Caption = 'E-mail'
         end
-        object btnBUSCA_MUN: TSpeedButton [7]
+        object btnBUSCA_MUN: TSpeedButton
           Left = 56
           Top = 279
           Width = 25
@@ -73,23 +74,19 @@ inherited frmClientes: TfrmClientes
           Caption = '...'
           OnClick = btnBUSCA_MUNClick
         end
-        object lblMUNICIPIO: TLabel [8]
+        object lblMUNICIPIO: TLabel
           Left = 20
           Top = 265
           Width = 43
           Height = 13
           Caption = 'Municipio'
         end
-        object lblENDERECO: TLabel [9]
+        object lblENDERECO: TLabel
           Left = 20
           Top = 316
           Width = 45
           Height = 13
           Caption = 'Endere'#231'o'
-        end
-        inherited dbNavCadastro: TDBNavigator
-          Hints.Strings = ()
-          TabOrder = 9
         end
         object dbedtCLI_ID: TDBEdit
           Left = 20
@@ -178,7 +175,7 @@ inherited frmClientes: TfrmClientes
           Height = 21
           DataField = 'MUN_ID'
           DataSource = dsPadrao
-          TabOrder = 10
+          TabOrder = 9
         end
       end
     end
@@ -192,6 +189,20 @@ inherited frmClientes: TfrmClientes
     Datasets = <>
     Variables = <>
     Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
+      PaperSize = 9
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+    end
   end
   inherited FDPadrao: TFDQuery
     Left = 404

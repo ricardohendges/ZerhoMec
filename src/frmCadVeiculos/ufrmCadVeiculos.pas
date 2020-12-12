@@ -31,7 +31,6 @@ type
     dbedtCLI_COD: TDBEdit;
     dbedtCLI_NOME: TDBEdit;
     procedure btnPesquisarClienteClick(Sender: TObject);
-    procedure actInserirExecute(Sender: TObject);
     procedure btnPesquisaMarcaClick(Sender: TObject);
   protected
     procedure InitializeForm; override;
@@ -51,19 +50,14 @@ uses
 procedure TfrmVeiculos.InitializeForm;
 begin
   inherited;
+  // ????????? wtf!
 end;
 
 function TfrmVeiculos.GetSQLPadrao: string;
 begin
-  Result := 'SELECT v.vei_id,v.mar_id, m.mar_nome, m.mar_nome, v.vei_modelo, v.vei_ano, ' + 'v.vei_placa, c.cli_id, c.cli_nome' + ' FROM VEICULO V' + ' JOIN MARCA M ON M.mar_id = V.mar_id' + ' join cliente C ON C.cli_id = V.cli_id';
+  Result := 'SELECT v.vei_id,v.mar_id, m.mar_nome, m.mar_nome, v.vei_modelo, v.vei_ano, ' + 'v.vei_placa, V.cli_id, c.cli_nome' + ' FROM VEICULO V' + ' JOIN MARCA M ON M.mar_id = V.mar_id' + ' join cliente C ON C.cli_id = V.cli_id';
 
   dsPadrao.DataSet.Open;
-end;
-
-procedure TfrmVeiculos.actInserirExecute(Sender: TObject);
-begin
-  inherited;
-//
 end;
 
 procedure TfrmVeiculos.AfterOpen(DataSet: TDataSet);

@@ -103,14 +103,6 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="..\src\frmCadLogin\ufrmCadLogin.pas">
-            <Form>frmCadLogin</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="..\src\frmLoginUsuario\uFrmLoginUsuario.pas">
-            <Form>frmLoginUsuario</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="..\src\Framework\Utils\Sistema.Utils.Busca.pas"/>
         <DCCReference Include="..\src\Framework\Utils\Sistema.Utils.Forms.pas"/>
         <DCCReference Include="..\src\Framework\Utils\Sistema.Utils.Grid.pas"/>
@@ -126,6 +118,63 @@
         </DCCReference>
         <DCCReference Include="..\src\Framework\Logon\UFramework.Logon.pas"/>
         <DCCReference Include="..\src\Framework\Utils\Sistema.Utils.Connection.pas"/>
+        <DCCReference Include="..\src\frmCadClientes\ufrmClientes.pas">
+            <Form>frmClientes</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\src\frmCadLogin\ufrmCadLogin.pas">
+            <Form>frmCadLogin</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\src\frmCadVeiculos\ufrmCadVeiculos.pas">
+            <Form>frmVeiculos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\src\frmContaPagar\uFrmContasPagar.pas">
+            <Form>frmContasPagar</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\src\FrmEstado\uFrmEstado.pas">
+            <Form>FrmEstado</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\src\FrmFornecedor\uFrmFornecedor.pas">
+            <Form>FrmFornecedor</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\src\frmLoginUsuario\uFrmLoginUsuario.pas">
+            <Form>frmLoginUsuario</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\src\FrmMarcas\uFrmMarcas.pas">
+            <Form>FrmMarcas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\src\frmMunicipios\uFrmMunicipios.pas">
+            <Form>frmMunicipio</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\src\frmNotasCompras\ufrmNotasCompras.pas">
+            <Form>frmNotasCompras</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\src\frmNotaVenda\ufrmNotaVenda.pas">
+            <Form>frmNotaVenda</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\src\frmPagamentos\uFrmPagamentos.pas">
+            <Form>frmPagamentos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\src\frmProdServ\uFrmProdServ.pas">
+            <Form>frmProdServ</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\src\FrmUnidadeMedidas\uFrmUnidadeMedidas.pas">
+            <Form>FrmUnidadeMedidas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\src\frmContaReceber\uFrmContaReceber.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -147,9 +196,10 @@
                     <Source Name="MainSource">prjTrabalhoFinal.dpr</Source>
                 </Source>
                 <Excluded_Packages>
+                    <Excluded_Packages Name="C:\Program Files (x86)\FastReports\LibD26\dclfrxtee26.bpl">FastReport 6.0 Tee Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\Componentes.bpl">(untitled)</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k260.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dclofficexp260.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Program Files (x86)\FastReports\LibD26\dclfrxtee26.bpl">FastReport 6.0 Tee Components</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">

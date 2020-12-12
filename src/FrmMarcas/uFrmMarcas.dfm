@@ -68,11 +68,6 @@ inherited FrmMarcas: TFrmMarcas
       end
     end
   end
-  inherited pnlMenuBotton: TPanel
-    inherited lblStatusForm: TLabel
-      Height = 14
-    end
-  end
   inherited frxrprtPrincipal: TfrxReport
     Datasets = <
       item

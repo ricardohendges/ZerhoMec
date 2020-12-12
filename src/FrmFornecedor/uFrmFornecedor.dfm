@@ -174,11 +174,6 @@ inherited FrmFornecedor: TFrmFornecedor
       end
     end
   end
-  inherited pnlMenuBotton: TPanel
-    inherited lblStatusForm: TLabel
-      Height = 14
-    end
-  end
   inherited frxrprtPrincipal: TfrxReport
     ReportOptions.CreateDate = 44145.902236655100000000
     ReportOptions.LastChange = 44145.902236655100000000

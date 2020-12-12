@@ -61,20 +61,81 @@ object frmPrincipal: TfrmPrincipal
       object miCadastroUsuario: TMenuItem
         Action = ActCadUsuario
       end
+      object N1: TMenuItem
+        Caption = '-'
+      end
+      object Localizao1: TMenuItem
+        Caption = 'Localiza'#231#227'o'
+        object Estado1: TMenuItem
+          Caption = 'Estado'
+          OnClick = Estado1Click
+        end
+        object Municipio1: TMenuItem
+          Caption = 'Municipio'
+          OnClick = Municipio1Click
+        end
+      end
+      object Pessoa1: TMenuItem
+        Caption = 'Pessoa'
+        object Fornecedores1: TMenuItem
+          Caption = 'Fornecedores'
+          OnClick = Fornecedores1Click
+        end
+        object Cliente1: TMenuItem
+          Caption = 'Cliente'
+          object Clientes1: TMenuItem
+            Caption = 'Clientes'
+            OnClick = Clientes1Click
+          end
+          object Veculos1: TMenuItem
+            Caption = 'Ve'#237'culos'
+            OnClick = Veculos1Click
+          end
+        end
+      end
+      object N3: TMenuItem
+        Caption = '-'
+      end
       object Marcas1: TMenuItem
         Caption = 'Marcas'
         OnClick = Marcas1Click
       end
-      object Estado1: TMenuItem
-        Caption = 'Estado'
-        OnClick = Estado1Click
+      object Produtos1: TMenuItem
+        Caption = 'Produtos'
+        OnClick = Produtos1Click
       end
-      object UnidadeMedidas1: TMenuItem
-        Caption = 'Unidade Medidas'
-        OnClick = UnidadeMedidas1Click
+      object UnidadeMedida1: TMenuItem
+        Caption = 'Unidade Medida'
+        OnClick = UnidadeMedida1Click
       end
-      object Fornecedor1: TMenuItem
-        Caption = 'Fornecedor'
+    end
+    object Movimentaes1: TMenuItem
+      Caption = 'Movimenta'#231#245'es'
+      object FormaPagto1: TMenuItem
+        Caption = 'Forma Pagto.'
+        OnClick = FormaPagto1Click
+      end
+      object N2: TMenuItem
+        Caption = '-'
+      end
+      object NotadeCompra1: TMenuItem
+        Caption = 'Nota de Compra'
+        OnClick = NotadeCompra1Click
+      end
+      object NotadeVenda1: TMenuItem
+        Caption = 'Nota de Venda'
+        OnClick = NotadeVenda1Click
+      end
+    end
+    object Financeiro1: TMenuItem
+      Caption = 'Financeiro'
+      object ContasaReceber1: TMenuItem
+        Caption = 'Contas Receber'
+        OnClick = ContasaReceber1Click
+      end
+      object ContaPagar1: TMenuItem
+        Caption = 'Conta Pagar'
+        OnClick = ContaPagar1Click
       end
     end
   end
@@ -92,7 +153,6 @@ object frmPrincipal: TfrmPrincipal
     end
     object actNotaVenda: TAction
       Caption = 'Nota de Venda'
-      OnExecute = actNotaVendaExecute
     end
   end
 end

@@ -4,9 +4,13 @@ inherited frmVeiculos: TfrmVeiculos
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
     Width = 531
+    ActivePage = tsCadastro
     ExplicitWidth = 531
     inherited tsListagem: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 523
+      ExplicitHeight = 425
       inherited pnlFiltros: TPanel
         Width = 523
         ExplicitWidth = 523
@@ -43,56 +47,48 @@ inherited frmVeiculos: TfrmVeiculos
       ExplicitHeight = 425
       inherited pnlPrincipal: TPanel
         Width = 523
-        ExplicitLeft = -88
-        ExplicitTop = 35
         ExplicitWidth = 523
-        object lblVEI_ID: TLabel [0]
+        object lblVEI_ID: TLabel
           Left = 20
           Top = 37
           Width = 33
           Height = 13
           Caption = 'C'#243'digo'
         end
-        object lblCLI_ID: TLabel [1]
+        object lblCLI_ID: TLabel
           Left = 16
           Top = 257
           Width = 107
           Height = 13
           Caption = 'Propriet'#225'rio do Veiculo'
         end
-        object lblMARCA_VEICULO: TLabel [2]
+        object lblMARCA_VEICULO: TLabel
           Left = 20
           Top = 92
           Width = 29
           Height = 13
           Caption = 'Marca'
         end
-        object lblANO: TLabel [3]
+        object lblANO: TLabel
           Left = 20
           Top = 202
           Width = 19
           Height = 13
           Caption = 'Ano'
         end
-        object lblVEI_MODELO: TLabel [4]
+        object lblVEI_MODELO: TLabel
           Left = 20
           Top = 147
           Width = 34
           Height = 13
           Caption = 'Modelo'
         end
-        object lblVEI_PLACA: TLabel [5]
+        object lblVEI_PLACA: TLabel
           Left = 71
           Top = 202
           Width = 25
           Height = 13
           Caption = 'Placa'
-        end
-        inherited dbNavCadastro: TDBNavigator
-          Width = 521
-          Hints.Strings = ()
-          TabOrder = 7
-          ExplicitWidth = 521
         end
         object dbedtVEI_ID: TDBEdit
           Left = 20
@@ -162,13 +158,14 @@ inherited frmVeiculos: TfrmVeiculos
           Height = 21
           DataField = 'MAR_ID'
           DataSource = dsPadrao
-          TabOrder = 8
+          TabOrder = 7
         end
         object dbedtCLI_COD: TDBEdit
           Left = 20
           Top = 276
           Width = 33
           Height = 21
+          DataField = 'CLI_ID'
           DataSource = dsPadrao
           TabOrder = 9
         end
@@ -178,7 +175,7 @@ inherited frmVeiculos: TfrmVeiculos
           Width = 114
           Height = 21
           DataSource = dsPadrao
-          TabOrder = 10
+          TabOrder = 8
         end
       end
     end
@@ -230,6 +227,20 @@ inherited frmVeiculos: TfrmVeiculos
     Datasets = <>
     Variables = <>
     Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
+      PaperSize = 9
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+    end
   end
   inherited FDPadrao: TFDQuery
     SQL.Strings = (
